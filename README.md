@@ -1,1 +1,2 @@
-# vlar-group.github.io
+# Visual Learning and Reasoning Group, The Hong Kong Polytechnic University.
+# Coming soon...
