@@ -1,0 +1,25 @@
+/*详情页*/
+
+/*子导航栏*/
+.vlar-cont-subNav{ padding-bottom:20px; font-size:14px; color:#333;}
+.vlar-cont-subNav a{ text-decoration:none; color:#999;}
+/*标题栏*/
+.vlar-cont-title{ padding-bottom:20px;}
+.vlar-cont-title h1{ font-size:36px; line-height:1.2em; font-family:Arial, Helvetica, sans-serif;}
+/*作者日期*/
+.vlar-cont-author{padding-bottom:10px; font-size:14px; color:#999;}
+.vlar-cont-author span{ margin-right:30px;}
+/*关键字*/
+.vlar-cont-keywords{padding-bottom:50px; font-size:14px; color:#999;}
+.vlar-cont-keywords span{ border-radius:2px; padding:2px 10px; background:#EEE; color:#333; margin-right:10px;}
+/*正文*/
+.vlar-cont-content{}
+/*正文段落样式1,2,3,图片*/
+.vlar-cont-content .p1{ font-size:20px; font-family:Arial, Helvetica, sans-serif; line-height:1.5em; color:#333; font-style:italic;}
+.vlar-cont-content .p2{ font-size:20px; font-family:Arial, Helvetica, sans-serif; line-height:1.5em; color:#000;}
+.vlar-cont-content .p3{ font-size:20px; font-family:Arial, Helvetica, sans-serif; line-height:1.5em; color:#999;}
+.vlar-cont-content .pimg{ text-align:center;}
+/*下载*/
+.vlar-cont-download{ border:#D9D9D9 solid 1px; background:#F0F0F0; text-align:center; padding:50px; margin-top:50px;}
+.vlar-cont-download a{border:#a02337 solid 1px; text-decoration:none; background:#fff; padding:10px 20px; color:#a02337;}
+.vlar-cont-download a:hover{background:#a02337; color:#fff;}

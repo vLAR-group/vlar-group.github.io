@@ -1,0 +1,36 @@
+/*通用*/
+body{ background:#fff !important;}
+*{ margin:0px; padding:0px; font-family:sans-serif;}
+
+#vlar-top{ text-align:center; padding:20px 0px 20px 0px;}
+#vlar-top-con{ width:800px; margin:auto; }
+#vlar-top-logo{ width:280px; float:left; height:80px; text-align:left; }
+#vlar-top-logo img { width:280px; height:80px;}
+#vlar-top-menus{ width:400px; float:right; height:60px; text-align:left; }
+
+.detailpagetop{  border-bottom:#a02337 solid 1px;}
+
+.vlar-top-menu-u li{ width:100px; float:left; list-style:none; text-decoration:none; height:60px; line-height:60px; font-size:16px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow: ellipsis; -o-text-overflow:ellipsis; text-align:center; margin-right:20px;}
+.vlar-top-menu-u li:hover{ border-bottom:#a02337 solid 3px; color:#a02337; font-weight:bold;}
+.focusLi{border-bottom:#a02337 solid 3px; color:#a02337; font-weight:bolder; }
+.vlar-top-menu-u li a{ width:100%; display:block; text-decoration:none; color:#666;}
+
+#vlar-banner-slider{ width:100%; min-width:1200px;}
+#vlar-banner-slider img{ width:100%; height:600px; text-align:center;}
+#vlar-banner{ width:100%; min-width:1200px;}
+#vlar-banner img{ width:100%; height:600px; text-align:center;}
+
+
+#vlar-foot{text-align:center; padding:100px 0px 100px 0px; background:#666;}
+#vlar-foot-con{ width:1200px; margin:auto; text-align:left;}
+.vlar-foot-con-item{ width:300px; float:left;}
+.vlar-foot-con-item-p{ font-family:Verdana, Geneva, sans-serif; font-size:16px; color:#fff; line-height:1.5em;}
+
+
+.vlar-clear{ clear:both !important;}
+.noRMargin { margin-right:0px !important;}
+.noLMargin { margin-left:0px !important;}
+
+/*reset mui.css*/
+.mui-slider-item{ background:#fff;}
+.mui-active{ background:#fff;}
