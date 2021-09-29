@@ -1,0 +1,87 @@
+﻿/*大屏幕公共布局*/
+
+#vlar-top{ text-align:center; padding:20px 0px 20px 0px; }
+#vlar-top-con{ width:800px; margin:auto; }
+
+#vlar-top-logo{ width:280px; float:left; height:80px; text-align:left; }
+#vlar-top-logo img { width:280px; height:80px;}
+
+#vlar-top-menus-laermenuTag{ width:0px; height:80px; float:right; display:none; }
+
+#vlar-top-menus{ width:400px; float:right; height:60px; text-align:left; }
+.vlar-top-menu-u li{ width:100px; float:left; list-style:none; text-decoration:none; height:60px; line-height:60px; font-size:16px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow: ellipsis; -o-text-overflow:ellipsis; text-align:center; margin-right:20px;}
+.vlar-top-menu-u li:hover{ border-bottom:#a02337 solid 3px; color:#a02337; }
+.focusLi{border-bottom:#a02337 solid 3px; color:#a02337; font-weight:bolder; }
+.vlar-top-menu-u li a{ width:100%; display:block; text-decoration:none; color:#666;}
+
+
+#vlar-layermenu-box-bg{ display: none;}  
+#vlar-layermenu-box{ display: none;}
+
+
+/* index.html*/
+#vlar-banner-slider{ text-align:center;  }
+#vlar-banner-slider-con{ width:800px; height:400px; margin:auto; }
+#vlar-banner-slider-con ul li { background-size:800px 400px !important; }
+
+#vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
+.vlar-cont-item{width:800px; margin:auto; text-align:left; margin-bottom:50px;}
+.vlar-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_c.png) no-repeat 0px 6px; padding-left:15px;}
+.vlar-cont-item-c{ padding-left:20px; background:url(../imgs/icon_b.png) no-repeat 13px bottom; }
+.vlar-cont-item-c-box{ border-left:#aaa solid 2px; }
+
+.news-year-tag{ margin-left:-20px; background:url(../imgs/icon_a.png) no-repeat 0px 0px; padding-left:130px; font-size:20px; font-weight:bold; line-height:36px; vertical-align:middle; margin-bottom:10px;}
+.news-year-list{padding-left:100px; padding-bottom:10px;}
+.news-onenews{ margin-bottom:10px; padding:10px;}
+.news-onenews:hover{ background:#fceff1; border-radius:0px; }
+.news-onenews-date{ text-align:left; font-size:12px; line-height:16px; color:#CCC;  font-style:italic;}
+.news-onenews-title{ text-align:left; font-size:18px; line-height:24px; }
+
+
+/* paper.html*/
+.vlar-pap-cont-item{ width:800px; margin:auto; margin-bottom:30px; text-align:left;}
+.vlar-pap-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_c.png) no-repeat 0px 6px; padding-left:15px;}
+.vlar-pap-cont-item-c{ }
+.vlar-pap-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px;  }
+.vlar-pap-cont-item-c-si ul{ padding-left:50px; font-size:16px; line-height:40px;}
+.vlar-pap-cont-item-c-si-img{ width:200px;  float:left; margin-right:20px; padding-top:5px;}
+.vlar-pap-cont-item-c-si-img img { width:200px; height:auto; border-radius:0px;}
+.vlar-pap-cont-item-c-si-c{ width:580px; float:right; }
+
+
+
+/* people.html*/
+.vlar-peo-cont-item{ width:800px; margin:auto; margin-bottom:50px; text-align:left;}
+.vlar-peo-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_c.png) no-repeat 0px 6px; padding-left:15px;}
+.vlar-peo-cont-item-c{ }
+.vlar-peo-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px; }
+.vlar-peo-cont-item-c-si img{ width:800px; height: auto;}
+.vlar-peo-cont-item-c-si-img{ width:200px;  float:left; margin-right:20px; }
+.vlar-peo-cont-item-c-si-img img {  width:160px; height:160px; border-radius:50%;}   /*照片尺寸*/
+.vlar-peo-cont-item-c-si-c{ width:580px; float:right; }
+.vlar-peo-cont-item-c-si-c ul{ padding:10px 50px;}
+.vlar-peo-cont-item-c-si-c ul li{ font-size:14px; line-height:1.5em;}
+
+.people-info1{font-size:20px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
+.people-info2{font-size:16px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; }
+.people-info3{font-size:16px; color:#C60; line-height:1.2em; overflow:hidden; }
+.people-info4{font-size:16px; color:#005580; line-height:1.2em; overflow:hidden; }
+.people-info5{font-size:16px; color:#000; }
+
+
+.vlar-peo-cont-item-c-si-pi{ padding-bottom:20px; text-align: center;}
+.vlar-peo-cont-item-c-si-pi-img{ }
+.vlar-peo-cont-item-c-si-pi-t{  }
+.vlar-peo-cont-item-c-si-pi-img img{ width:180px; height:180px; border-radius:50%;}  /*照片尺寸*/
+.people-pi-info1{font-size:18px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
+.people-pi-info2{font-size:16px; color:#999; font-style:italic; line-height:1.5em; overflow:hidden; }
+.people-pi-info3{font-size:16px; color:#C60; line-height:1.5em; overflow:hidden; }
+
+
+
+
+
+
+
+
+

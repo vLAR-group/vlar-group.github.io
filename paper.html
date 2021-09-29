@@ -1,80 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=800">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-    <link href="css/vlar.css" type="text/css" rel="stylesheet">
+<head>
+<link rel="icon" href="imgs/polyu_icon.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
+<title>Research | vLAR Group</title>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/vlar.js"></script>
 
-    <style type="text/css">
-    /* Color scheme stolen from Sergey Karayev */
-    a {
-    color: #1772d0;
-    text-decoration:none;
-    }
-    a:focus, a:hover {
-    color: #f09228;
-    text-decoration:none;
-    }
-    papertitle {
-    font-family: 'Lato', Verdana, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: 700
-    }
-    #vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:0px;}
-    .vlar-cont-item{width:800px; margin:auto; text-align:left;}
-    .list-item{margin-left: 60px; margin-bottom: 40px;}
-    .vlar-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; margin-top:20px; margin-bottom:20px; line-height:24px; color:#000000; font-family:Bower,Georgia, "Times New Roman", Times, serif}
+<link href="css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="css/vlar.css" type="text/css" rel="stylesheet">
+<link href="css/vlar.s1.css" type="text/css" rel="stylesheet" media="(max-width:800px)">
+<link href="css/vlar.s2.css" type="text/css" rel="stylesheet" media="(min-width:801px)">
 
-    </style>
 
-    <title>Research | vLAR Group</title>
 
-    <link rel="icon" type="image/jpg" href="./imgs/polyu_icon.png">
 </head>
 
 <body>
-    <div id="vlar-top">
-        <div id="vlar-top-con">
-            <div id="vlar-top-logo"><img src="imgs/logo.png" />  </div>
-            <div id="vlar-top-menus">
-                <ul class="vlar-top-menu-u">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="focusLi">Research</li>
-                    <li><a href="people.html">People</a></li>
+<!--top begin-->
+<div id="vlar-top">
+	<div id="vlar-top-con">
+    	<div id="vlar-top-logo"><img src="imgs/logo.png" /> </div>
+        <!--导航栏 begin-->
+        <div id="vlar-top-menus">
+        	<ul class="vlar-top-menu-u">
+                <li><a href="index.html">Home</a></li>
+                <li class="focusLi">Research</li>
+                <li><a href="people.html">People</a></li>
+            </ul>
+        </div>
+        <!--导航栏 end-->
+        <div class="vlar-clear"></div>
+    </div>
+</div>
+<!--top end-->
+<!--侧边滑动导航 begin-->
+<div id="vlar-top-menus-laermenuTag" onclick="setSlidemenu(1)"><span class="mui-icon mui-icon-bars"></span></div>
+<div id="vlar-layermenu-box-bg" onClick="setSlidemenu(0)"></div>
+<div id="vlar-layermenu-box">
+    <ul class="vlar-top-menu-u">
+                <li><a href="index.html">Home</a></li>
+                <li class="focusLi">Research</li>
+                <li><a href="people.html">People</a></li>
+    </ul>
+</div>
+<!--侧边滑动导航 end-->
+
+
+<div id="vlar-contents">
+	<!--内容组 begin-->
+	<div class="vlar-pap-cont-item">
+    	<div class="vlar-pap-cont-item-t">Research Themes</div>
+        <div class="vlar-pap-cont-item-c">
+        	<!--单条记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-import-content">
+                <ul>
+                    <li><strong>ML</strong>: unsupervised learning, disentangled representation learning, zero-shot learning, etc.</li>
+                    <li><strong>CV</strong>: 3D reconstruction, 3D semantic/instance segmentation, neural rendering, etc.</li>
+                    <li><strong>Robotics</strong>: interaction with 3D scenes, autonomous navigation, path planning, etc.</li>
                 </ul>
             </div>
-            <div class="vlar-clear"></div>
+			<!--单条记录 end-->
+            
         </div>
     </div>
-
-    <div id="vlar-contents">
-	<div class="vlar-cont-item">
-        <div class="vlar-cont-item-t">Research Themes</div>
-            <tbody>
-            <tr>
-                <td width="80%" valign="top">
-                    <ul class="list-item" width="80%" valign="top">
-                        <li><strong>ML</strong>: unsupervised learning, disentangled representation learning, zero-shot learning, etc.</li>
-                    </ul>
-                    <ul class="list-item" width="80%" valign="top">
-                        <li><strong>CV</strong>: 3D reconstruction, 3D semantic/instance segmentation, neural rendering, etc.</li>
-                    </ul>
-                    <ul class="list-item" width="80%" valign="top">
-                        <li><strong>Robotics</strong>: interaction with 3D scenes, autonomous navigation, path planning, etc.</li>
-                    </ul>
-                </td>
-            </tr>
-
-            <div class="vlar-cont-item-t">Research Papers</div>
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                <tbody><tr>
-
-
-                <td width="20%"><img src="./papers/21_iccv_grf.gif" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
-                         <p><a href="http://arxiv.org/abs/2010.04595">
+	<!--内容组 end-->
+    
+	<!--内容组 begin-->
+	<div class="vlar-pap-cont-item">
+    	<div class="vlar-pap-cont-item-t">Research Papers</div>
+        <div class="vlar-pap-cont-item-c">
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/21_iccv_grf.gif"  > </div>
+                <div class="vlar-pap-cont-item-c-si-c ">
+                        <p><a href="http://arxiv.org/abs/2010.04595">
                          <papertitle>GRF: Learning a General Radiance Field for 3D Representation and Rendering</papertitle></a>
                          <br>A. Trevithick, <strong>B. Yang</strong> <br>
                          <em>IEEE International Conference on Computer Vision (ICCV)</em>, 2021
@@ -85,14 +87,14 @@
                          <p align="justify" style="font-size:13px">We introduce a simple implicit neural function to represent complex 3D geometries purely from 2D images.
                          </p>
                         <p></p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                <tbody><tr>
-                <td width="20%"><img src="./papers/21_tpami_randla.gif" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/21_tpami_randla.gif" ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="http://arxiv.org/abs/2010.04595">
                         <papertitle>Learning Semantic Segmentation of Large-Scale Point Clouds with Random Sampling</papertitle></a>
                         <br>Q. Hu, <strong>B. Yang*</strong>, L. Xie, S. Rosa, Y. Guo, Z. Wang, N. Trigoni, A. Markham<br>
@@ -106,14 +108,14 @@
                         <p align="justify" style="font-size:13px">The journal version of our RandLA-Net. More experiments and analysis are included.</p>
                         </p>
                         <p></p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                <tbody><tr>
-                <td width="20%"><img src="./papers/21_arXiv_sqn.gif" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/21_arXiv_sqn.gif"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="https://arxiv.org/abs/2104.04891">
                         <papertitle>SQN: Weakly-Supervised Semantic Segmentation of Large-Scale 3D Point Clouds with 1000x Fewer Labels</papertitle></a>
                         <br>Q. Hu, <strong>B. Yang*</strong>, G. Fang, Y. Guo, A. Leonardis, N. Trigoni, A. Markham<br>
@@ -125,14 +127,14 @@
                         <br>(* indicates corresponding author)
                         <p align="justify" style="font-size:13px">We introduce a simple weakly-supervised neural network to learn precise 3D semantics for large-scale point clouds.
                         </p></p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                <tbody><tr>
-                <td width="20%"><img src="./papers/21_cvpr_spinnet.png" alt="PontTuset" width="180" style="border-style: none"></td>
-                <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/21_cvpr_spinnet.png"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                     <p><a href="https://arxiv.org/abs/2011.12149">
                     <papertitle>SpinNet: Learning a General Surface Descriptor for 3D Point Cloud Registration</papertitle></a>
                     <br>S. Ao*, Q. Hu*, <strong>B. Yang</strong>, A. Markham, Y. Guo<br>
@@ -144,14 +146,14 @@
                     <br>(* indicates equal contributions)
                     <p align="justify" style="font-size:13px">We introduce a simple and general neural network to register pieces of 3D point clouds.
                     </p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/21_cvpr_sensaturban.gif" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/21_cvpr_sensaturban.gif"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                     <p><a href="http://arxiv.org/abs/2009.03137">
                     <papertitle>Towards Semantic Segmentation of Urban-Scale 3D Point Clouds: A Dataset, Benchmarks and Challenges</papertitle></a>
                     <br>Q. Hu, <strong>B. Yang*</strong>, S. Khalid, W. Xiao, N. Trigoni, A. Markham<br>
@@ -163,16 +165,15 @@
                     <a href="https://github.com/QingyongHu/SensatUrban"><font color="red">Project page</font></a>
                     <iframe src="https://ghbtns.com/github-btn.html?user=QingyongHu&repo=SensatUrban&type=star&count=true&size=small" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
                     <br>(* indicates corresponding author)
-                    <p align="justify" style="font-size:13px">We introduce an urban-scale photogrammetric point cloud dataset
-                                and extensively evaluate and analyze the state-of-the-art algorithms on the dataset.</p>
-                </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/21_icra_radarloc.png" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                    <p align="justify" style="font-size:13px">We introduce an urban-scale photogrammetric point cloud dataset and extensively evaluate and analyze the state-of-the-art algorithms on the dataset.</p>
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/21_icra_radarloc.png"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="#">
                         <papertitle>RadarLoc: Learning to Relocalize in FMCW Radar</papertitle></a>
                         <br>W. Wang, P.P.B. de Gusmao, <strong>B. Yang</strong>, A. Markham, N. Trigoni<br>
@@ -182,14 +183,14 @@
                         <p align="justify" style="font-size:13px">We introduce a simple end-to-end neural network with self-attention to estimate global poses from FMCW radar scans.
                         </p>
                        <p></p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/20_arXiv_pointloc.png" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/20_arXiv_pointloc.png"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="https://arxiv.org/abs/2003.02392">
                         <papertitle>PointLoc: Deep Pose Regressor for LiDAR Point Cloud Localization</papertitle></a>
                         <br>Wei Wang, Bing Wang, Peijun Zhao, Changhao Chen, Ronald Clark, <strong>B. Yang</strong>, Andrew Markham, Niki Trigoni
@@ -197,14 +198,14 @@
                         <a href="https://arxiv.org/abs/2003.02392">arXiv, 2020</a>
                         </p><p></p>
                         <p align="justify" style="font-size:13px">We present a learning-based LiDAR relocalization framework to efficiently estimate 6-DoF poses from LiDAR point clouds. </p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/20_cvpr_randlanet.gif" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/20_cvpr_randlanet.gif"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="https://arxiv.org/abs/1911.11236">
                         <papertitle>RandLA-Net: Efficient Semantic Segmentation of Large-Scale Point Clouds</papertitle></a>
                         <br>Q. Hu, <strong>B. Yang*</strong>, L. Xie, S. Rosa, Y. Guo, Z. Wang, N. Trigoni, A. Markham
@@ -224,14 +225,14 @@
                         <br>(* indicates corresponding author)
                         </p><p></p>
                         <p align="justify" style="font-size:13px">We introduce an efficient and lightweight neural architecture to directly infer per-point semantics for large-scale point clouds. </p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/19_neurips_3d_bonet.gif" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/19_neurips_3d_bonet.gif"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="https://arxiv.org/abs/1906.01140">
                         <papertitle>Learning Object Bounding Boxes for 3D Instance Segmentation on Point Clouds</papertitle></a>
                         <br><strong>B. Yang</strong>, J. Wang, R. Clark, Q. Hu, S. Wang, A. Markham, N. Trigoni
@@ -256,14 +257,14 @@
                         <p align="justify" style="font-size:13px">We propose a simple and efficient neural architecture for accurate 3D instance segmentation on point clouds.
                          It achieves the SOTA performance on ScanNet and S3DIS (June 2019).</p>
                        <p></p>
-                   </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/19_iros_deeppco.jpg" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/19_iros_deeppco.jpg"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="https://arxiv.org/abs/1910.11088">
                         <papertitle>DeepPCO: End-to-End Point Cloud Odometry through Deep Parallel Neural Network</papertitle></a>
                         <br>W. Wang,  M.R.U. Saputra, P. Zhao, P. Gusmao, <strong>B. Yang</strong>, C. Chen, A. Markham, N. Trigoni<br>
@@ -271,14 +272,14 @@
                         <a href="https://arxiv.org/abs/1910.11088">arXiv</a>
                         </p><p></p>
                         <p align="justify" style="font-size:13px">We propose a novel end-to-end deep parallel neural network to estimate the 6-DOF poses using consecutive 3D point clouds.</p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/19_ijcv_attsets.jpg" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/19_ijcv_attsets.jpg"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="https://link.springer.com/article/10.1007/s11263-019-01217-w">
                         <papertitle>Robust Attentional Aggregation of Deep Feature Sets for Multi-view 3D Reconstruction</papertitle></a>
                         <br><strong>B. Yang</strong>, S. Wang, A. Markham, N. Trigoni<br>
@@ -292,14 +293,14 @@
                         <p align="justify" style="font-size:13px"> We propose an attentive aggregation module together
                             with a training algorithm for multi-view 3D object reconstruction.
                             It outperforms all existing poolings and recurrent neural networks.</p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/19_cvprw_embeddings.jpg" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/19_cvprw_embeddings.jpg"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                         <p><a href="http://openaccess.thecvf.com/content_CVPRW_2019/html/Explainable_AI/Lin_Learning_Semantically_Meaningful_Embeddings_Using_Linear_Constraints_CVPRW_2019_paper.html">
                         <papertitle>Learning Semantically Meaningful Embeddings Using Linear Constraints</papertitle></a>
                         <br>S. Lin, <strong>B. Yang</strong>, R. Birke, R. Clark<br>
@@ -308,14 +309,14 @@
                         </p><p></p>
                         <p align="justify" style="font-size:13px">We propose a simple embedding learning method that jointly optimises for an auto-encoding reconstruction task
                             and for estimating the corresponding attribute labels.</p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/18_tpami_3d_recgan++.png" alt="PontTuset" width="180" style="border-style: none"></td>
-                    <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/18_tpami_3d_recgan++.png"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                        <p><a href="https://arxiv.org/abs/1802.00411">
                        <papertitle>Dense 3D Object Reconstruction from a Single Depth View</papertitle></a>
                        <br><strong>B. Yang</strong>, S. Rosa, A. Markham, N. Trigoni, H. Wen<br>
@@ -328,14 +329,14 @@
                        </p><p></p>
                        <p align="justify" style="font-size:13px">We propose a novel neural architecture to reconstruct the complete 3D structure of a given object
                            from a single arbitrary depth view using generative adversarial networks.</p>
-                    </td>
-                </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/18_ijcai_3d_physnet.gif" alt="this slowpoke moves" width="180" style="border-style: none"></td>
-                        <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/18_ijcai_3d_physnet.gif"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                            <p><a href="https://arxiv.org/abs/1805.00328">
                            <papertitle>3D-PhysNet: Learning the Intuitive Physics of Non-Rigid Object Deformations</papertitle></a>
                            <br>Z. Wang, S. Rosa, <strong>B. Yang</strong>, S. Wang, N. Trigoni, A. Markham<br>
@@ -347,14 +348,14 @@
                            </p><p></p>
                            <p align="justify" style="font-size:13px">We present a neural framework to predict how a 3D object will deform
                                under an applied force using intuitive physics modelling.</p>
-                        </td>
-                    </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/18_cvprw_3r_d.jpg" alt="PontTuset" width="180" style="border-style: none"></td>
-                        <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/18_cvprw_3r_d.jpg"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                            <p><a href="http://openaccess.thecvf.com/content_cvpr_2018_workshops/w9/html/Yang_Learning_3D_Scene_CVPR_2018_paper.html">
                            <papertitle>Learning 3D Scene Semantics and Structure from a Single Depth Image</papertitle></a>
                            <br><strong>B. Yang*</strong>, Z. Lai*, X. Lu, S. Lin, H. Wen, A. Markham, N. Trigoni<br>
@@ -365,14 +366,14 @@
                            </p><p></p>
                            <p align="justify" style="font-size:13px">We propose an efficient and holistic pipeline to simultaneously learn
                                the semantics and structure of a scene from a single depth image.</p>
-                        </td>
-                    </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/18_icra_defonet.jpg" alt="PontTuset" width="180" style="border-style: none"></td>
-                        <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/18_icra_defonet.jpg"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                            <p><a href="https://arxiv.org/abs/1804.05928">
                            <papertitle>Defo-Net: Learning Body Deformation Using Generative Adversarial Networks</papertitle></a>
                            <br>Z. Wang, S. Rosa, L. Xie, <strong>B. Yang</strong>, S. Wang, N. Trigoni, A. Markham<br>
@@ -386,14 +387,14 @@
                            </p><p></p>
                            <p align="justify" style="font-size:13px">We present a novel generative adversarial network to predict
                                body deformations under external forces from a single RGB-D image.</p>
-                        </td>
-                    </tr>
-
-
-                <table width="100%" align="center" border="0" cellspacing="20" cellpadding="20">
-                    <tbody><tr>
-                    <td width="20%"><img src="./papers/17_iccvw_3d_recgan.jpg" alt="PontTuset" width="180" style="border-style: none"></td>
-                        <td width="80%" valign="top">
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
+        	<!--单条paper记录 begin-->
+        	<div class="vlar-pap-cont-item-c-si">
+            	<div class="vlar-pap-cont-item-c-si-img"><img src="./papers/17_iccvw_3d_recgan.jpg"  ></div>
+                <div class="vlar-pap-cont-item-c-si-c">
                            <p><a href="https://arxiv.org/abs/1708.07969">
                            <papertitle>3D Object Reconstruction from a Single Depth View with Adversarial Learning</papertitle></a>
                            <br><strong>B. Yang</strong>, H. Wen, S. Wang, R. Clark, A. Markham, N. Trigoni<br>
@@ -407,19 +408,20 @@
                            </p><p></p>
                            <p align="justify" style="font-size:13px">We propose a novel approach to reconstruct the complete 3D structure of a given
                                object from a single arbitrary depth view using generative adversarial networks.</p>
-                        </td>
-                    </tr>
+                </div>
+                <div class="vlar-clear"></div>
+            </div>
+			<!--单条paper记录 end-->
 
-
-            </tbody>
-            </table>
-
-            </td>
-            </tr>
-        </tbody>
-        </table>
-
+        </div>
     </div>
-    </div>
+	<!--内容组 end-->
+    
+    
+</div>
+
+
+
+
 </body>
 </html>

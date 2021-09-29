@@ -5,27 +5,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 <title>vLAR Group | The Hong Kong Polytechnic University</title>
-<link href="css/vlar.css" type="text/css" rel="stylesheet">
+
+
+
 <link href="css/mui.min.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="js/mui.min.js"></script>
+<link href="css/vlar.css" type="text/css" rel="stylesheet">
+<link href="css/vlar.s1.css" type="text/css" rel="stylesheet" media="(max-width:800px)">
+<link href="css/vlar.s2.css" type="text/css" rel="stylesheet" media="(min-width:801px)">
 
-<style type="text/css">
 
-#vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
-.vlar-cont-item{width:800px; margin:auto; text-align:left; margin-bottom:50px;}
-.vlar-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000000; font-family:Bower,Georgia, "Times New Roman", Times, serif}
-.vlar-cont-item-c{ padding-left:20px; background:url(imgs/icon_b.png) no-repeat 13px bottom; }
-.vlar-cont-item-c-box{ border-left:#aaa solid 2px; }
-
-.news-year-tag{ margin-left:-20px; background:url(imgs/icon_a.png) no-repeat 0px 0px; padding-left:130px; font-size:20px; font-weight:bold; line-height:36px; vertical-align:middle; margin-bottom:10px;}
-.news-year-list{padding-left:100px; padding-bottom:10px;}
-.news-onenews{ margin-bottom:10px; padding:10px;}
-.news-onenews:hover{ background:#E8E8E8; border-radius:5px; font-weight:bold;}
-.news-onenews-date{ width:100px; float:left; text-align:left; font-size:18px; line-height:24px; color:#CCC; }
-.news-onenews-title{ width:750px; float:left; text-align:left; font-size:18px; line-height:24px; }
-
-</style>
 
 </head>
 
@@ -34,6 +22,7 @@
 <div id="vlar-top">
 	<div id="vlar-top-con">
     	<div id="vlar-top-logo"><img src="imgs/logo.png" /> </div>
+        <!--导航栏 begin-->
         <div id="vlar-top-menus">
         	<ul class="vlar-top-menu-u">
             	<li class="focusLi">Home</li>
@@ -41,33 +30,35 @@
                 <li><a href="people.html">People</a></li>
             </ul>
         </div>
+        <!--导航栏 end-->
         <div class="vlar-clear"></div>
     </div>
 </div>
 <!--top end-->
+<!--侧边滑动导航 begin-->
+<div id="vlar-top-menus-laermenuTag" onclick="setSlidemenu(1)"><span class="mui-icon mui-icon-bars"></span></div>
+<div id="vlar-layermenu-box-bg" onClick="setSlidemenu(0)"></div>
+<div id="vlar-layermenu-box">
+    <ul class="vlar-top-menu-u">
+        <li class="focusLi">Home</li>
+        <li><a href="paper.html">Research</a></li>
+        <li><a href="people.html">People</a></li>
+    </ul>
+</div>
+<!--侧边滑动导航 end-->
 
 
 <!--banner begin-->
 <div id="vlar-banner-slider">
-    <div class="mui-content">
-        <div id="slider" class="mui-slider" >
-            <div class="mui-slider-group mui-slider-loop">
-                <div class="mui-slider-item mui-slider-item-duplicate"><img src="imgs/banner0.gif"></div>
-                <div class="mui-slider-item"><img src="imgs/banner0.gif"></div>
-                <div class="mui-slider-item"><img src="papers/20_cvpr_randlanet.gif"></div>
-                <div class="mui-slider-item"><img src="papers/21_tpami_randla.gif"></div>
-                <div class="mui-slider-item mui-slider-item-duplicate"><img src="imgs/banner0.gif"></div>
-            </div>
-            <div class="mui-slider-indicator">
-                <div class="mui-indicator mui-active"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
-            </div>
-        </div>
-    </div>
+  <div id="vlar-banner-slider-con">
+    <ul>
+        <li><img src="imgs/banner0.gif"></li>
+        <li><img src="papers/20_cvpr_randlanet.gif"></li>
+        <li><img src="papers/21_tpami_randla.gif"></li>
+    </ul>
+  </div>
 </div>
 <!--banner end-->
-
 
 
 <div id="vlar-contents">
@@ -75,68 +66,55 @@
     	<div class="vlar-cont-item-t">News</div>
         <div class="vlar-cont-item-c">
 			<div class="vlar-cont-item-c-box">
-
-
             	<!--by year begin-->
             	<div class="news-year-tag">2021</div>
                 <div class="news-year-list">
                     <div class="news-onenews">
                     	<div class="news-onenews-date">23 Jul</div>
-                        Our paper <a href="http://arxiv.org/abs/2010.04595">GRF for neural rendering </a>is accepted by ICCV 2021.
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">Our paper <a href="http://arxiv.org/abs/2010.04595">GRF for neural rendering </a>is accepted by ICCV 2021.</div>
                     </div>
 
                     <div class="news-onenews">
                     	<div class="news-onenews-date">15 May</div>
-                        Our <a href="https://arxiv.org/abs/2107.02389">extension of RandLA-Net</a> is accepted by TPAMI.                        
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">Our <a href="https://arxiv.org/abs/2107.02389">extension of RandLA-Net</a> is accepted by TPAMI.</div>                 
                     </div>
 
                 	<div class="news-onenews">
                     	<div class="news-onenews-date">13 Apr</div>
-                        Invited talk about <a href="https://www.bilibili.com/video/BV1164y1v7zK?p=5">Beyond Supervised Learning for 3D Representations</a> at a CSIG workshop.
-                        
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">Invited talk about <a href="https://www.bilibili.com/video/BV1164y1v7zK?p=5">Beyond Supervised Learning for 3D Representations</a> at a CSIG workshop.</div>
                     </div>
 
                     <div class="news-onenews">
                     	<div class="news-onenews-date">12 Apr</div>
-                        Our paper <a href="https://arxiv.org/abs/2104.04891">SQN</a> is on arXiv.
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">Our paper <a href="https://arxiv.org/abs/2104.04891">SQN</a> is on arXiv.</div>
                     </div>
 
                     <div class="news-onenews">
                     	<div class="news-onenews-date">9 Apr</div>
-                        We are going to organize <a href="http://point-cloud-analysis.cs.ox.ac.uk/">The 1st Challenge on Point Cloud Understanding at ICCV 2021.</a>
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">We are going to organize <a href="http://point-cloud-analysis.cs.ox.ac.uk/">The 1st Challenge on Point Cloud Understanding at ICCV 2021.</a></div>
                     </div>
 
                     <div class="news-onenews">
                     	<div class="news-onenews-date">9 Apr</div>
-                        Our papers <a href="http://point-cloud-analysis.cs.ox.ac.uk/">SensatUrban</a> and <a href="http://point-cloud-analysis.cs.ox.ac.uk/">SpinNet</a> are accepted by CVPR 2021.
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">Our papers <a href="http://point-cloud-analysis.cs.ox.ac.uk/">SensatUrban</a> and <a href="http://point-cloud-analysis.cs.ox.ac.uk/">SpinNet</a> are accepted by CVPR 2021.</div>
                     </div>
 
                     <div class="news-onenews">
                     	<div class="news-onenews-date">1 Mar</div>
-                        Our papers SensatUrban and SpinNet are accepted by CVPR 2021.
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title">Our papers SensatUrban and SpinNet are accepted by CVPR 2021.</div>
                     </div>
                 </div>
                 <!--by year end-->
-
 
             	<!--by year begin-->
             	<div class="news-year-tag">2020</div>
                 <div class="news-year-list">
                 	<div class="news-onenews">
                     	<div class="news-onenews-date">2 Nov</div>
-                        <a>Dr. Bo Yang joins The Hong Kong Polytechnic University.</a>
-                        <div class="vlar-clear"></div>
+                        <div class="news-onenews-title"><a>Dr. Bo Yang joins The Hong Kong Polytechnic University.</a></div>
                     </div>
                 </div>
                 <!--by year end-->
-                
                 
             </div>
         </div>
@@ -144,24 +122,21 @@
 </div>
 
 
-    <!--SECTION  -->
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tbody><tr>
-    <td width="100%" align="middle">
-    <p align="center" style="width: 10% ">
-    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=iL0ePoIuxPoCRYX6WFmqXDKoz-W8p5pp2kHlBdDOH8Q"></script>
-    </p></td>
-    </tr>
-    </tbody>
-    </table>
+<!--SECTION  -->
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+<tbody><tr>
+<td width="100%" align="middle">
+<p align="center" style="width: 10% ">
+<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=iL0ePoIuxPoCRYX6WFmqXDKoz-W8p5pp2kHlBdDOH8Q"></script>
+</p></td>
+</tr>
+</tbody>
+</table>
 
 
-<script type="text/javascript">
-	//get slider
-	var gallery = mui('.mui-slider');
-	gallery.slider({
-	  interval:2000 //自动轮播周期，若为0则不自动播放，默认为0；
-	});
-</script>
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.terseBanner.min.js"></script>
+<script type="text/javascript" src="js/vlar.js"></script>
 </body>
 </html>

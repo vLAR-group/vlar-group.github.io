@@ -1,0 +1,91 @@
+/*小屏幕公共布局*/
+body{ padding-top:120px;}
+
+#vlar-top{ position:absolute; top:0px; left:0px; width:100%; text-align:center; padding:20px 10px 20px 10px; overflow:hidden; }
+#vlar-top-con{ }
+
+#vlar-top-logo{ width:280px; float:left; height:80px; text-align:left; }
+#vlar-top-logo img { width:280px; height:80px;}
+
+#vlar-top-menus-laermenuTag{ position: absolute; top: 40px; right:0px; width:80px; padding-right:20px; text-align:right; float:right; }
+#vlar-top-menus-laermenuTag span{ font-size:40px; color:#a02337; font-weight:bold;}
+
+#vlar-top-menus{ width:0px; display:none; }
+
+#vlar-layermenu-box-bg{ display: none; position: fixed; top: 0%; width: 100%;  height: 100%;  background-color:#F5F5F5; z-index:1001; -moz-opacity: 0.5; opacity:.50; filter: alpha(opacity=50);}  
+#vlar-layermenu-box{ position:fixed; top: 0%;  right: -50%; width: 0%; height: 100%; background: #a02337;  transition:all 0.3s; z-index:1002; }
+
+
+.vlar-top-menu-u li{ width:100%; list-style:none; text-decoration:none; height:60px; line-height:60px; font-size:16px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow: ellipsis; -o-text-overflow:ellipsis; text-align:center; color:#fff; border-bottom:#CCC solid 1px;}
+.vlar-top-menu-u li:hover{ background:#a02337; color:#fff; }
+.focusLi{ }
+.vlar-top-menu-u li a{ width:100%; display:block; text-decoration:none; color:#fff;}
+.vlar-top-menu-u li a:hover{ color:#fff;}
+
+
+
+/* index.html*/
+#vlar-banner-slider{ }
+#vlar-banner-slider-con{  width:100%; height:300px;}
+#vlar-banner-slider-con ul li { background-size:100% 300px !important; }
+
+#vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
+.vlar-cont-item{width:100%; text-align:left; margin-bottom:50px;}
+.vlar-cont-item-t{ text-align:center; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_d.png) no-repeat center bottom; padding-bottom:10px;}
+.vlar-cont-item-c{ padding:10px;}
+.vlar-cont-item-c-box{ }
+
+.news-year-tag{ padding-left:10px; font-size:20px; font-weight:bold; line-height:36px; vertical-align:middle; margin-bottom:10px; }
+.news-year-list{ }
+.news-onenews{ margin-bottom:10px; padding:10px;}
+.news-onenews:hover{ background:#fceff1; border-radius:0px; }
+.news-onenews-date{ text-align:left; font-size:12px; line-height:16px; color:#CCC; font-style:italic; }
+.news-onenews-title{ text-align:left; font-size:18px; line-height:24px; }
+
+
+
+/* paper.html*/
+.vlar-pap-cont-item{ width:100%; margin:auto; margin-bottom:30px; text-align:left;}
+.vlar-pap-cont-item-t{ text-align:center; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_d.png) no-repeat center bottom; padding-bottom:10px;}
+.vlar-pap-cont-item-c{ padding:10px;}
+.vlar-pap-cont-item-c-si{ margin-bottom:30px; padding:10px;  }
+.vlar-pap-cont-item-c-si ul{ padding-left:30px; }
+.vlar-pap-cont-item-c-si ul li { padding:10px 0px; font-size:16px; line-height:24px;}
+.vlar-pap-cont-item-c-si-img{ width:100%; height:auto; }
+.vlar-pap-cont-item-c-si-img img { width:100%; height:auto; border-radius:0px;}
+.vlar-pap-cont-item-c-si-c{ width:100%; margin-top:10px;}
+
+
+
+/* people.html*/
+.vlar-peo-cont-item{ width:100%; margin:auto; margin-bottom:50px; text-align:left;}
+.vlar-peo-cont-item-t{ text-align:center; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_d.png) no-repeat center bottom; padding-bottom:10px; }
+.vlar-peo-cont-item-c{ padding:10px; text-align:center;}
+.vlar-peo-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px; }
+.vlar-peo-cont-item-c-si img{ width:100%; height:auto;}
+.vlar-peo-cont-item-c-si-img{ width:100%; height:auto; }
+.vlar-peo-cont-item-c-si-img img {  width:160px; height:160px; border-radius:50%;}   /*照片尺寸*/
+.vlar-peo-cont-item-c-si-c{ width:100%;  }
+.vlar-peo-cont-item-c-si-c ul{ padding:10px 50px; text-align:left;}
+.vlar-peo-cont-item-c-si-c ul li{ font-size:14px; line-height:1.5em;}
+
+.people-info1{font-size:20px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
+.people-info2{font-size:16px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; }
+.people-info3{font-size:16px; color:#C60; line-height:1.2em; overflow:hidden; }
+.people-info4{font-size:16px; color:#005580; line-height:1.2em; overflow:hidden; }
+.people-info5{font-size:16px; color:#000; }
+
+
+.vlar-peo-cont-item-c-si-pi{ padding-bottom:20px; text-align: center;}
+.vlar-peo-cont-item-c-si-pi-img{ }
+.vlar-peo-cont-item-c-si-pi-t{  }
+.vlar-peo-cont-item-c-si-pi-img img{ width:180px; height:180px; border-radius:50%;}  /*照片尺寸*/
+.people-pi-info1{font-size:18px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
+.people-pi-info2{font-size:16px; color:#999; font-style:italic; line-height:1.5em; overflow:hidden; }
+.people-pi-info3{font-size:16px; color:#C60; line-height:1.5em; overflow:hidden; }
+
+
+
+
+
+

@@ -1,55 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/jpg" href="./imgs/polyu_icon.png">
-
+<link rel="icon" href="imgs/polyu_icon.png">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
 <title>People | vLAR Group</title>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/vlar.js"></script>
+
+<link href="css/mui.min.css" type="text/css" rel="stylesheet">
 <link href="css/vlar.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<link href="css/vlar.s1.css" type="text/css" rel="stylesheet" media="(max-width:800px)">
+<link href="css/vlar.s2.css" type="text/css" rel="stylesheet" media="(min-width:801px)">
 
-<style type="text/css">
 
-#vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
-.vlar-cont-item{width:800px; margin:auto; text-align:left; margin-bottom:100px;}
-.vlar-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:30px; color:#000000; font-family:Bower,Georgia, "Times New Roman", Times, serif}
-.vlar-cont-item-c{ }
-
-.vlar-cont-item-c-si-pi{ padding-bottom:20px; }
-.vlar-cont-item-c-si-pi-img{ width:180px; float:left; text-align:left;}
-.vlar-cont-item-c-si-pi-t{ width:800px; float: left; text-align:left;}
-.vlar-cont-item-c-si-pi-img img{ width:180px; height:180px; border-radius:50%;}  /*照片尺寸*/
-.people-pi-info1{font-size:18px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
-.people-pi-info2{font-size:16px; color:#999; font-style:italic; line-height:1.5em; overflow:hidden; }
-.people-pi-info3{font-size:16px; color:#C60; line-height:1.5em; overflow:hidden; }
-
-.vlar-cont-item-c-si{ width:760px; float:left; margin-right:15px; border:#CCC solid 1px; border-radius:5px; padding:10px; margin-bottom: 10px;}
-.vlar-cont-item-c-si:hover{ background:#F2F2F2;}
-.vlar-cont-item-c-si-img img{ float:left; width:160px; height:160px; border-radius:50%; margin-right: 30px;}  /*照片尺寸*/
-.vlar-cont-item-c-si-t{ }
-.people-info1{font-size:20px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
-.people-info2{font-size:16px; color:#999; font-style:italic; line-height:1.5em; overflow:hidden; }
-.people-info3{font-size:16px; color:#C60; line-height:1.5em; overflow:hidden; }
-.people-info4{font-size:16px; color:#005580; line-height:1.5em; overflow:hidden; }
-.people-info5{font-size:16px; color:#000; }
-.list-item{font-size:16px; color:#000; margin-left: 220px;}
-
-#people-banner{ text-align:center; padding:10px 0px 10px 0px; margin-top:30px;}
-.banner-img { width:780px; margin:auto;}
-.banner-img img{ width:780px; text-align:center;}
-.banner-item{width:780px; margin:auto; text-align:left; margin-bottom:100px;}
-.banner-item-t{text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:30px; color:#000000; font-family:Bower,Georgia, "Times New Roman", Times, serif}
-
-</style>
 
 </head>
 
 <body>
-<!--顶部导航区域 begin-->
+<!--top begin-->
 <div id="vlar-top">
 	<div id="vlar-top-con">
-    	<div id="vlar-top-logo"><img src="imgs/logo.png" />  </div>
+    	<div id="vlar-top-logo"><img src="imgs/logo.png" /> </div>
+        <!--导航栏 begin-->
         <div id="vlar-top-menus">
         	<ul class="vlar-top-menu-u">
             	<li><a href="index.html">Home</a></li>
@@ -57,73 +31,72 @@
                 <li class="focusLi">People</li>
             </ul>
         </div>
+        <!--导航栏 end-->
         <div class="vlar-clear"></div>
     </div>
 </div>
-<!--顶部导航区域 end-->
-
-<!--banner区域 begin-->
-
-<div id="people-banner">
-    
-    <div class="banner-img">
-        <div class="banner-item-t">Our Group</div>
-        <img src="imgs/group_photo.jpeg" />
-    </div>
+<!--top end-->
+<!--侧边滑动导航 begin-->
+<div id="vlar-top-menus-laermenuTag" onclick="setSlidemenu(1)"><span class="mui-icon mui-icon-bars"></span></div>
+<div id="vlar-layermenu-box-bg" onClick="setSlidemenu(0)"></div>
+<div id="vlar-layermenu-box">
+    <ul class="vlar-top-menu-u">
+            	<li><a href="index.html">Home</a></li>
+                <li><a href="paper.html">Research</a></li>
+                <li class="focusLi">People</li>
+    </ul>
 </div>
+<!--侧边滑动导航 end-->
 
-<!--banner区域 end-->
 
-
-<!--内容区域 begin-->
 <div id="vlar-contents">
 	<!--内容组 begin-->
-	<div class="vlar-cont-item">
-		<!--<div class="vlar-cont-item-t">pi</div>-->
-        <div class="vlar-cont-item-t">Principal Investigator</div>
-        <div class="vlar-cont-item-c">
-        	<!--people begin-->
-        	<div class="vlar-cont-item-c-si-pi">
-            	<div class="vlar-cont-item-c-si-pi-img"><img src="imgs/people_bo.jpg"/> </div>
-                <div class="vlar-cont-item-c-si-pi-t">
-                	<p class="people-pi-info1">Dr. Bo YANG </p>
-                    <p class="people-pi-info2">Assistant Professor (2020.11-)</p>
-                     <p class="people-pi-info2">Department of Computing, HK PolyU</p>
-                    <p class="people-pi-info3">DPhil/PhD@Oxford, MPhil@HKU, BEng@BUPT</p>
-                     <p class="people-pi-info4">
-                         <a href="https://yang7879.github.io/">Homepage</a> /
-                         <a href="https://scholar.google.com/citations?hl=en&user=VqUAqz8AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a> /
-                        <a href="mailto:bo.yang (at) polyu.edu.hk">Email</a></p>
-                </div>
-                <div class="vlar-clear"></div>
+	<div class="vlar-peo-cont-item">
+    	<div class="vlar-peo-cont-item-t">Our Group</div>
+        <div class="vlar-peo-cont-item-c">
+        	<!--单条记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si">
+                <img src="imgs/group_photo.jpeg" />
             </div>
-			<!--people end-->
+			<!--单条记录 end-->
+            
         </div>
     </div>
 	<!--内容组 end-->
-
-
-    <div class="vlar-cont-item">
-    	<div class="vlar-cont-item-t"><font color="red">Openings:</font></div>
-        <div class="vlar-cont-item-c">
-        <font color="red">Several fully funded PhD positions and Research Assistantships are available now.
-            Welcome to drop me an email with your CV and transcripts. <p> <br>
-        (All emails/CVs are carefully read and evaluated. Only matched candidates will be responded.) </font>
-
-        <div class="vlar-clear"></div>
+    
+	<!--内容组 begin-->
+	<div class="vlar-peo-cont-item">
+    	<div class="vlar-peo-cont-item-t">Principal Investigator</div>
+        <div class="vlar-peo-cont-item-c">
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si-pi">
+            	<div class="vlar-peo-cont-item-c-si-pi-img"><img src="imgs/people_bo.jpg"/> </div>
+                <div class="vlar-peo-cont-item-c-si-pi-t">
+                  <p class="people-pi-info1">Dr. Bo YANG </p>
+                  <p class="people-pi-info2">Assistant Professor (2020.11-)</p>
+                  <p class="people-pi-info2">Department of Computing, HK PolyU</p>
+                  <p class="people-pi-info3">DPhil/PhD@Oxford, MPhil@HKU, BEng@BUPT</p>
+                  <p class="people-pi-info4">
+                     <a href="https://yang7879.github.io/">Homepage</a> /
+                     <a href="https://scholar.google.com/citations?hl=en&user=VqUAqz8AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a> /
+                     <a href="mailto:bo.yang (at) polyu.edu.hk">Email</a>
+                  </p>
+                </div>
+            </div>
+			<!--单条people记录 end-->
+            
         </div>
     </div>
-
-
-
-	<!--PhDs begin-->
-	<div class="vlar-cont-item">
-    	<div class="vlar-cont-item-t">PhD Students</div>
-        <div class="vlar-cont-item-c">
-
-        	<div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_yafei.jpg" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+	<!--内容组 end-->
+    
+	<!--内容组 begin-->
+	<div class="vlar-peo-cont-item">
+    	<div class="vlar-peo-cont-item-t">PhD Students</div>
+        <div class="vlar-peo-cont-item-c">
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_yafei.jpg" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Yafei YANG</p>
                     <p class="people-info2">2021.09 - </p>
                     <p class="people-info3">BEng@HKU (First Class Honours in CS), HKPFS</p>
@@ -131,36 +104,37 @@
                         <a href="mailto:ya-fei.yang@connect.polyu.hk">Email</a></p>
 
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>unsupervised learning </li>
                         <li>object-centric scene understanding </li>
                     </ul>
                     </p>
-                    
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-
-            
-            <div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_jinxi.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+			<!--单条people记录 end-->
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_jinxi.png" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Jinxi LI</p>
                     <p class="people-info2">2021.09 - </p>
                     <p class="people-info3">MSc@NEU(US), BSEcon@PKU (Guanghua School of Management)</p>
                     <p class="people-info4"><a href="mailto:https://scholar.google.com/citations?user=agnxFRoAAAAJ&hl=en">Google Scholar</a> /
                         <a href="mailto:jinxi.li@connect.polyu.hk">Email</a></p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>3D computer vision </li>
                         <li>neural rendering </li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-
-
-        	<div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_ziyang.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+			<!--单条people记录 end-->
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_ziyang.png" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Ziyang SONG</p>
                     <p class="people-info2">2021.09 - </p>
                     <p class="people-info3">MEng, BEng@XJTU (Honors Youth Program)</p>
@@ -168,131 +142,132 @@
                         <a href="https://scholar.google.com/citations?user=7YcpCEwAAAAJ&hl=en">Google Scholar</a> /
                         <a href="mailto:ziyang.song@connect.polyu.hk">Email</a> </p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>3D computer vision</li>
                         <li>point cloud analysis </li>
                     </ul>
                     </p>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-
-
-            <div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_xiaokang.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+			<!--单条people记录 end-->
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_xiaokang.png" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Xiaokang WEI</p>
                     <p class="people-info2">2021.09 - </p>
                     <p class="people-info3">MEng@XJTU, BEng@DUT</p>
                     <p class="people-info4"><a href="mailto:xiaokang.wei@connect.polyu.hk">Email</a></p>
                     <p class="people-info5">Co-supervised with Dr. Yan Tina Luximon</p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>3D reconstruction</li>
                         <li>neural rendering</li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-            <br>
-
-
-            <div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_zihui.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+			<!--单条people记录 end-->
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si ">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_zihui.png" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Zihui ZHANG</p>
                     <p class="people-info2">2021.09 - </p>
                     <p class="people-info3">MSc@XJTU, BSc@UESTC</p>
                     <p class="people-info4"><a href="mailto:zihui.zhang@connect.polyu.hk">Email</a></p>
                     <p class="people-info5">Co-supervised with Dr. Bo Li</p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>3D computer vision</li>
                         <li>point cloud analysis</li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
+			<!--单条people记录 end-->
 
-            <div class="vlar-clear"></div>
+
         </div>
     </div>
-	<!--PhDs end-->
-
-	<!--MSc begin-->
-	<div class="vlar-cont-item">
-    	<div class="vlar-cont-item-t">MSc Students</div>
-        <div class="vlar-cont-item-c">
-
-
-        	<div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_lu.jpeg" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+	<!--内容组 end-->
+    
+	<!--内容组 begin-->
+	<div class="vlar-peo-cont-item">
+    	<div class="vlar-peo-cont-item-t">MSc Students</div>
+        <div class="vlar-peo-cont-item-c">
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si ">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_lu.jpeg" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Lu CHEN</p>
                     <p class="people-info2">2021.05 - </p>
                     <p class="people-info3">MSc@HK PolyU</p>
                     <p class="people-info4"><a href="mailto:chen-lu.chen@connect.polyu.hk">Email</a></p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>neural rendering</li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-            <div class="vlar-clear"></div>
+			<!--单条people记录 end-->
+
         </div>
     </div>
-	<!--MSc end-->
-
-
-
-    <!--RAs begin-->
-	<div class="vlar-cont-item">
-    	<div class="vlar-cont-item-t">Research Assistants</div>
-        <div class="vlar-cont-item-c">
-
-
-        	<div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_xiaodong.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+	<!--内容组 end-->
+    
+	<!--内容组 begin-->
+	<div class="vlar-peo-cont-item">
+    	<div class="vlar-peo-cont-item-t">Research Assistants</div>
+        <div class="vlar-peo-cont-item-c">
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si vlar-separatorLine">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_xiaodong.png" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Xiaodong CHEN</p>
                     <p class="people-info2">2021.08 - </p>
                     <p class="people-info3">MSc@HKUST</p>
                     <p class="people-info4"> <a href="https://github.com/kevinchan04">GitHub</a> /
                         <a href="mailto:xiaodchen@polyu.edu.hk">Email</a></p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>point cloud analysis</li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-
-
-        	<div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_donghui.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+			<!--单条people记录 end-->
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si ">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_donghui.png" /> </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Donghui SHEN</p>
                     <p class="people-info2">2021.08 - </p>
                     <p class="people-info3">MSc, BSc@SDU</p>
                     <p class="people-info4"><a href="donghui.shen@polyu.edu.hk">Email</a></p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>point cloud analysis</li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
-
-            <div class="vlar-clear"></div>
+			<!--单条people记录 end-->
+            
         </div>
     </div>
-	<!--RAs end-->
-
-
-    <!--Visiting begin-->
-	<div class="vlar-cont-item">
-    	<div class="vlar-cont-item-t">Visiting Scholars</div>
-        <div class="vlar-cont-item-c">
-
-
-        	<div class="vlar-cont-item-c-si">
-            	<div class="vlar-cont-item-c-si-img"><img src="imgs/people_bing.png" /> </div>
-                <div class="vlar-cont-item-c-si-t">
+	<!--内容组 end-->
+    
+	<!--内容组 begin-->
+	<div class="vlar-peo-cont-item">
+    	<div class="vlar-peo-cont-item-t">Visiting Scholars</div>
+        <div class="vlar-peo-cont-item-c">
+        	<!--单条people记录 begin-->
+        	<div class="vlar-peo-cont-item-c-si ">
+            	<div class="vlar-peo-cont-item-c-si-img"><img src="imgs/people_bing.png" />  </div>
+                <div class="vlar-peo-cont-item-c-si-c">
                 	<p class="people-info1">Bing WANG</p>
                     <p class="people-info2">2021.05 - </p>
                     <p class="people-info3">DPhil@Oxford</p>
@@ -300,24 +275,24 @@
                         <a href="https://scholar.google.com/citations?user=W7QhPeUAAAAJ&hl=en">Google Scholar</a> /
                         <a href="mailto:bing.wang@cs.ox.ac.uk">Email</a></p>
                     <p class="people-info5">Research Interests:</p>
-                    <ul class="list-item">
+                    <ul class="vlar-import-content">
                         <li>robotic vision</li>
                         <li>scene reconstruction and understanding</li>
                         <li>neural rendering</li>
                     </ul>
                 </div>
+                <div class="vlar-clear"></div>
             </div>
+			<!--单条people记录 end-->
 
-
-
-            <div class="vlar-clear"></div>
         </div>
     </div>
-	<!--Visiting end-->
-
-
+	<!--内容组 end-->
+    
 </div>
-<!--内容区域 end-->
+
+
+
 
 </body>
 </html>
