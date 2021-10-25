@@ -21,7 +21,7 @@
 
 /* index.html*/
 #vlar-banner-slider{ text-align:center;  }
-#vlar-banner-slider-con{ width:800px; height:400px; margin:auto; }
+#vlar-banner-slider-con{ width:800px; height:400px; overflow:hidden; margin:auto; }
 #vlar-banner-slider-con ul li { background-size:800px 400px !important; }
 
 #vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
