@@ -1,7 +1,7 @@
 ﻿/*小屏幕公共布局*/
 body{ padding-top:120px;}
 
-#vlar-top{ position:absolute; top:0px; left:0px; width:100%; text-align:center; padding:20px 10px 20px 10px; overflow:hidden; }
+#vlar-top{ position:absolute; top:0px; left:0px; text-align:center; padding:20px 10px 20px 10px; overflow:hidden; }
 #vlar-top-con{ }
 
 #vlar-top-logo{ width:280px; float:left; height:80px; text-align:left; }
@@ -26,8 +26,8 @@ body{ padding-top:120px;}
 
 /* index.html*/
 #vlar-banner-slider{ }
-#vlar-banner-slider-con{  width:100%; height:300px; overflow:hidden;}
-#vlar-banner-slider-con ul li { background-size:100% 300px !important; }
+#vlar-banner-slider-con{ width:100%; height:240px; overflow:hidden; }
+#vlar-banner-slider-con img{ width:100%; height:240px;}
 
 #vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
 .vlar-cont-item{width:100%; text-align:left; margin-bottom:50px;}

@@ -1,9 +1,3 @@
-$(function() {
-    $('#vlar-banner-slider-con').terseBanner({
-		arrow: true
-	});
-});
-	
 
 
 //隐藏或显示侧滑导航

@@ -6,19 +6,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 <title>vLAR Group | The Hong Kong Polytechnic University</title>
 
-
-
 <link href="css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="css/swiper.min.css" rel="stylesheet">
 <link href="css/vlar.css" type="text/css" rel="stylesheet">
 <link href="css/vlar.s1.css" type="text/css" rel="stylesheet" media="(max-width:800px)">
 <link href="css/vlar.s2.css" type="text/css" rel="stylesheet" media="(min-width:801px)">
 
-
 </head>
 
 <body>
-
-
 <!--top begin-->
 <div id="vlar-top">
 	<div id="vlar-top-con">
@@ -52,15 +48,19 @@
 <!--banner begin-->
 <div id="vlar-banner-slider">
   <div id="vlar-banner-slider-con">
-    <ul>
-        <li><img src="imgs/banner1.gif"></li>
-        <li><img src="imgs/banner2.gif"></li>
-        <li><img src="imgs/banner3.gif"></li>
-    </ul>
+    <div class="swiper-container " id="vlar-swiper-container">
+      <div class="swiper-wrapper" id="vlar-swiper-wrapper">
+          <a class="swiper-slide m-swiper-slide" href="#"><img src="imgs/banner1.gif" class="m-swiper-img"></a>
+          <a class="swiper-slide m-swiper-slide" href="#"><img src="imgs/banner2.gif" class="m-swiper-img"></a>
+          <a class="swiper-slide m-swiper-slide" href="#"><img src="imgs/banner3.gif" class="m-swiper-img"></a>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
 </div>
 <!--banner end-->
-
 
 
 <div id="vlar-contents">
@@ -143,8 +143,28 @@
 
 
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/jquery.terseBanner.min.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
 <script type="text/javascript" src="js/vlar.js"></script>
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper('#vlar-swiper-container', {
+    speed:1000,
+    autoplay : {
+      delay:2000
+    },      
+    loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+	navigation: {
+	  nextEl: ".swiper-button-next",
+	  prevEl: ".swiper-button-prev",
+	},
+  });
+  
+</script>
+
 
 </body>
 </html>

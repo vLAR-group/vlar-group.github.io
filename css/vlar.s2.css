@@ -1,4 +1,4 @@
-﻿/*大屏幕公共布局*/
+/*大屏幕公共布局*/
 
 #vlar-top{ text-align:center; padding:20px 0px 20px 0px; }
 #vlar-top-con{ width:800px; margin:auto; }
@@ -21,8 +21,8 @@
 
 /* index.html*/
 #vlar-banner-slider{ text-align:center;  }
-#vlar-banner-slider-con{ width:800px; height:400px; overflow:hidden; margin:auto; }
-#vlar-banner-slider-con ul li { background-size:800px 400px !important; }
+#vlar-banner-slider-con{ width:800px; height:400px; margin:auto; overflow:hidden; }
+#vlar-banner-slider-con img{ width:800px; height:400px;}
 
 #vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
 .vlar-cont-item{width:800px; margin:auto; text-align:left; margin-bottom:50px;}
