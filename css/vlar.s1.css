@@ -39,10 +39,11 @@ body{ padding-top:120px;}
 .news-year-list{ }
 .news-onenews{ margin-bottom:10px; padding:10px;}
 .news-onenews:hover{ background:#fceff1; border-radius:0px; }
-.news-onenews-date{ text-align:left; font-size:12px; line-height:16px; color:#CCC; font-style:italic; }
+.news-onenews-date{ text-align:left; font-size:12px; line-height:16px; color:#666; font-style:italic; }
 .news-onenews-title{ text-align:left; font-size:18px; line-height:24px; }
 
-
+.swiper-button-next{ display:none;}
+.swiper-button-prev{ display:none;}
 
 /* paper.html*/
 .vlar-pap-cont-item{ width:100%; margin:auto; margin-bottom:30px; text-align:left;}
@@ -53,8 +54,8 @@ body{ padding-top:120px;}
 .vlar-pap-cont-item-c-si ul li { padding:10px 0px; font-size:16px; line-height:24px;}
 .vlar-pap-cont-item-c-si-img{ width:100%; height:auto; }
 .vlar-pap-cont-item-c-si-img img { width:100%; height:auto; border-radius:0px;}
-.vlar-pap-cont-item-c-si-c{ width:100%; margin-top:10px;}
-
+.vlar-pap-cont-item-c-si-c{ width:100%; margin-top:10px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
+.vlar-pap-cont-item-c-si-c .papertitle{font-size:18px; line-height:1.5em; font-family: Arial, Helvetica, sans-serif; }
 
 
 /* people.html*/

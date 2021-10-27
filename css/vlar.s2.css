@@ -34,7 +34,7 @@
 .news-year-list{padding-left:100px; padding-bottom:10px;}
 .news-onenews{ margin-bottom:10px; padding:10px;}
 .news-onenews:hover{ background:#fceff1; border-radius:0px; }
-.news-onenews-date{ text-align:left; font-size:12px; line-height:16px; color:#CCC;  font-style:italic;}
+.news-onenews-date{ text-align:left; font-size:12px; line-height:16px; color:#666;  font-style:italic;}
 .news-onenews-title{ text-align:left; font-size:18px; line-height:24px; }
 
 
@@ -44,11 +44,10 @@
 .vlar-pap-cont-item-c{ }
 .vlar-pap-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px;  }
 .vlar-pap-cont-item-c-si ul{ padding-left:50px; font-size:16px; line-height:40px;}
-.vlar-pap-cont-item-c-si-img{ width:200px;  float:left; margin-right:20px; padding-top:5px;}
+.vlar-pap-cont-item-c-si-img{ width:200px;  float:left; margin-right:20px; padding-top:15px;}
 .vlar-pap-cont-item-c-si-img img { width:200px; height:auto; border-radius:0px;}
-.vlar-pap-cont-item-c-si-c{ width:580px; float:right; }
-
-
+.vlar-pap-cont-item-c-si-c{ width:580px; float:right; font-size:12px; color:#333; font-family:Arial, Helvetica, sans-serif;}
+.vlar-pap-cont-item-c-si-c .papertitle{font-size:16px; line-height:1.5em; font-family: Arial, Helvetica, sans-serif; }
 
 /* people.html*/
 .vlar-peo-cont-item{ width:800px; margin:auto; margin-bottom:50px; text-align:left;}

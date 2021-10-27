@@ -1,6 +1,6 @@
-/*通用*/
+﻿/*通用*/
 body{ background:#fff !important; }
-*{ margin:0px; padding:0px; font-family:sans-serif;}
+*{ margin:0px; padding:0px; font-family:sans-serif; -webkit-user-select:text;-moz-user-select: text;-ms-user-select: text;user-select:text;}
 
 .vlar-clear{ clear:both !important;}
 .noRMargin { margin-right:0px !important;}
@@ -13,7 +13,4 @@ body{ background:#fff !important; }
 
 .vlar-import-content{ background:#fceff1;}
 .vlar-separatorLine{border-bottom:#E3E3E3 dashed 1px;} /*分割线*/
-
-
-
 
