@@ -39,7 +39,7 @@
 
 
 /* paper.html*/
-.vlar-pap-cont-item{ width:800px; margin:auto; margin-bottom:30px; text-align:left;}
+.vlar-pap-cont-item{ width:800px; margin:auto; margin-bottom:30px; text-align:left; }
 .vlar-pap-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_c.png) no-repeat 0px 6px; padding-left:15px;}
 .vlar-pap-cont-item-c{ }
 .vlar-pap-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px;  }
@@ -52,21 +52,24 @@
 /* people.html*/
 .vlar-peo-cont-item{ width:800px; margin:auto; margin-bottom:50px; text-align:left;}
 .vlar-peo-cont-item-t{ text-align:left; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_c.png) no-repeat 0px 6px; padding-left:15px;}
-.vlar-peo-cont-item-c{ }
-.vlar-peo-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px; }
-.vlar-peo-cont-item-c-si img{ width:800px; height: auto;}
-.vlar-peo-cont-item-c-si-img{ width:200px;  float:left; margin-right:20px; }
-.vlar-peo-cont-item-c-si-img img {  width:160px; height:160px; border-radius:50%;}   /*照片尺寸*/
-.vlar-peo-cont-item-c-si-c{ width:580px; float:right; }
-.vlar-peo-cont-item-c-si-c ul{ padding:10px 50px;}
+.vlar-peo-cont-item-c{ padding:0px;}
+
+.vlar-peo-cont-item-c-si-group{ width:800px; height:360px; overflow:hidden;  margin-bottom:30px; }
+.vlar-peo-cont-item-c-si-group img{width:800px; height:360px;}
+
+.vlar-peo-cont-item-c-si{ margin-bottom:20px; padding-bottom:20px; width:390px; height: auto; min-height:380px; float:left; margin-right:10px;}
+.vlar-peo-cont-item-c-si-img{ text-align:center;}
+.vlar-peo-cont-item-c-si-img img {  width:150px; height:150px; border-radius:50%;}   /*照片尺寸*/
+.vlar-peo-cont-item-c-si-c{  }
+.vlar-peo-cont-item-c-si-c ul{ padding:0px;}
 .vlar-peo-cont-item-c-si-c ul li{ font-size:14px; line-height:1.5em;}
 
-.people-info1{font-size:20px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
-.people-info2{font-size:16px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; }
-.people-info3{font-size:16px; color:#C60; line-height:1.2em; overflow:hidden; }
-.people-info4{font-size:16px; color:#005580; line-height:1.2em; overflow:hidden; }
-.people-info5{font-size:16px; color:#000; }
-
+.people-info1{font-size:18px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; text-align:center;}
+.people-info2{font-size:16px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; text-align:center;}
+.people-info3{font-size:16px; color:#C60; line-height:1.2em; overflow:hidden; text-align:center; text-align:center;}
+.people-info4{font-size:16px; color:#005580; line-height:1.2em; overflow:hidden; text-align:center;}
+.people-info5{font-size:12px; color:#000; line-height:1.2em; overflow:hidden; text-align:center;}
+.people-info6{font-size:16px; color:#000;line-height:1.5em; border:#FFC8C8 0px dashed; padding:10px; padding-left:30px; background:#fceff1;  border-radius:5px;}
 
 .vlar-peo-cont-item-c-si-pi{ padding-bottom:20px; text-align: center;}
 .vlar-peo-cont-item-c-si-pi-img{ }
