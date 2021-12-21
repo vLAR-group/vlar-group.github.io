@@ -8,6 +8,7 @@
 
 <link href="css/mui.min.css" type="text/css" rel="stylesheet">
 <link href="css/swiper.min.css" rel="stylesheet">
+<link href="css/viewer.css" rel="stylesheet">
 <link href="css/vlar.css" type="text/css" rel="stylesheet">
 <link href="css/vlar.s1.css" type="text/css" rel="stylesheet" media="(max-width:800px)">
 <link href="css/vlar.s2.css" type="text/css" rel="stylesheet" media="(min-width:801px)">
@@ -172,5 +173,16 @@
 </script>
 
 
+<script type="text/javascript" src="js/viewer.js"></script>
+<script type="text/javascript" src="js/jquery-viewer.js"></script>
+<script>
+  $('#vlar-banner-slider').viewer({
+	  navbar: false,
+	  button: true,
+	  toolbar: false,
+	  title: false
+	}
+  );
+</script>
 </body>
 </html>
