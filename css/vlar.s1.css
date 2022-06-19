@@ -26,8 +26,8 @@ body{ padding-top:120px;}
 
 /* index.html*/
 #vlar-banner-slider{ }
-#vlar-banner-slider-con{ width:100%; height:240px; overflow:hidden; }
-#vlar-banner-slider-con img{ width:100%; height:240px;}
+#vlar-banner-slider-con{ width:100%; height:auto; overflow:hidden; padding:10px; }
+#vlar-banner-slider-con img{ width:100%; height:auto;}
 
 #vlar-contents{text-align:center; padding:10px 0px 10px 0px; margin-top:50px;}
 .vlar-cont-item{width:100%; text-align:left; margin-bottom:50px;}
@@ -59,33 +59,35 @@ body{ padding-top:120px;}
 
 
 /* people.html*/
-.vlar-peo-cont-item{ width:100%; margin:auto; margin-bottom:50px; text-align:left;}
+.vlar-peo-cont-item{ width:100%; margin:auto; margin-bottom:20px; text-align:left;}
 .vlar-peo-cont-item-t{ text-align:center; font-size:24px; font-weight:bold; line-height:24px; margin-bottom:22px; color:#000; font-family:Bower,Georgia, "Times New Roman", Times, serif; background:url(../imgs/icon_d.png) no-repeat center bottom; padding-bottom:10px; }
 .vlar-peo-cont-item-c{ padding:10px; text-align:center;}
-.vlar-peo-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px; }
 
 .vlar-peo-cont-item-c-si-group img{ width:100%; height:auto;}
 
-.vlar-peo-cont-item-c-si-img{ width:100%; height:auto; }
-.vlar-peo-cont-item-c-si-img img {  width:160px; height:160px; border-radius:50%;}   /*照片尺寸*/
-.vlar-peo-cont-item-c-si-c{ width:100%;  }
-.vlar-peo-cont-item-c-si-c ul{ padding:0px;}
-.vlar-peo-cont-item-c-si-c ul li{ font-size:14px; line-height:1.5em;}
+.vlar-peo-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px;  vertical-align:top;}
+.vlar-peo-cont-item-c-si-img{ width:200px; height:auto; float:left;}
+.vlar-peo-cont-item-c-si-img img { width:180px; height:180px; padding-top:5px; }   /*照片尺寸*/
+.vlar-peo-cont-item-c-si-c{ padding-left:200px; vertical-align:top;}
 
-.people-info1{font-size:18px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
-.people-info2{font-size:16px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; }
-.people-info3{font-size:16px; color:#C60; line-height:1.2em; overflow:hidden; }
-.people-info4{font-size:16px; color:#005580; line-height:1.2em; overflow:hidden; }
-.people-info5{font-size:14px; color:#000; }
-.people-info6{font-size:16px; color:#000;line-height:1.5em; border:#FFC8C8 1px dashed; padding:10px; padding-left:30px; background:#fceff1;  border-radius:5px; text-align:left;}
+.people-info1{font-size:14px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; text-align:left;}
+.people-info2{font-size:14px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; text-align:left;}
+.people-info3{font-size:14px; color:#C60; line-height:1.2em; overflow:hidden; text-align:center; text-align:left; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info4{font-size:14px; color:#005580; line-height:1.2em; overflow:hidden; text-align:left; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info5{font-size:10px; color:#000; line-height:1.2em; overflow:hidden; text-align:left; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info6{font-size:12px; color:#000;line-height:1em; text-align:left; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info6 p{ font-size:12px; }
+
+
 
 .vlar-peo-cont-item-c-si-pi{ padding-bottom:20px; text-align: center;}
 .vlar-peo-cont-item-c-si-pi-img{ }
 .vlar-peo-cont-item-c-si-pi-t{  }
-.vlar-peo-cont-item-c-si-pi-img img{ width:180px; height:180px; border-radius:50%;}  /*照片尺寸*/
+.vlar-peo-cont-item-c-si-pi-img img{ width:200px; height:200px; border-radius:50%;}  /*照片尺寸*/
 .people-pi-info1{font-size:18px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; }
-.people-pi-info2{font-size:16px; color:#999; font-style:italic; line-height:1.5em; overflow:hidden; }
-.people-pi-info3{font-size:16px; color:#C60; line-height:1.5em; overflow:hidden; }
+.people-pi-info2{font-size:12px; color:#999; font-style:italic; line-height:1em; overflow:hidden; }
+.people-pi-info3{font-size:12px; color:#C60; line-height:1em; overflow:hidden; }
+
 
 
 
