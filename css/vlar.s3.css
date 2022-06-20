@@ -66,12 +66,12 @@
 .vlar-peo-cont-item-c-si-c{ text-align:left; padding:5px;}
 
 .people-info1{font-size:14px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; text-align:center;}
-.people-info2{font-size:14px; color:#999; font-style:italic; line-height:1em; overflow:hidden; text-align:center;}
-.people-info3{font-size:14px; color:#C60; line-height:1em; overflow:hidden; text-align:center; text-align:center; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
-.people-info4{font-size:14px; color:#005580; line-height:1em; overflow:hidden; text-align:center; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
-.people-info5{font-size:10px; color:#000; line-height:1em; overflow:hidden; text-align:center; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info2{font-size:14px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; text-align:center;}
+.people-info3{font-size:14px; color:#C60; line-height:1.2em; overflow:hidden; text-align:center; text-align:center; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info4{font-size:14px; color:#005580; line-height:1.2em; overflow:hidden; text-align:center; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.people-info5{font-size:10px; color:#000; line-height:1.2em; overflow:hidden; text-align:center; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
 .people-info6{font-size:14px; color:#000;line-height:1em; padding:10px 10px 5px 10px; background:#fceff1;  border-radius:5px; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
-.people-info6 p{ font-size:14px; }
+.people-info6 p{ font-size:12px; }
 
 .vlar-peo-cont-item-c-si-pi{ padding-bottom:20px; text-align: center;}
 .vlar-peo-cont-item-c-si-pi-img{ }
