@@ -66,9 +66,9 @@ body{ padding-top:120px;}
 .vlar-peo-cont-item-c-si-group img{ width:100%; height:auto;}
 
 .vlar-peo-cont-item-c-si{ margin-bottom:30px; padding-bottom:30px;  vertical-align:top;}
-.vlar-peo-cont-item-c-si-img{ width:200px; height:auto; float:left;}
-.vlar-peo-cont-item-c-si-img img { width:160px; height:160px; padding-top:5px; }   /*照片尺寸*/
-.vlar-peo-cont-item-c-si-c{ padding-left:200px; vertical-align:top;}
+.vlar-peo-cont-item-c-si-img{ width:160px; height:auto; float:left;}
+.vlar-peo-cont-item-c-si-img img { width:140px; height:140px; padding-top:5px; }   /*照片尺寸*/
+.vlar-peo-cont-item-c-si-c{ padding-left:160px; vertical-align:top;}
 
 .people-info1{font-size:14px; color:#000; font-weight:bold; line-height:1.5em; overflow:hidden; text-align:left;}
 .people-info2{font-size:14px; color:#999; font-style:italic; line-height:1.2em; overflow:hidden; text-align:left;}
