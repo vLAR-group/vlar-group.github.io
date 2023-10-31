@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="RayDF: Neural Ray-surface Distance Fields with Multi-view Consistency">
+  <meta name="keywords" content="implicit shape representations, multi-view consistency, novel view synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="GNu68NbqJUZfuiEzwKsL3XQUvm4ld16m3Hz1ixNFbJ0" />
+
+  <title>RayDF: Neural Ray-surface Distance Fields with Multi-view Consistency</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/RayDF/bulma.min.css">
+  <link rel="stylesheet" href="./css/RayDF/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./css/RayDF/bulma-slider.min.css">
+  <link rel="stylesheet" href="./css/RayDF/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./css/RayDF/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./js/RayDF/fontawesome.all.min.js"></script>
+  <script src="./js/RayDF/bulma-carousel.min.js"></script>
+  <script src="./js/RayDF/bulma-slider.min.js"></script>
+  <script src="./js/RayDF/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href=https://vlar-group.github.io/>
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://vlar-group.github.io/paper.html">
+            Publications
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RayDF: Neural Ray-surface <br>Distance Fields with Multi-view Consistency</h1>
+          <h1 style="font-size:1.5rem"> NeurIPS 2023 </h1>
+          
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <a href="https://vlar-group.github.io/"><img style="width:15%; padding-right: 15px;" src="assets/RayDF/images/logo_vlar.png"> </a>
+            <a href="https://www.polyu.edu.hk/"><img style="width:20%; padding-right: 15px;" src="assets/RayDF/images/logo_polyu.png"> </a>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="xxx"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/vLAR-group/RayDF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+			  <span class="link-block">
+                <a href="ttps://drive.google.com/drive/folders/1ELzsdlc1Bd5C97EHn5P_k8qqM7ZKEFHF?usp=drive_link"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-paperclip"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body" >
+    <div class="container">
+      <h2 class="title is-3">Demo</h2>
+      
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item item-museum">
+          <img src="assets/RayDF/images/comparisons/scannet_scene04_geo.gif" height="50%" width="25%">
+          <img src="assets/RayDF/images/comparisons/scannet_scene04_tex.gif" height="50%" width="25%">
+          <img src="assets/RayDF/images/comparisons/scannet_scene09_geo.gif" height="50%" width="25%">
+          <img src="assets/RayDF/images/comparisons/scannet_scene09_tex.gif" height="50%" width="25%">
+        </div>
+        <!-- Previous ray-based neural 3D shape representations show rapid inferences in diverse scenarios, but the learned structures are inferior due to the lack of 
+        multi-view geometry consistency. Our RayDF addresses the limitation and learns to efficiently and accurately represent continuous 3D shapes.
+        It is illustrated above by comparing the reconstruction results along smoothed camera paths from our method and previous approach. -->
+
+
+        <div class="item item-museum">
+          <video poster="" id="museum" autoplay controls muted loop height="50%" width="33%">
+            <source src="assets/RayDF/videos/blender_lego.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" id="truck" autoplay controls muted loop height="50%" width="33%">
+            <source src="assets/RayDF/videos/dmsr_bedroom.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" id="ponche" autoplay controls muted loop height="50%" width="33%">
+            <source src="assets/RayDF/videos/scannet_scene04.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-museum">
+          <video poster="" id="museum" autoplay controls muted loop height="50%" width="33%">
+            <source src="assets/RayDF/videos/blender_drums.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" id="truck" autoplay controls muted loop height="50%" width="33%">
+            <source src="assets/RayDF/videos/dmsr_restroom.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" id="ponche" autoplay controls muted loop height="50%" width="33%">
+            <source src="assets/RayDF/videos/scannet_scene09.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+
+          <p>
+          In this paper, we study the problem of continuous 3D shape representations. The majority of existing successful methods are coordinate-based implicit neural representations. However, they are inefficient to render novel views or recover explicit surface points. A few works start to formulate 3D shapes as <b>ray-based</b> neural functions, but the learned structures are inferior due to the lack of <b>multi-view geometry consistency</b>.<br>
+          </p>
+
+          <p>
+          To tackle these challenges, we propose a new framework called <i>RayDF</i>. It consists of three major components: 1) the simple <b>ray-surface distance field</b>, 2) the novel <b>dual-ray visibility classifier</b>, and 3) a <b>multi-view consistency optimization</b> module to drive the learned ray-surface distances to be multi-view geometry consistent. <br>
+          </p>
+
+          We extensively evaluate our method on three public datasets, demonstrating remarkable performance in 3D surface point reconstruction on both synthetic and challenging real-world 3D scenes, clearly surpassing existing coordinate-based and ray-based baselines. Most notably, our method achieves a <b>1000x faster</b> speed than coordinate-based methods to render an 800 x 800 depth image, showing the superiority of our method for 3D shape representation.
+        </div>
+
+        <!-- <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Video</h2>
+            To be updated. -->
+            <!-- <div class="publication-video">
+              <iframe src="xxx" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div> -->
+          <!-- </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3">Visual Comparisons</h2>
+        <div class="content has-text-justified">
+          <p>
+    
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <div id="comp1" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/blender_lego_dist_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/blender_lego_dist_ndf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          NDF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                  <div id="comp11" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/blender_drums_dist_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/blender_drums_dist_dsnerf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          DS-NeRF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="column">
+            <div class="content">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <div id="comp2" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/blender_lego_mesh_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/blender_lego_mesh_ndf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          NDF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                  <div id="comp22" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/blender_drums_mesh_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/blender_drums_mesh_dsnerf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          DS-NeRF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="column">
+            <div class="content">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <div id="comp3" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/blender_lego_norm_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/blender_lego_norm_ndf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          NDF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                  <div id="comp33" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/blender_drums_norm_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/blender_drums_norm_dsnerf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          DS-NeRF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="content">
+                  <div class="columns is-centered">
+                    <div class="column is-full-width">
+                      <div id="comp4" class="bal-container-smaller">
+              
+                        <div class="bal-after">
+                          <img src="assets/RayDF/images/comparisons/dmsr_study_dist_ours.png">
+                          <div class="bal-afterPosition afterLabel">
+                            Ours
+                          </div>
+                        </div>
+                      
+                        <div class="bal-before">
+                          <div class="bal-before-inset-smaller">
+                          <img src="assets/RayDF/images/comparisons/dmsr_study_dist_prif.png">
+                            <div class="bal-beforePosition beforeLabel">
+                              PRIF
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="bal-handle">
+                          <span class=" handle-left-arrow"></span>
+                          <span class="handle-right-arrow"></span>
+                        </div>
+                      
+                      </div>
+
+                      <div id="comp44" class="bal-container-smaller">
+              
+                        <div class="bal-after">
+                          <img src="assets/RayDF/images/comparisons/dmsr_dinning_dist_ours.png">
+                          <div class="bal-afterPosition afterLabel">
+                            Ours
+                          </div>
+                        </div>
+                      
+                        <div class="bal-before">
+                          <div class="bal-before-inset-smaller">
+                          <img src="assets/RayDF/images/comparisons/dmsr_dinning_dist_dsnerf.png">
+                            <div class="bal-beforePosition beforeLabel">
+                              DS-NeRF
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="bal-handle">
+                          <span class=" handle-left-arrow"></span>
+                          <span class="handle-right-arrow"></span>
+                        </div>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="column">
+                <div class="content">
+                  <div class="columns is-centered">
+                    <div class="column is-full-width">
+                      <div id="comp5" class="bal-container-smaller">
+              
+                        <div class="bal-after">
+                          <img src="assets/RayDF/images/comparisons/dmsr_study_mesh_ours.png">
+                          <div class="bal-afterPosition afterLabel">
+                            Ours
+                          </div>
+                        </div>
+                      
+                        <div class="bal-before">
+                          <div class="bal-before-inset-smaller">
+                          <img src="assets/RayDF/images/comparisons/dmsr_study_mesh_prif.png">
+                            <div class="bal-beforePosition beforeLabel">
+                              PRIF
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="bal-handle">
+                          <span class=" handle-left-arrow"></span>
+                          <span class="handle-right-arrow"></span>
+                        </div>
+                      
+                      </div>
+
+                      <div id="comp55" class="bal-container-smaller">
+              
+                        <div class="bal-after">
+                          <img src="assets/RayDF/images/comparisons/dmsr_dinning_mesh_ours.png">
+                          <div class="bal-afterPosition afterLabel">
+                            Ours
+                          </div>
+                        </div>
+                      
+                        <div class="bal-before">
+                          <div class="bal-before-inset-smaller">
+                          <img src="assets/RayDF/images/comparisons/dmsr_dinning_mesh_dsnerf.png">
+                            <div class="bal-beforePosition beforeLabel">
+                              DS-NeRF
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="bal-handle">
+                          <span class=" handle-left-arrow"></span>
+                          <span class="handle-right-arrow"></span>
+                        </div>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column">
+                <div class="content">
+                  <div class="columns is-centered">
+                    <div class="column is-full-width">
+                      <div id="comp6" class="bal-container-smaller">
+              
+                        <div class="bal-after">
+                          <img src="assets/RayDF/images/comparisons/dmsr_study_tex_ours.png">
+                          <div class="bal-afterPosition afterLabel">
+                            Ours
+                          </div>
+                        </div>
+                      
+                        <div class="bal-before">
+                          <div class="bal-before-inset-smaller">
+                          <img src="assets/RayDF/images/comparisons/dmsr_study_tex_prif.png">
+                            <div class="bal-beforePosition beforeLabel">
+                              PRIF
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="bal-handle">
+                          <span class=" handle-left-arrow"></span>
+                          <span class="handle-right-arrow"></span>
+                        </div>
+                      
+                      </div>
+
+                      <div id="comp66" class="bal-container-smaller">
+              
+                        <div class="bal-after">
+                          <img src="assets/RayDF/images/comparisons/dmsr_dinning_tex_ours.png">
+                          <div class="bal-afterPosition afterLabel">
+                            Ours
+                          </div>
+                        </div>
+                      
+                        <div class="bal-before">
+                          <div class="bal-before-inset-smaller">
+                          <img src="assets/RayDF/images/comparisons/dmsr_dinning_tex_dsnerf.png">
+                            <div class="bal-beforePosition beforeLabel">
+                              DS-NeRF
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <div class="bal-handle">
+                          <span class=" handle-left-arrow"></span>
+                          <span class="handle-right-arrow"></span>
+                        </div>
+                      
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <div id="comp7" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene05_dist_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene05_dist_of.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          OF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+
+                  <div id="comp77" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene30_dist_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene30_dist_deepsdf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          DeepSDF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="column">
+            <div class="content">
+              <div class="columns is-centered">
+                <div class="column is-full-width">
+                  <div id="comp8" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene05_mesh_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene05_mesh_of.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          OF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+
+                  <div id="comp88" class="bal-container-smaller">
+          
+                    <div class="bal-after">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene30_mesh_ours.png">
+                      <div class="bal-afterPosition afterLabel">
+                        Ours
+                      </div>
+                    </div>
+                  
+                    <div class="bal-before">
+                      <div class="bal-before-inset-smaller">
+                      <img src="assets/RayDF/images/comparisons/scannet_scene30_mesh_deepsdf.png">
+                        <div class="bal-beforePosition beforeLabel">
+                          DeepSDF
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bal-handle">
+                      <span class=" handle-left-arrow"></span>
+                      <span class="handle-right-arrow"></span>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+
+    </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+      <h2 class="title is-3">Ablations</h2>
+      <div class="content has-text-justified">
+        <p>
+  
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <div id="abla1" class="bal-container-small">
+        
+                  <div class="bal-after">
+                    <img src="assets/RayDF/images/ablations/chair0.png">
+                    <div class="bal-afterPosition afterLabel">
+                      w/ classifier
+                    </div>
+                  </div>
+                
+                  <div class="bal-before">
+                    <div class="bal-before-inset">
+                    <img src="assets/RayDF/images/ablations/chair0_nocls.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        w/o classifier
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+  
+  
+                <div id="abla2" class="bal-container-small">
+                  <div class="bal-after">
+                    <img src="assets/RayDF/images/ablations/materials0.png">
+                    <div class="bal-afterPosition afterLabel">
+                      w/ classifier
+                    </div>
+                  </div>
+                
+                  <div class="bal-before">
+                    <div class="bal-before-inset">
+                    <img src="assets/RayDF/images/ablations/materials0_nocls.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        w/o classifier
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="content">
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <div id="abla3" class="bal-container-small">
+        
+                  <div class="bal-after">
+                    <img src="assets/RayDF/images/ablations/chair1.png">
+                    <div class="bal-afterPosition afterLabel">
+                      w/ classifier
+                    </div>
+                  </div>
+                
+                  <div class="bal-before">
+                    <div class="bal-before-inset">
+                    <img src="assets/RayDF/images/ablations/chair1_nocls.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        w/o classifier
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+  
+  
+                <div id="abla4" class="bal-container-small">
+                  <div class="bal-after">
+                    <img src="assets/RayDF/images/ablations/materials1.png">
+                    <div class="bal-afterPosition afterLabel">
+                      w/ classifier
+                    </div>
+                  </div>
+                
+                  <div class="bal-before">
+                    <div class="bal-before-inset">
+                    <img src="assets/RayDF/images/ablations/materials1_nocls.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        w/o classifier
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="content">
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <div id="abla5" class="bal-container-small">
+        
+                  <div class="bal-after">
+                    <img src="assets/RayDF/images/ablations/chair.png">
+                    <div class="bal-afterPosition afterLabel">
+                      w/ classifier
+                    </div>
+                  </div>
+                
+                  <div class="bal-before">
+                    <div class="bal-before-inset">
+                    <img src="assets/RayDF/images/ablations/chair_nocls.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        w/o classifier
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+  
+  
+                <div id="abla6" class="bal-container-small">
+                  <div class="bal-after">
+                    <img src="assets/RayDF/images/ablations/materials.png">
+                    <div class="bal-afterPosition afterLabel">
+                      w/ classifier
+                    </div>
+                  </div>
+                
+                  <div class="bal-before">
+                    <div class="bal-before-inset">
+                    <img src="assets/RayDF/images/ablations/materials_nocls.png">
+                      <div class="bal-beforePosition beforeLabel">
+                        w/o classifier
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="bal-handle">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- To be updated. -->
+    <!-- <pre><code>
+}</code></pre> -->
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <center><p>
+            We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the template of this website.
+          </p></center>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/RayDF/script.js"></script>
+
+<script>
+    new BeforeAfterSmaller({
+        id: '#comp1'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp2'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp3'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp11'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp22'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp33'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp4'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp5'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp6'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp44'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp55'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp66'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp7'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp8'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp77'
+    });
+    new BeforeAfterSmaller({
+        id: '#comp88'
+    });
+
+    new BeforeAfter({
+        id: '#abla1'
+    });
+    new BeforeAfter({
+        id: '#abla2'
+    });
+    new BeforeAfter({
+        id: '#abla3'
+    });
+    new BeforeAfter({
+        id: '#abla4'
+    });
+    new BeforeAfter({
+        id: '#abla5'
+    });
+    new BeforeAfter({
+        id: '#abla6'
+    });
+
+</script>
+
+</body>
+</html>
