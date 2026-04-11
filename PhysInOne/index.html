@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="PhysInOne: Visual Physics Learning and Reasoning in One Suite">
+  <meta name="description" content="PhysInOne is a 2M-video synthetic dataset spanning 71 physical phenomena and 153,810 dynamic 3D scenes for physics-grounded world modeling and embodied AI.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
+  <meta name="author" content="Siyuan Zhou, Hejun Wang, Hu Cheng, Jinxi Li, Dongsheng Wang, Junwei Jiang, Yixiao Jin, Jiayue Huang, Shiwei Mao, Shangjia Liu, Yafei Yang, Hongkang Song, Shenxing Wei, Zihui Zhang, DataTeam, Bing Wang, Zhihua Wang, Chuhang Zou, Bo Yang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <meta property="og:title" content="PhysInOne: Visual Physics Learning and Reasoning in One Suite">
+  <meta property="og:description" content="PhysInOne is a 2M-video synthetic dataset spanning 71 physical phenomena and 153,810 dynamic 3D scenes for physics-grounded world modeling and embodied AI.">
+  <meta property="og:url" content="https://vlar-group.github.io/PhysInOne.html">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <meta name="twitter:title" content="PhysInOne: Visual Physics Learning and Reasoning in One Suite">
+  <meta name="twitter:description" content="PhysInOne is a 2M-video synthetic dataset spanning 71 physical phenomena and 153,810 dynamic 3D scenes for physics-grounded world modeling and embodied AI.">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PhysInOne: Visual Physics Learning and Reasoning in One Suite">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://vlar-group.github.io/static/pdfs/PhysInOne_main.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>PhysInOne: Visual Physics Learning and Reasoning in One Suite</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/teaser.ico">
+  <link rel="apple-touch-icon" href="static/images/teaser.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/images/Contributers/manifest.js"></script>
+  <script defer src="static/videos/showcase/manifest.js"></script>
+  <script defer src="static/js/contributors-order.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "PhysInOne is a large-scale synthetic dataset with 2 million videos across 153,810 dynamic 3D scenes, covering 71 physical phenomena and enabling physics-grounded world modeling.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "We present PhysInOne, a large-scale synthetic dataset addressing the critical scarcity of physically-grounded training data for AI systems. Unlike existing datasets limited to merely hundreds or thousands of examples, PhysInOne provides 2 million videos across 153,810 dynamic 3D scenes, covering 71 basic physical phenomena in mechanics, optics, fluid dynamics, and magnetism. Distinct from previous works, our scenes feature multiobject interactions against complex backgrounds, with comprehensive ground-truth annotations including 3D geometry, semantics, dynamic motion, physical properties, and text descriptions. We demonstrate PhysInOne's efficacy across four emerging applications: physics-aware video generation, long-/short-term future frame prediction, physical property estimation, and motion transfer. Experiments show that fine-tuning foundation models on PhysInOne significantly enhances physical plausibility, while also exposing critical gaps in modeling complex physical dynamics and estimating intrinsic properties. As the largest dataset of its kind, orders of magnitude beyond prior works, PhysInOne establishes a new benchmark for advancing physics-grounded world models in generation, simulation, and embodied AI.",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+<!-- CVPR 2026 Logo Banner -->
+<section class="hero is-small cvpr-banner">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <img src="static/images/logo/cvpr.png" alt="CVPR 2026" class="cvpr-logo-top">
+    </div>
+  </div>
+</section>
+
+  <section class="hero publication-hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><span class="gradient-title">PhysInOne</span>: Visual Physics Learning and Reasoning in One Suite</h1>
+            
+            <!-- Institutional Logos (header) -->
+            <div class="header-logos-container">
+              <a href="https://vlar-group.github.io/paper.html" target="_blank" rel="noopener">
+                <img src="static/images/logo/vlar2.png" alt="vLAR Group" class="header-logo">
+              </a>
+              <a href="https://www.polyu.edu.hk/" target="_blank" rel="noopener">
+                <img src="static/images/logo/polyu.png" alt="The Hong Kong Polytechnic University" class="header-logo">
+              </a>
+              <a href="https://www.polyu.edu.hk/" target="_blank" rel="noopener">
+                <img src="static/images/logo/Syai.png" alt="Syai Singapore" class="header-logo">
+              </a>
+              <a href="https://ai.meta.com/" target="_blank" rel="noopener">
+                <img src="static/images/logo/meta.png" alt="Meta" class="header-logo">
+              </a>
+            </div>
+            
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Siyuan Zhou<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Hejun Wang<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Hu Cheng<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Jinxi Li<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Dongsheng Wang<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Junwei Jiang<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Yixiao Jin<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Jiayue Huang<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Shiwei Mao<sup>1</sup><sup>&dagger;</sup>,</span>
+              <span class="author-block">Shangjia Liu<sup>2</sup>,</span>
+              <span class="author-block">Yafei Yang<sup>1</sup>,</span>
+              <span class="author-block">Hongkang Song<sup>1</sup>,</span>
+              <span class="author-block">Shenxing Wei<sup>1</sup>,</span>
+              <span class="author-block">Zihui Zhang<sup>1</sup>,</span>
+              <span class="author-block">DataTeam<sup>1</sup><sup>*</sup>,</span>
+              <span class="author-block">Bing Wang<sup>2</sup>,</span>
+              <span class="author-block">Zhihua Wang<sup>3</sup>,</span>
+              <span class="author-block">Chuhang Zou<sup>4</sup>,</span>
+              <span class="author-block">Bo Yang<sup>1</sup></span>
+            </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>1</sup>vLAR Group, <sup>2</sup>The Hong Kong Polytechnic University, <sup>3</sup>Syai Singapore, <sup>4</sup>Meta</span>
+                    <span class="eql-cntrb"><small><br><sup>&dagger;</sup> equal contribution and co-first authorship</small></span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>{Peng Huang, Shijie Liu, Zhengli Hao, Hao Li, Yitian Li, Wenqi Zhou, Zhihan Zhao, Zongqi He, Hongtao Wen, Shouwang Huang, Peng Yun, Bowen Cheng, Pok Kazaf Fu, Wai Kit Lai, Jiahao Chen, Kaiyuan Wang, Zhixuan Sun, Ziqi Li, Haochen Hu, Di Zhang, Chun Ho Yuen}</small></span>
+                    <span class="eql-cntrb"><small><br>{siyuan.zhou, hejun.wang, hu123.cheng, jinxi.li}@connect.polyu.hk, bo.yang@polyu.edu.hk</small></span>
+                    <span class="eql-cntrb"><small><br><a href="https://vlar-group.github.io/PhysInOne.html" target="_blank" rel="noopener">https://vlar-group.github.io/PhysInOne.html</a></small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
+                      <span class="link-block">
+                        <a href="static/pdfs/PhysInOne_main.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <!-- TODO: Add your supplementary material PDF or remove this section -->
+                    <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- Dataset on Hugging Face -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/vLAR/PhysInOne" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- Opening showcase video -->
+      <video poster="static/images/preface.jpg" id="demo-video" controls muted loop height="100%" preload="metadata">
+        <source src="static/videos/demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content abstract-bullets">
+          <p class="abstract-lead">We present <strong>PhysInOne</strong>, a large-scale synthetic dataset addressing the critical scarcity of physically-grounded training data for AI systems.</p>
+          <ul>
+            <li>
+              <strong class="bullet-title">Scale</strong>
+              <ul>
+                <li><strong class="highlight-number">2 million videos</strong> generated from <strong class="highlight-number">153,810 dynamic 3D scenes</strong></li>
+                <li>Covers <strong class="highlight-number">71 fundamental physical phenomena</strong> in everyday environments</li>
+                <li>Includes <strong class="highlight-number">2,231 common objects</strong> tailored to daily physical interactions</li>
+                <li>Enriched with <strong class="highlight-number">623 materials</strong> across five categories: <em>plastic, metal, wood, stone, and fabric</em></li>
+                <li>Features <strong class="highlight-number">528 diverse 3D backgrounds</strong> to ensure realism and environmental variety</li>
+              </ul>
+            </li>
+            <li>
+              <strong class="bullet-title">Physical Coverage</strong>
+              <ul>
+                <li><strong class="highlight-number">71 basic physical phenomena</strong>, spanning four domains:</li>
+                <li><strong class="highlight-text">Mechanics</strong></li>
+                <li><strong class="highlight-text">Optics</strong></li>
+                <li><strong class="highlight-text">Fluid Dynamics</strong></li>
+                <li><strong class="highlight-text">Magnetism</strong></li>
+              </ul>
+            </li>
+            <li>
+              <strong class="bullet-title">Scene Characteristics</strong>
+              <ul>
+                <li>Each scene involves <strong class="highlight-number">1-3 physical phenomena</strong>, reflecting real-world activities, including single-, double-, and triple-physics activities</li>
+                <li>Supports <strong class="highlight-number">complex multi-object interactions</strong>, with increasing scene complexity:</li>
+                <li>Average number of objects per scene: <strong class="highlight-number">3.9</strong> (single-physics), <strong class="highlight-number">6.3</strong> (double-physics), <strong class="highlight-number">7.8</strong> (triple-physics)</li>
+                <li>Each scene is captured from <strong class="highlight-number">at least 13 viewpoints</strong>: <strong>12 static cameras</strong> and <strong>1 dynamic moving camera</strong></li>
+              </ul>
+            </li>
+            <li>
+              <strong class="bullet-title">Rich Ground-Truth Annotations</strong>
+              <ul>
+                <li>Comprehensive supervision including:</li>
+                <li>3D geometry</li>
+                <li>Semantic labels</li>
+                <li>Object motion and dynamics</li>
+                <li>Physical properties</li>
+                <li>Natural-language scene descriptions</li>
+              </ul>
+            </li>
+            <li>
+              <strong class="bullet-title">Supported Applications</strong>
+              <ul>
+                <li>Physics-aware video generation</li>
+                <li>Short- and long-term future frame prediction</li>
+                <li>Physical property estimation</li>
+                <li>Motion transfer</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Video Showcase Section -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Dataset Showcase</h2>
+      <p class="has-text-centered showcase-intro">Explore videos across four physical domains. Each scene is captured from multiple viewpoints with RGB, Depth, and Segmentation modalities.</p>
+      
+      <!-- Category Rows (dynamically generated) -->
+      <div id="showcase-categories-container">
+        <!-- Categories will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Video Showcase Section -->
+
+<script>
+// Showcase state - per category
+let showcaseManifest = null;
+const categoryState = {}; // { categoryName: { sceneIndex, camera } }
+
+// Physics categories order
+const PHYSICS_CATEGORIES = ['Mechanics', 'Fluid Dynamics', 'Magnetism', 'Optics'];
+
+// Initialize showcase
+function initShowcase() {
+  if (!window.SHOWCASE_MANIFEST) {
+    console.error('Showcase manifest not loaded. Make sure manifest.js is included.');
+    return;
+  }
+  
+  showcaseManifest = window.SHOWCASE_MANIFEST;
+  
+  // Initialize state for each category
+  PHYSICS_CATEGORIES.forEach(cat => {
+    const category = showcaseManifest.categories[cat];
+    if (category && category.scenes && category.scenes.length > 0) {
+      const scene = category.scenes[0];
+      const randomCamera = getRandomCamera(scene.cameras);
+      categoryState[cat] = { sceneIndex: 0, camera: randomCamera };
+    }
+  });
+  
+  // Generate category rows
+  generateCategoryRows();
+  
+  console.log('Showcase initialized:', showcaseManifest);
+}
+
+// Get random camera from available cameras
+function getRandomCamera(cameras) {
+  if (!cameras || cameras.length === 0) return 'camera0';
+  return cameras[Math.floor(Math.random() * cameras.length)];
+}
+
+// Parse scene name to get physics count (single/double/triple)
+function getPhysicsType(sceneName) {
+  if (!sceneName) return 'Unknown';
+  // Split by double underscore to get first part
+  const parts = sceneName.split('__');
+  const physicsPart = parts[0];
+  // Count underscores in physics part to determine count
+  const phenomena = physicsPart.split('_').filter(p => p.length > 0);
+  if (phenomena.length >= 3) return 'Triple-Physics';
+  if (phenomena.length === 2) return 'Double-Physics';
+  return 'Single-Physics';
+}
+
+// Get physics type CSS class
+function getPhysicsTypeClass(type) {
+  if (type === 'Triple-Physics') return 'physics-badge-triple';
+  if (type === 'Double-Physics') return 'physics-badge-double';
+  return 'physics-badge-single';
+}
+
+// Build video path
+function buildVideoPath(scene, camera, modality) {
+  const suffix = modality === 'rgb' ? '' : '_' + modality;
+  return `${scene.basePath}/${scene.sceneName}_${camera}${suffix}_h264.mp4`;
+}
+
+// Build caption path
+function buildCaptionPath(scene) {
+  return `${scene.basePath}/caption.txt`;
+}
+
+// Generate all category rows
+function generateCategoryRows() {
+  const container = document.getElementById('showcase-categories-container');
+  if (!container || !showcaseManifest) return;
+  
+  container.innerHTML = '';
+  
+  PHYSICS_CATEGORIES.forEach(categoryName => {
+    const category = showcaseManifest.categories[categoryName];
+    if (!category || !category.scenes || category.scenes.length === 0) return;
+    
+    const row = createCategoryRow(categoryName, category);
+    container.appendChild(row);
+  });
+}
+
+// Create a single category row
+function createCategoryRow(categoryName, category) {
+  const state = categoryState[categoryName];
+  const scene = category.scenes[state.sceneIndex];
+  const physicsType = getPhysicsType(scene.sceneName);
+  const physicsClass = getPhysicsTypeClass(physicsType);
+  
+  const catId = categoryName.replace(/\s+/g, '-');
+  
+  const row = document.createElement('div');
+  row.className = 'category-showcase-row';
+  row.id = `category-row-${catId}`;
+  
+  row.innerHTML = `
+    <div class="category-header">
+      <h3 class="category-title">${categoryName}</h3>
+      <span class="physics-badge ${physicsClass}" id="physics-badge-${catId}">${physicsType}</span>
+      <span class="camera-view-badge" id="camera-badge-${catId}">
+        <i class="fas fa-video"></i> ${formatCameraName(state.camera)}
+      </span>
+    </div>
+    
+    <div class="category-video-row">
+      <button class="showcase-arrow showcase-arrow-left" type="button" onclick="prevScene('${categoryName}')">&#10094;</button>
+      
+      <div class="multi-video-grid">
+        <div class="video-panel">
+          <div class="video-panel-label rgb">RGB</div>
+          <video id="video-rgb-${catId}" muted playsinline preload="metadata"></video>
+        </div>
+        <div class="video-panel">
+          <div class="video-panel-label depth">Depth</div>
+          <video id="video-depth-${catId}" muted playsinline preload="metadata"></video>
+        </div>
+        <div class="video-panel">
+          <div class="video-panel-label seg">Segmentation</div>
+          <video id="video-seg-${catId}" muted playsinline preload="metadata"></video>
+        </div>
+      </div>
+      
+      <button class="showcase-arrow showcase-arrow-right" type="button" onclick="nextScene('${categoryName}')">&#10095;</button>
+    </div>
+    
+    <div class="category-controls">
+      <div class="scene-indicators" id="indicators-${catId}">
+        ${generateIndicatorsHTML(categoryName, category.scenes.length, state.sceneIndex)}
+      </div>
+      
+      <div class="camera-selector">
+        <label for="camera-select-${catId}">View:</label>
+        <select id="camera-select-${catId}" onchange="switchCameraFor('${categoryName}', this.value)">
+          ${generateCameraOptionsHTML(scene.cameras, state.camera)}
+        </select>
+      </div>
+    </div>
+    
+    <div class="scene-caption" id="caption-${catId}">
+      <span class="caption-loading">Loading description...</span>
+    </div>
+  `;
+  
+  // Load videos after DOM insertion
+  setTimeout(() => {
+    loadCategoryVideos(categoryName);
+    loadSceneCaption(categoryName);
+  }, 0);
+  
+  return row;
+}
+
+// Format camera name for display
+function formatCameraName(camera) {
+  if (camera === 'cameraMoving') return 'Moving';
+  // Extract number from camera name
+  const match = camera.match(/camera(\d+)/);
+  return match ? `Cam ${match[1]}` : camera;
+}
+
+// Generate indicators HTML
+function generateIndicatorsHTML(categoryName, count, activeIndex) {
+  let html = '';
+  for (let i = 0; i < count; i++) {
+    const activeClass = i === activeIndex ? 'active' : '';
+    html += `<span class="indicator ${activeClass}" onclick="goToScene('${categoryName}', ${i})"></span>`;
+  }
+  return html;
+}
+
+// Generate camera options HTML
+function generateCameraOptionsHTML(cameras, selectedCamera) {
+  if (!cameras || cameras.length === 0) return '';
+  
+  return cameras.map((camera, index) => {
+    const selected = camera === selectedCamera ? 'selected' : '';
+    const label = camera === 'cameraMoving' ? 'Moving Camera' : `Camera ${index}`;
+    return `<option value="${camera}" ${selected}>${label}</option>`;
+  }).join('');
+}
+
+// Load videos for a category
+function loadCategoryVideos(categoryName) {
+  const category = showcaseManifest.categories[categoryName];
+  const state = categoryState[categoryName];
+  if (!category || !state) return;
+  
+  const scene = category.scenes[state.sceneIndex];
+  const catId = categoryName.replace(/\s+/g, '-');
+  
+  const videoRgb = document.getElementById(`video-rgb-${catId}`);
+  const videoDepth = document.getElementById(`video-depth-${catId}`);
+  const videoSeg = document.getElementById(`video-seg-${catId}`);
+  
+  const rgbPath = buildVideoPath(scene, state.camera, 'rgb');
+  const depthPath = buildVideoPath(scene, state.camera, 'depth');
+  const segPath = buildVideoPath(scene, state.camera, 'seg');
+  
+  [videoRgb, videoDepth, videoSeg].forEach((video, idx) => {
+    if (!video) return;
+    const path = [rgbPath, depthPath, segPath][idx];
+    video.src = encodeURI(path);
+    video.load();
+    // Auto-play when loaded
+    video.onloadeddata = () => {
+      video.play().catch(e => console.log('Autoplay prevented:', e));
+    };
+  });
+  
+  // Auto-advance to next scene when RGB video ends (only listen on RGB to avoid triple-firing)
+  if (videoRgb) {
+    videoRgb.onended = () => {
+      nextScene(categoryName);
+    };
+  }
+  
+  // Update physics badge
+  const physicsType = getPhysicsType(scene.sceneName);
+  const badgeEl = document.getElementById(`physics-badge-${catId}`);
+  if (badgeEl) {
+    badgeEl.textContent = physicsType;
+    badgeEl.className = `physics-badge ${getPhysicsTypeClass(physicsType)}`;
+  }
+  
+  // Update camera badge
+  const cameraBadge = document.getElementById(`camera-badge-${catId}`);
+  if (cameraBadge) {
+    cameraBadge.innerHTML = `<i class="fas fa-video"></i> ${formatCameraName(state.camera)}`;
+  }
+  
+  // Update camera selector
+  const cameraSelect = document.getElementById(`camera-select-${catId}`);
+  if (cameraSelect) {
+    cameraSelect.innerHTML = generateCameraOptionsHTML(scene.cameras, state.camera);
+  }
+  
+  // Update indicators
+  const indicatorsEl = document.getElementById(`indicators-${catId}`);
+  if (indicatorsEl) {
+    indicatorsEl.innerHTML = generateIndicatorsHTML(categoryName, category.scenes.length, state.sceneIndex);
+  }
+  
+  console.log('Loaded:', categoryName, state.sceneIndex, state.camera);
+}
+
+// Load scene caption
+async function loadSceneCaption(categoryName) {
+  const category = showcaseManifest.categories[categoryName];
+  const state = categoryState[categoryName];
+  if (!category || !state) return;
+  
+  const scene = category.scenes[state.sceneIndex];
+  const catId = categoryName.replace(/\s+/g, '-');
+  const captionEl = document.getElementById(`caption-${catId}`);
+  
+  if (!captionEl) return;
+  
+  const captionPath = buildCaptionPath(scene);
+  
+  try {
+    const response = await fetch(encodeURI(captionPath));
+    if (response.ok) {
+      const text = await response.text();
+      captionEl.innerHTML = `<span class="caption-text">${text.trim()}</span>`;
+    } else {
+      captionEl.innerHTML = `<span class="caption-missing">Scene description is missing.</span>`;
+    }
+  } catch (e) {
+    captionEl.innerHTML = `<span class="caption-missing">Scene description is missing.</span>`;
+  }
+}
+
+// Navigate to previous scene
+function prevScene(categoryName) {
+  const category = showcaseManifest.categories[categoryName];
+  const state = categoryState[categoryName];
+  if (!category || !state) return;
+  
+  const count = category.scenes.length;
+  state.sceneIndex = (state.sceneIndex - 1 + count) % count;
+  
+  // Random camera for new scene
+  const scene = category.scenes[state.sceneIndex];
+  state.camera = getRandomCamera(scene.cameras);
+  
+  loadCategoryVideos(categoryName);
+  loadSceneCaption(categoryName);
+}
+
+// Navigate to next scene
+function nextScene(categoryName) {
+  const category = showcaseManifest.categories[categoryName];
+  const state = categoryState[categoryName];
+  if (!category || !state) return;
+  
+  const count = category.scenes.length;
+  state.sceneIndex = (state.sceneIndex + 1) % count;
+  
+  // Random camera for new scene
+  const scene = category.scenes[state.sceneIndex];
+  state.camera = getRandomCamera(scene.cameras);
+  
+  loadCategoryVideos(categoryName);
+  loadSceneCaption(categoryName);
+}
+
+// Go to specific scene
+function goToScene(categoryName, index) {
+  const category = showcaseManifest.categories[categoryName];
+  const state = categoryState[categoryName];
+  if (!category || !state) return;
+  
+  state.sceneIndex = index;
+  
+  // Random camera for new scene
+  const scene = category.scenes[state.sceneIndex];
+  state.camera = getRandomCamera(scene.cameras);
+  
+  loadCategoryVideos(categoryName);
+  loadSceneCaption(categoryName);
+}
+
+// Switch camera for a category (manual selection)
+function switchCameraFor(categoryName, camera) {
+  const state = categoryState[categoryName];
+  if (!state) return;
+  
+  state.camera = camera;
+  loadCategoryVideos(categoryName);
+  // Don't reload caption - it's the same scene
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  initShowcase();
+  
+  // Delayed autoplay for demo video (3 seconds after page load)
+  const demoVideo = document.getElementById('demo-video');
+  if (demoVideo) {
+    setTimeout(function() {
+      demoVideo.play().catch(function(e) {
+        console.log('Autoplay prevented:', e);
+      });
+    }, 3000);
+  }
+});
+</script>
+
+<!-- Authors Wall -->
+<section class="section contributor-wall-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Authors</h2>
+    <div id="contributors-grid" class="contributors-grid"></div>
+  </div>
+</section>
+<!-- End Authors Wall -->
+
+<!-- Acknowledgement -->
+<section class="section acknowledgement-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 has-text-centered">Acknowledgement</h2>
+        <div class="content has-text-justified acknowledgement-content">
+          <p>
+            We would like to express our sincere gratitude to (in alphabetical order) Geer Chen, Jinhe Chen, Zhiyuan Chen, Yuanhaonan Deng, Shuo Feng, Wenxuan Guo, Junpeng Hu, Ruitao Hu, Ying Ji, Yixuan Jiang, Jiani Liu, Xinjie Liu, Xinsheng Liu, Jiyuan Ma, Qiyue Ma, Chenyang Mao, Yukun Miao, Ye Peng, Yuanyue Qiao, Dacheng Qin, Xiangnuo Ren, Xiaowen Song, Jingqi Tian, Hong Wang, Huixuechun Wang, Zheng Wang, Weipeng Wu, Zhaowei Wu, Kai Xing, Ran Yan, Leize Yang, Ruizhe Yang, Ao Yu, and Minhao Zhu for their essential contributions and dedicated efforts in conducting human evaluations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Acknowledgement -->
+
+<!-- Visitor Distribution (temporarily disabled)
+<section class="section visitor-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">Visitor Distribution</h2>
+    <p class="has-text-centered visitor-description">A live view of where visitors are accessing the PhysInOne project page worldwide.</p>
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+      <tbody>
+        <tr>
+          <td width="100%" align="center">
+            <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=tt&d=1yPWWuOlXo22MrO9sRinBO9GUjLHe88Yk0lOK35nmQA&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff"></script>
+            <noscript>
+              <p style="color:#888; font-size:0.9rem;">Visitor map requires JavaScript to display.</p>
+            </noscript>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+End Visitor Distribution -->
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

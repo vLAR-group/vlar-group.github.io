@@ -1,0 +1,56 @@
+# Showcase Video Configuration
+# 
+# This file defines the source video folders for each category.
+# After editing this file, run:
+#   python scripts/process_showcase_videos.py
+#
+# Format:
+#   category_name:
+#     mode: "multi" (RGB+Depth+Seg with camera views) or "single" (single video per scene)
+#     scenes:
+#       - src: "path/to/source/scene_trajectory"   # Source folder containing videos
+#         name: "optional_display_name"            # Optional: custom display name
+#
+# For "multi" mode, the source folder should contain:
+#   - {sceneName}_camera0.mp4, {sceneName}_camera0_depth.mp4, {sceneName}_camera0_seg.mp4
+#   - {sceneName}_camera1.mp4, ... etc.
+#
+# For "single" mode, videos are copied directly without RGB/Depth/Seg split.
+
+categories:
+  Debug:
+    mode: multi
+    scenes:
+      - src: "E:/PhysInOne/static/videos/showcase/Debug/BalloonFloat_BalloonLift_LaserBlock__bg151__Zf9xCW_trajectory"
+
+  Mechanics:
+    mode: multi
+    scenes:
+      # Add scene folders here, e.g.:
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/SinglePhysics/CartMove__bg177__qI31mn_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/DoublePhysics/CatapultLaunch_StickSupportFail__bg177__v11WsG_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/TriplePhysics/ObliqueProjectile_RollUpSlope_LinCarryInertia__bg158__LoFxHr_trajectory"
+
+  Fluid Dynamics:
+    mode: multi
+    scenes:
+      # Add scene folders here
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/TriplePhysics/LiquidMultiTransfers_LiquidRise_LiquidTension__bg539__Ytjd3F_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/DoublePhysics/NewtonianFluidFall_PlasticineFall__bg901__SMNTT8_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/TriplePhysics/ElasticFall_PlasticineFall_GranularFall__bg903__VMFpms_trajectory"
+
+  Magnetism:
+    mode: multi
+    scenes:
+      # Add scene folders here
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/SinglePhysics/MagnetAttract__bg175__4kp2Lr_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/SinglePhysics/MagnetRepel__bg175__aVA9WC_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/TriplePhysics/MagnetRepel_BalloonFloat_BalloonLift__bg186__CUWNm7_trajectory"
+
+  Optics:
+    mode: multi
+    scenes:
+      # Add scene folders here
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/SinglePhysics/FixedConvexRedirect__bg177__2YMn3l_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/TriplePhysics/BalloonFloat_BalloonLift_LaserBlock__bg151__Zf9xCW_trajectory"
+      - src: "E:/PhysInOne/PhysInOne_mini_subset_videos/PhysInOne/mini_subset_videos/Val/SinglePhysics/FixedConcaveRedirect__bg171__jTtp3c_trajectory"
