@@ -269,7 +269,6 @@
                     <span class="eql-cntrb"><small><br><sup>&dagger;</sup> equal contribution and co-first authorship</small></span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>{Peng Huang, Shijie Liu, Zhengli Hao, Hao Li, Yitian Li, Wenqi Zhou, Zhihan Zhao, Zongqi He, Hongtao Wen, Shouwang Huang, Peng Yun, Bowen Cheng, Pok Kazaf Fu, Wai Kit Lai, Jiahao Chen, Kaiyuan Wang, Zhixuan Sun, Ziqi Li, Haochen Hu, Di Zhang, Chun Ho Yuen}</small></span>
                     <span class="eql-cntrb"><small><br>{siyuan.zhou, hejun.wang, hu123.cheng, jinxi.li}@connect.polyu.hk, bo.yang@polyu.edu.hk</small></span>
-                    <span class="eql-cntrb"><small><br><a href="https://vlar-group.github.io/PhysInOne.html" target="_blank" rel="noopener">https://vlar-group.github.io/PhysInOne.html</a></small></span>
                   </div>
 
                   <div class="column has-text-centered">
@@ -813,18 +812,21 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container is-max-desktop">
     <h2 class="title is-4 has-text-centered">Visitor Distribution</h2>
     <p class="has-text-centered visitor-description">A live view of where visitors are accessing the PhysInOne project page worldwide.</p>
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tbody>
-        <tr>
-          <td width="100%" align="center">
-<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0"></script>
-            <noscript>
-              <p style="color:#888; font-size:0.9rem;">Visitor map requires JavaScript to display.</p>
-            </noscript>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="visitor-content" style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
+      <!-- Globe -->
+      <div style="width: 25%; min-width: 200px;">
+        <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0"></script>
+        <noscript>
+          <p style="color:#888; font-size:0.9rem;">Visitor map requires JavaScript to display.</p>
+        </noscript>
+      </div>
+      <!-- Visitor Counter -->
+      <div style="text-align: center;">
+        <a href="https://clustrmaps.com/site/1c7t4" title="Visit tracker">
+          <img src="//clustrmaps.com/map_v2.png?cl=ffffff&w=300&t=tt&d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0&co=2d78ad&ct=ffffff" alt="Visitor map with counter" />
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 <!-- End Visitor Distribution -->
