@@ -1216,43 +1216,28 @@ a:focus {
 .video-panel {
   display: flex;
   flex-direction: column;
-  background: #000;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-lg);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
 
 .video-panel-label {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.75rem;
   background: var(--background-secondary);
-  color: var(--text-primary);
-  font-weight: 600;
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
 }
 
-.video-panel-label.rgb {
-  background: linear-gradient(135deg, #ef4444 0%, #22c55e 50%, #3b82f6 100%);
-  color: white;
-}
-
-.video-panel-label.depth {
-  background: linear-gradient(135deg, #1e3a5f 0%, #60a5fa 100%);
-  color: white;
-}
-
-.video-panel-label.seg {
-  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
-  color: white;
-}
-
 .video-panel video {
   width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: contain;
-  background: #000;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  background: #f8f8f8;
 }
 
 /* Sync playback controls */

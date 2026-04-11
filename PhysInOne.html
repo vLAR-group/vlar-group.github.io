@@ -534,7 +534,7 @@ function createCategoryRow(categoryName, category) {
       <h3 class="category-title">${categoryName}</h3>
       <span class="physics-badge ${physicsClass}" id="physics-badge-${catId}">${physicsType}</span>
       <span class="camera-view-badge" id="camera-badge-${catId}">
-        <i class="fas fa-video"></i> ${formatCameraName(state.camera)}
+        <i class="fas fa-video"></i> ${formatCameraName(state.camera, scene.cameras)}
       </span>
     </div>
     
@@ -543,16 +543,16 @@ function createCategoryRow(categoryName, category) {
       
       <div class="multi-video-grid">
         <div class="video-panel">
-          <div class="video-panel-label rgb">RGB</div>
-          <video id="video-rgb-${catId}" muted loop playsinline preload="metadata"></video>
+          <div class="video-panel-label">RGB</div>
+          <video id="video-rgb-${catId}" muted playsinline preload="metadata"></video>
         </div>
         <div class="video-panel">
-          <div class="video-panel-label depth">Depth</div>
-          <video id="video-depth-${catId}" muted loop playsinline preload="metadata"></video>
+          <div class="video-panel-label">Depth</div>
+          <video id="video-depth-${catId}" muted playsinline preload="metadata"></video>
         </div>
         <div class="video-panel">
-          <div class="video-panel-label seg">Segmentation</div>
-          <video id="video-seg-${catId}" muted loop playsinline preload="metadata"></video>
+          <div class="video-panel-label">Segmentation</div>
+          <video id="video-seg-${catId}" muted playsinline preload="metadata"></video>
         </div>
       </div>
       
@@ -586,10 +586,16 @@ function createCategoryRow(categoryName, category) {
   return row;
 }
 
-// Format camera name for display
-function formatCameraName(camera) {
+// Format camera name for display (using index in cameras array)
+function formatCameraName(camera, cameras) {
   if (camera === 'cameraMoving') return 'Moving';
-  // Extract number from camera name
+  if (cameras && Array.isArray(cameras)) {
+    const index = cameras.indexOf(camera);
+    if (index !== -1) {
+      return `Cam ${index}`;
+    }
+  }
+  // Fallback: extract number from camera name
   const match = camera.match(/camera(\d+)/);
   return match ? `Cam ${match[1]}` : camera;
 }
@@ -641,6 +647,12 @@ function loadCategoryVideos(categoryName) {
     video.onloadeddata = () => {
       video.play().catch(e => console.log('Autoplay prevented:', e));
     };
+    // Auto-advance to next scene when RGB video ends (only listen on first video to avoid triple trigger)
+    if (idx === 0) {
+      video.onended = () => {
+        nextScene(categoryName);
+      };
+    }
   });
   
   // Update physics badge
@@ -654,7 +666,7 @@ function loadCategoryVideos(categoryName) {
   // Update camera badge
   const cameraBadge = document.getElementById(`camera-badge-${catId}`);
   if (cameraBadge) {
-    cameraBadge.innerHTML = `<i class="fas fa-video"></i> ${formatCameraName(state.camera)}`;
+    cameraBadge.innerHTML = `<i class="fas fa-video"></i> ${formatCameraName(state.camera, scene.cameras)}`;
   }
   
   // Update camera selector
