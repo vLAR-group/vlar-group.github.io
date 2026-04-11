@@ -934,17 +934,17 @@ a:focus {
 }
 
 .physics-badge-single {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
   color: white;
 }
 
 .physics-badge-double {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
   color: white;
 }
 
 .physics-badge-triple {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
   color: white;
 }
 
