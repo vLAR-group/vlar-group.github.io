@@ -171,6 +171,35 @@
     ]
   }
   </script>
+  
+  <!-- Loading indicator styles -->
+  <style>
+    .loading-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      width: 100%;
+    }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e0e0e0;
+      border-top: 4px solid #3273dc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loading-indicator p {
+      margin-top: 15px;
+      color: #666;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -245,17 +274,6 @@
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="PhysInOne/static/pdfs/PhysInOne_main.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
                     <!-- TODO: Add your supplementary material PDF or remove this section -->
                     <span class="link-block">
                       <a href="PhysInOne/static/pdfs/supplementary_material.pdf" target="_blank"
@@ -326,7 +344,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <h2 class="title is-3 has-text-centered">Dataset Overview</h2>
         <div class="content abstract-bullets">
           <p class="abstract-lead">We present <strong>PhysInOne</strong>, a large-scale synthetic dataset addressing the critical scarcity of physically-grounded training data for AI systems.</p>
           <ul>
@@ -397,7 +415,11 @@
       
       <!-- Category Rows (dynamically generated) -->
       <div id="showcase-categories-container">
-        <!-- Categories will be populated by JavaScript -->
+        <!-- Loading indicator -->
+        <div id="showcase-loading" class="loading-indicator">
+          <div class="loading-spinner"></div>
+          <p>Loading showcase videos...</p>
+        </div>
       </div>
     </div>
   </div>
@@ -414,8 +436,13 @@ const PHYSICS_CATEGORIES = ['Mechanics', 'Fluid Dynamics', 'Magnetism', 'Optics'
 
 // Initialize showcase
 function initShowcase() {
+  const loadingEl = document.getElementById('showcase-loading');
+  
   if (!window.SHOWCASE_MANIFEST) {
     console.error('Showcase manifest not loaded. Make sure manifest.js is included.');
+    if (loadingEl) {
+      loadingEl.innerHTML = '<p style="color:#999;">Failed to load showcase. Please refresh the page.</p>';
+    }
     return;
   }
   
@@ -753,7 +780,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="section contributor-wall-section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Authors</h2>
-    <div id="contributors-grid" class="contributors-grid"></div>
+    <div id="contributors-grid" class="contributors-grid">
+      <!-- Loading indicator -->
+      <div id="contributors-loading" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Loading authors...</p>
+      </div>
+    </div>
   </div>
 </section>
 <!-- End Authors Wall -->
@@ -784,7 +817,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <tbody>
         <tr>
           <td width="100%" align="center">
-            <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=tt&d=1yPWWuOlXo22MrO9sRinBO9GUjLHe88Yk0lOK35nmQA&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff"></script>
+<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0"></script>
             <noscript>
               <p style="color:#888; font-size:0.9rem;">Visitor map requires JavaScript to display.</p>
             </noscript>
