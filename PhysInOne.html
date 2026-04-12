@@ -345,7 +345,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3 has-text-centered">Dataset Overview</h2>
         <div class="content abstract-bullets">
-          <p class="abstract-lead">We present <strong>PhysInOne</strong>, a large-scale synthetic dataset addressing the critical scarcity of physically-grounded training data for AI systems.</p>
+          <p class="abstract-lead">We present <strong>PhysInOne</strong>, the largest synthetic dataset addressing the critical scarcity of physically-grounded training data for AI systems.</p>
           <ul>
             <li>
               <strong class="bullet-title">Scale</strong>
@@ -409,8 +409,7 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3 has-text-centered">Dataset Showcase</h2>
-      <p class="has-text-centered showcase-intro">Explore videos across four physical domains. Each scene is captured from multiple viewpoints with RGB, Depth, and Segmentation modalities.</p>
+      <h2 class="title is-3 has-text-centered">Dataset Examples</h2>
       
       <!-- Category Rows (dynamically generated) -->
       <div id="showcase-categories-container">
@@ -432,6 +431,47 @@ const categoryState = {}; // { categoryName: { sceneIndex, camera } }
 
 // Physics categories order
 const PHYSICS_CATEGORIES = ['Mechanics', 'Fluid Dynamics', 'Magnetism', 'Optics'];
+
+// Physics-related keywords for highlighting (grouped by domain)
+const PHYSICS_KEYWORDS = [
+  // Mechanics
+  'gravity', 'gravitational', 'force', 'forces', 'momentum', 'velocity', 'acceleration', 'collision', 'collides', 'colliding',
+  'friction', 'mass', 'weight', 'energy', 'kinetic', 'potential', 'elastic', 'inelastic', 'bounce', 'bounces', 'bouncing',
+  'fall', 'falls', 'falling', 'drop', 'drops', 'dropping', 'throw', 'throws', 'throwing', 'push', 'pushes', 'pushing',
+  'pull', 'pulls', 'pulling', 'rotate', 'rotates', 'rotating', 'rotation', 'spin', 'spins', 'spinning',
+  'roll', 'rolls', 'rolling', 'slide', 'slides', 'sliding', 'swing', 'swings', 'swinging', 'pendulum',
+  'spring', 'springs', 'oscillate', 'oscillates', 'oscillating', 'oscillation', 'vibrate', 'vibrates', 'vibration',
+  'impact', 'impacts', 'hit', 'hits', 'hitting', 'projectile', 'trajectory', 'parabolic', 'freefall',
+  'torque', 'angular', 'centrifugal', 'centripetal', 'inertia', 'equilibrium', 'balance', 'balanced',
+  // Fluid dynamics
+  'fluid', 'fluids', 'liquid', 'liquids', 'water', 'flow', 'flows', 'flowing', 'pour', 'pours', 'pouring',
+  'splash', 'splashes', 'splashing', 'wave', 'waves', 'ripple', 'ripples', 'viscosity', 'viscous',
+  'pressure', 'turbulent', 'turbulence', 'laminar', 'vortex', 'vortices', 'swirl', 'swirls', 'swirling',
+  'buoyancy', 'buoyant', 'float', 'floats', 'floating', 'sink', 'sinks', 'sinking', 'submerge', 'submerged',
+  'density', 'dense', 'surface tension', 'droplet', 'droplets', 'stream', 'streams', 'jet', 'jets',
+  // Magnetism
+  'magnet', 'magnets', 'magnetic', 'magnetism', 'attract', 'attracts', 'attracting', 'attraction',
+  'repel', 'repels', 'repelling', 'repulsion', 'pole', 'poles', 'field', 'fields', 'electromagnetic',
+  'ferromagnetic', 'north pole', 'south pole', 'magnetic field', 'levitate', 'levitates', 'levitating', 'levitation',
+  // Optics
+  'light', 'lights', 'lighting', 'reflection', 'reflects', 'reflecting', 'refraction', 'refracts', 'refracting',
+  'mirror', 'mirrors', 'lens', 'lenses', 'shadow', 'shadows', 'beam', 'beams', 'ray', 'rays',
+  'transparent', 'transparency', 'opaque', 'translucent', 'prism', 'spectrum', 'rainbow', 'diffraction',
+  'illuminate', 'illuminates', 'illuminating', 'illumination', 'glow', 'glows', 'glowing', 'shine', 'shines', 'shining',
+  'bright', 'brightness', 'dim', 'optical', 'photon', 'photons'
+];
+
+// Highlight physics keywords in text
+function highlightPhysicsKeywords(text) {
+  // Sort keywords by length (longest first) to avoid partial matches
+  const sortedKeywords = [...PHYSICS_KEYWORDS].sort((a, b) => b.length - a.length);
+  
+  // Create a regex pattern that matches whole words only (case-insensitive)
+  const pattern = new RegExp('\\b(' + sortedKeywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'gi');
+  
+  // Replace matches with highlighted spans
+  return text.replace(pattern, '<span class="physics-keyword">$1</span>');
+}
 
 // Initialize showcase
 function initShowcase() {
@@ -727,7 +767,8 @@ async function loadSceneCaption(categoryName) {
     const response = await fetch(encodeURI(captionPath));
     if (response.ok) {
       const text = await response.text();
-      captionEl.innerHTML = `<span class="caption-text">${text.trim()}</span>`;
+      const highlightedText = highlightPhysicsKeywords(text.trim());
+      captionEl.innerHTML = `<span class="caption-label">Text Description:</span> <span class="caption-text">${highlightedText}</span>`;
     } else {
       captionEl.innerHTML = `<span class="caption-missing">Scene description is missing.</span>`;
     }
@@ -1335,21 +1376,10 @@ function switchResultTab(tabName) {
 <section class="section visitor-section">
   <div class="container is-max-desktop">
     <h2 class="title is-4 has-text-centered">Visitor Distribution</h2>
-    <p class="has-text-centered visitor-description">A live view of where visitors are accessing the PhysInOne project page worldwide.</p>
-    <div class="visitor-content" style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
-      <!-- Globe -->
-      <div style="width: 25%; min-width: 200px;">
-        <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0"></script>
-        <noscript>
-          <p style="color:#888; font-size:0.9rem;">Visitor map requires JavaScript to display.</p>
-        </noscript>
-      </div>
-      <!-- Visitor Counter -->
-      <div style="text-align: center;">
-        <a href="https://clustrmaps.com/site/1c7t4" title="Visit tracker">
-          <img src="//clustrmaps.com/map_v2.png?cl=ffffff&w=300&t=tt&d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0&co=2d78ad&ct=ffffff" alt="Visitor map with counter" />
-        </a>
-      </div>
+    <div class="visitor-content" style="display: flex; justify-content: center; align-items: center;">
+      <a href="https://clustrmaps.com/site/1c7t4" title="Visit tracker">
+        <img src="//clustrmaps.com/map_v2.png?cl=ffffff&w=400&t=tt&d=fHoFK8zRVRg7mpa7IzqHzXNpPNaXeiCAJTgbT0sKJY0&co=2d78ad&ct=ffffff" alt="Visitor map" />
+      </a>
     </div>
   </div>
 </section>
@@ -1359,14 +1389,10 @@ function switchResultTab(tabName) {
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
-        <div class="content">
-
+        <div class="content has-text-centered">
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-
         </div>
       </div>
     </div>

@@ -1158,17 +1158,45 @@ a:focus {
 /* Scene Caption */
 .scene-caption {
   margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  background: var(--background-primary);
-  border-radius: var(--border-radius);
-  border-left: 3px solid var(--primary-color);
-  font-size: 0.95rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-size: 1rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.7;
+}
+
+.caption-label {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .caption-text {
-  color: var(--text-primary);
+  color: #334155;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+}
+
+.physics-keyword {
+  color: #0369a1;
+  font-weight: 600;
+  background: linear-gradient(120deg, #e0f2fe 0%, #bae6fd 100%);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.physics-keyword:hover {
+  background: linear-gradient(120deg, #bae6fd 0%, #7dd3fc 100%);
+  color: #0c4a6e;
 }
 
 .caption-missing {
