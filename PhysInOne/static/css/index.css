@@ -105,6 +105,36 @@ html {
   margin-bottom: 0.35rem;
 }
 
+/* Domain list (nested under physical domains) */
+.abstract-bullets .domain-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.3rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.abstract-bullets .domain-list li {
+  margin-bottom: 0;
+}
+
+.abstract-bullets .domain-list li::before {
+  content: "•";
+  color: var(--primary-color);
+  margin-right: 0.4rem;
+}
+
+/* Ellipsis item for "more applications" */
+.abstract-bullets .ellipsis-item {
+  list-style: none;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  margin-top: 0.2rem;
+}
+
 /* Acknowledgements Section */
 .acknowledgements-section {
   background: var(--background-primary);
