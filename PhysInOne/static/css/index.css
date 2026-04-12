@@ -1,4 +1,4 @@
-/* Modern CSS Variables for consistent theming */
+﻿/* Modern CSS Variables for consistent theming */
 :root {
   --primary-color: #2563eb;
   --primary-hover: #1d4ed8;
@@ -120,7 +120,7 @@ html {
 }
 
 .abstract-bullets .domain-list li::before {
-  content: "•";
+  content: "鈥?;
   color: var(--primary-color);
   margin-right: 0.4rem;
 }
@@ -1810,4 +1810,119 @@ a:focus {
   }
 }
 
+/* ========================================
+   Qualitative Results Section (New Layout)
+   ======================================== */
+
+.qual-task-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom, #fafafa, #fff);
+  border-radius: 8px;
+}
+
+.qual-scene-block {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.qual-scene-block:hover {
+  background-color: rgba(72, 199, 142, 0.05);
+}
+
+.qual-caption {
+  background: #f8f9fa;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.qual-gt-row {
+  padding: 0.5rem 0;
+}
+
+.qual-methods-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.qual-methods-grid .qual-video-item video {
+  box-shadow: none;
+}
+
+.qual-inline-row {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.qual-video-item video {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.qual-video-item video:hover {
+  transform: scale(1.02);
+}
+
+.qual-input-item img,
+.qual-input-item video {
+  transition: transform 0.2s ease;
+}
+
+.qual-input-item img:hover,
+.qual-input-item video:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .qual-methods-grid .qual-video-item {
+    width: calc(50% - 2px) !important;
+    min-width: 80px !important;
+  }
+  
+  .qual-inline-row .qual-video-item {
+    width: 120px !important;
+  }
+  
+  .qual-gt-row .qual-video-item {
+    width: 200px !important;
+  }
+}
+
+
+/* ========================================
+   Navigation Bar
+   ======================================== */
+
+.navbar.is-fixed-top {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.95) !important;
+}
+
+.navbar-item.has-text-weight-bold {
+  font-size: 1.1rem;
+}
+
+.navbar-burger span {
+  height: 2px;
+}
+
+body {
+  padding-top: 3.25rem; /* Account for fixed navbar */
+}
+
+/* Smooth scroll offset for fixed navbar */
+:target {
+  scroll-margin-top: 4rem;
+}
+
+/* Qualitative caption inline styles */
+.qual-caption-inline {
+  background: #f8f9fa;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+}
 

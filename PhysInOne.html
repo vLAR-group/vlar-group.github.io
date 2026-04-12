@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -203,6 +203,59 @@
 </head>
 <body>
 
+<!-- Navigation Bar -->
+<nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation" id="main-navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-weight-bold" href="#" style="color: var(--primary-color);">
+        <span class="icon mr-1"><i class="fas fa-atom"></i></span> PhysInOne
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#abstract">Dataset Overview</a>
+        <a class="navbar-item" href="#showcase">Dataset Examples</a>
+        <a class="navbar-item" href="#results">Benchmark Results</a>
+        <a class="navbar-item" href="#authors">Authors</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-small is-dark" href="https://arxiv.org/abs/XXXX" target="_blank">
+              <span class="icon"><i class="ai ai-arxiv"></i></span><span>Paper</span>
+            </a>
+            <a class="button is-small is-dark" href="https://huggingface.co/datasets/vLAR-group/PhysInOne" target="_blank">
+              <span class="icon">🤗</span><span>Dataset</span>
+            </a>
+            <a class="button is-small is-dark" href="https://github.com/vLAR-group/PhysInOne" target="_blank">
+              <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+// Navbar burger toggle for mobile
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.navbar-burger');
+  const menu = document.getElementById('navbarMenu');
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  }
+});
+</script>
+
 
   <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
@@ -339,7 +392,7 @@
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
-<section class="section hero is-light">
+<section id="abstract" class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -396,7 +449,7 @@
 
 
 <!-- Video Showcase Section -->
-<section class="hero is-small">
+<section id="showcase" class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3 has-text-centered">Dataset Examples</h2>
@@ -1302,10 +1355,13 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <!-- End Quantitative Results -->
 
-    <!-- Qualitative Results (Placeholder for future) -->
+    <!-- Qualitative Results -->
     <div id="qualitative-results" class="results-content" style="display: none;">
-      <div class="notification is-info is-light">
-        <p class="has-text-centered">Qualitative results coming soon.</p>
+      <div id="qualitative-task-content">
+        <div class="has-text-centered">
+          <span class="icon is-large"><i class="fas fa-spinner fa-pulse"></i></span>
+          <p>Loading qualitative results...</p>
+        </div>
       </div>
     </div>
 
@@ -1314,24 +1370,308 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- End Results Section -->
 
 <script>
-function switchResultTab(tabName) {
-  // Update tab active state
-  document.querySelectorAll('.tabs li').forEach(li => {
-    if (li.getAttribute('data-tab') === tabName) {
-      li.classList.add('is-active');
-    } else {
-      li.classList.remove('is-active');
+// Qualitative Results System
+const QUAL_BASE_PATH = 'PhysInOne/static/videos/qualitative';
+
+// Manifest data (inline for reliability, captions fetched dynamically)
+const qualManifest = {
+  "tasks": [
+    {
+      "id": "video-generation",
+      "title": "Physics-aware Video Generation",
+      "folder": "Video Generation",
+      "hasCaption": true,
+      "hasInputFrame": true,
+      "hasInputVideo": false,
+      "layoutType": "gt-large",
+      "scenes": [
+        {"name": "22ChFW", "inputFrame": "Input Frame.jpg", "gt": "gt.mp4", "methods": ["vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4","vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4","vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4","lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4","lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4"]},
+        {"name": "h7zx2p", "inputFrame": "Input Frame.jpg", "gt": "gt.mp4", "methods": ["vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4","vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4","vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4","lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4","lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4"]},
+        {"name": "lRK4PA", "inputFrame": "Input Frame.jpg", "gt": "gt.mp4", "methods": ["vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4","vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4","vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4","lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4","lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4"]},
+        {"name": "OJSQiq", "inputFrame": "Input Frame.jpg", "gt": "gt.mp4", "methods": ["vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4","vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4","vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4","lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4","lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4"]},
+        {"name": "yMuSyi", "inputFrame": "Input Frame.jpg", "gt": "gt.mp4", "methods": ["vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4","vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4","vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4","lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4","lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4","flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4","flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4"]}
+      ]
+    },
+    {
+      "id": "future-frame-prediction",
+      "title": "Future Frame Prediction",
+      "folder": "Future Frame Prediction",
+      "hasCaption": false,
+      "hasInputFrame": false,
+      "hasInputVideo": false,
+      "layoutType": "gt-large",
+      "scenes": [
+        {"name": "MagnetAttract_MagnetRepel__bg265__rel0pp_trajectory", "gt": "gt.mp4", "methods": ["Def3g.mp4","Extdm.mp4","Freegave.mp4","Magi.mp4","Tineuvox.mp4","TRACE.mp4"]}
+      ]
+    },
+    {
+      "id": "physical-properties-estimation",
+      "title": "Physical Properties Estimation",
+      "folder": "Physical Properties Estimation",
+      "hasCaption": false,
+      "hasInputFrame": false,
+      "hasInputVideo": false,
+      "layoutType": "inline",
+      "scenes": [
+        {"name": "ElasticFall__bg851__wBxhzP_trajectory_gap1", "gt": "gt.mp4", "methods": ["gic.mp4","pacnerf.mp4"]},
+        {"name": "GranularFall__bg852__VyRLV3_trajectory_gap1", "gt": "gt.mp4", "methods": ["gic.mp4","pacnerf.mp4"]},
+        {"name": "PlasticineFall__bg853__JqI201_trajectory_gap5", "gt": "gt.mp4", "methods": ["gic.mp4","pacnerf.mp4"]}
+      ]
+    },
+    {
+      "id": "motion-transfer",
+      "title": "Motion Transfer",
+      "folder": "Motion Transfer",
+      "hasCaption": true,
+      "hasInputFrame": true,
+      "hasInputVideo": true,
+      "layoutType": "inline",
+      "scenes": [
+        {"name": "motion_transfer_scene", "inputFrame": "inputFrame.png", "inputVideo": "InputVideo.mp4", "gt": "GTVideo.mp4", "methods": ["gowiththeflow.mp4","motionpro.mp4"]}
+      ]
+    }
+  ]
+};
+
+// Model name mappings
+const modelNameMappings = {
+  "video-generation": {
+    "vanilla_stabilityai_stable-video-diffusion-img2vid-xt": "SVD",
+    "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest": "SVD+LoRA",
+    "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest": "SVD+SFT",
+    "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest": "SVD+FLT",
+    "vanilla_THUDM_CogVideoX1.5-5B-I2V": "CogVideoX",
+    "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest": "CogVideoX+LoRA",
+    "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers": "Wan2.2-5B",
+    "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest": "Wan2.2-5B+LoRA",
+    "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest": "Wan2.2-5B+SFT",
+    "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest": "Wan2.2-5B+FLT",
+    "gt": "GT"
+  },
+  "future-frame-prediction": {
+    "Tineuvox": "TiNeuVox", "Freegave": "FreeGave", "Def3g": "DefGS",
+    "Extdm": "ExtDM", "Magi": "MAGI-1", "TRACE": "TRACE", "gt": "GT"
+  },
+  "physical-properties-estimation": {
+    "pacnerf": "PAC-NeRF", "gic": "GIC", "gt": "GT"
+  },
+  "motion-transfer": {
+    "GTVideo": "GT", "InputVideo": "Reference Video",
+    "motionpro": "MotionPro", "gowiththeflow": "GoWithTheFlow"
+  }
+};
+
+function getModelDisplayName(taskId, filename) {
+  const basename = filename.replace('.mp4', '');
+  return modelNameMappings[taskId]?.[basename] || basename;
+}
+
+// Video Generation method order
+const vgMethodOrder = [
+  "vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4",
+  "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+  "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+  "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+  "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4",
+  "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+  "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+  "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+  "vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4",
+  "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4"
+];
+
+async function loadQualitativeData() {
+  const container = document.getElementById('qualitative-task-content');
+  let html = '';
+  
+  for (const task of qualManifest.tasks) {
+    const taskFolder = encodeURIComponent(task.folder);
+    
+    // Task header
+    html += `<div class="qual-task-section mb-6">
+      <h3 class="title is-4 has-text-centered mb-4" style="color: var(--primary-color);">${task.title}</h3>`;
+    
+    for (let i = 0; i < task.scenes.length; i++) {
+      const scene = task.scenes[i];
+      const isFlat = task.id === 'motion-transfer';
+      const scenePath = isFlat 
+        ? `${QUAL_BASE_PATH}/${taskFolder}`
+        : `${QUAL_BASE_PATH}/${taskFolder}/${encodeURIComponent(scene.name)}`;
+      
+      html += `<div class="qual-scene-block" data-scene-id="${task.id}-${i}">`;
+      
+      // Motion Transfer: Reference Video first
+      if (task.id === 'motion-transfer' && task.hasInputVideo && scene.inputVideo) {
+        html += `<div class="qual-ref-video mb-3" style="display: flex; justify-content: center;">
+          <div class="qual-input-item" style="text-align: center;">
+            <video muted loop playsinline style="height: 150px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+              <source src="${scenePath}/${encodeURIComponent(scene.inputVideo)}" type="video/mp4">
+            </video>
+            <p class="is-size-7 mt-1"><strong>Reference Video</strong></p>
+          </div>
+        </div>`;
+      }
+      
+      // Input row: Input Frame + Text Description (same row)
+      if (task.hasCaption || (task.hasInputFrame && scene.inputFrame)) {
+        html += `<div class="qual-input-row mb-3" style="display: flex; justify-content: center; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;">`;
+        
+        // Input Frame
+        if (task.hasInputFrame && scene.inputFrame) {
+          html += `<div class="qual-input-item" style="text-align: center; flex-shrink: 0;">
+            <img src="${scenePath}/${encodeURIComponent(scene.inputFrame)}" alt="Input" style="height: 120px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <p class="is-size-7 mt-1"><strong>Input Frame</strong></p>
+          </div>`;
+        }
+        
+        // Text Description
+        if (task.hasCaption) {
+          const captionPath = `${scenePath}/caption.txt`;
+          html += `<div class="qual-caption-inline" data-caption-src="${captionPath}" style="flex: 1; min-width: 300px; max-width: 600px;">
+            <p class="is-size-6 has-text-grey-dark"><em>Loading...</em></p>
+          </div>`;
+        }
+        
+        html += `</div>`;
+      }
+      
+      // Different layout based on task type
+      if (task.layoutType === 'gt-large') {
+        // GT larger on top, grid below
+        html += `<div class="qual-gt-row mb-2" style="display: flex; justify-content: center;">
+          <div class="qual-video-item" style="text-align: center; width: 280px;">
+            <p class="is-size-7 mb-1"><strong style="color: #48c78e;">Ground Truth</strong></p>
+            <video muted loop playsinline style="width: 100%; border-radius: 4px; border: 2px solid #48c78e; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+              <source src="${scenePath}/${scene.gt}" type="video/mp4">
+            </video>
+          </div>
+        </div>`;
+        
+        // Sort methods for Video Generation
+        let methods = scene.methods;
+        if (task.id === 'video-generation') {
+          methods = vgMethodOrder.filter(m => scene.methods.includes(m));
+        }
+        
+        // Video Generation: 4 per row layout
+        if (task.id === 'video-generation') {
+          html += `<div class="qual-methods-vg" style="max-width: 800px; margin: 0 auto;">`;
+          for (let r = 0; r < methods.length; r += 4) {
+            const rowMethods = methods.slice(r, r + 4);
+            const rowJustify = rowMethods.length < 4 ? 'flex-start' : 'center';
+            html += `<div style="display: flex; justify-content: ${rowJustify}; gap: 4px; margin-bottom: 4px;">`;
+            rowMethods.forEach(method => {
+              const name = getModelDisplayName(task.id, method);
+              html += `<div class="qual-video-item" style="text-align: center; width: calc(25% - 3px);">
+                <p class="is-size-7 mb-1" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${name}</p>
+                <video muted loop playsinline style="width: 100%; border-radius: 2px;">
+                  <source src="${scenePath}/${encodeURIComponent(method)}" type="video/mp4">
+                </video>
+              </div>`;
+            });
+            html += `</div>`;
+          }
+          html += `</div>`;
+        } else {
+          // Future Frame Prediction: standard grid
+          html += `<div class="qual-methods-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">`;
+          methods.forEach(method => {
+            const name = getModelDisplayName(task.id, method);
+            html += `<div class="qual-video-item" style="text-align: center; width: calc(100% / 6 - 4px); min-width: 100px; max-width: 160px;">
+              <p class="is-size-7 mb-1" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${name}</p>
+              <video muted loop playsinline style="width: 100%; border-radius: 2px;">
+                <source src="${scenePath}/${encodeURIComponent(method)}" type="video/mp4">
+              </video>
+            </div>`;
+          });
+          html += `</div>`;
+        }
+      } else {
+        // Inline layout - all same size in a row (Motion Transfer, Physical Properties)
+        html += `<div class="qual-inline-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">`;
+        // GT first
+        html += `<div class="qual-video-item" style="text-align: center; width: 160px;">
+          <p class="is-size-7 mb-1"><strong style="color: #48c78e;">Ground Truth</strong></p>
+          <video muted loop playsinline style="width: 100%; border-radius: 4px; border: 2px solid #48c78e;">
+            <source src="${scenePath}/${scene.gt}" type="video/mp4">
+          </video>
+        </div>`;
+        // Methods
+        scene.methods.forEach(method => {
+          const name = getModelDisplayName(task.id, method);
+          html += `<div class="qual-video-item" style="text-align: center; width: 160px;">
+            <p class="is-size-7 mb-1">${name}</p>
+            <video muted loop playsinline style="width: 100%; border-radius: 4px;">
+              <source src="${scenePath}/${encodeURIComponent(method)}" type="video/mp4">
+            </video>
+          </div>`;
+        });
+        html += `</div>`;
+      }
+      
+      html += `</div>`; // qual-scene-block
+      
+      // Separator between scenes
+      if (i < task.scenes.length - 1) {
+        html += `<hr style="margin: 1.5rem 0; border-top: 1px dashed #ddd;">`;
+      }
+    }
+    
+    html += `</div>`; // qual-task-section
+    html += `<hr style="margin: 2rem 0; border-top: 2px solid #eee;">`;
+  }
+  
+  container.innerHTML = html;
+  
+  // Load captions via fetch
+  document.querySelectorAll('.qual-caption-inline[data-caption-src]').forEach(async (el) => {
+    try {
+      const res = await fetch(el.dataset.captionSrc);
+      if (res.ok) {
+        const caption = await res.text();
+        el.innerHTML = `<p class="is-size-6 has-text-grey-dark" style="line-height: 1.6; text-align: left;">
+          <strong style="color: #363636;">Text Description:</strong>
+          <span style="font-style: italic;"> ${caption.trim()}</span>
+        </p>`;
+      } else {
+        el.remove();
+      }
+    } catch (e) {
+      el.remove();
     }
   });
   
-  // Show/hide content
+  // Synchronized hover playback per scene block
+  document.querySelectorAll('.qual-scene-block').forEach(block => {
+    const videos = block.querySelectorAll('video');
+    
+    block.addEventListener('mouseenter', () => {
+      videos.forEach(v => { v.currentTime = 0; v.play(); });
+    });
+    
+    block.addEventListener('mouseleave', () => {
+      videos.forEach(v => { v.pause(); v.currentTime = 0; });
+    });
+  });
+}
+
+function switchResultTab(tabName) {
+  document.querySelectorAll('.tabs li').forEach(li => {
+    li.classList.toggle('is-active', li.getAttribute('data-tab') === tabName);
+  });
+  
   document.getElementById('quantitative-results').style.display = tabName === 'quantitative' ? 'block' : 'none';
   document.getElementById('qualitative-results').style.display = tabName === 'qualitative' ? 'block' : 'none';
+  
+  if (tabName === 'qualitative' && !window.qualDataLoaded) {
+    window.qualDataLoaded = true;
+    loadQualitativeData();
+  }
 }
 </script>
 
 <!-- Authors Wall -->
-<section class="section contributor-wall-section">
+<section id="authors" class="section contributor-wall-section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Authors</h2>
     <div id="contributors-grid" class="contributors-grid">
