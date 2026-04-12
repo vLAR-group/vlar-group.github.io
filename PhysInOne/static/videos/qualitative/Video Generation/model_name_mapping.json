@@ -1,0 +1,50 @@
+{
+    "task":  "Physics-aware Video Generation",
+    "source":  "PhysInOne.html Quantitative Results",
+    "mappings":  [
+                     {
+                         "mp4_basename":  "vanilla_stabilityai_stable-video-diffusion-img2vid-xt",
+                         "web_model_name":  "SVD"
+                     },
+                     {
+                         "mp4_basename":  "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest",
+                         "web_model_name":  "SVD_lora"
+                     },
+                     {
+                         "mp4_basename":  "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest",
+                         "web_model_name":  "SVD_sft"
+                     },
+                     {
+                         "mp4_basename":  "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest",
+                         "web_model_name":  "SVD_flt"
+                     },
+                     {
+                         "mp4_basename":  "vanilla_THUDM_CogVideoX1.5-5B-I2V",
+                         "web_model_name":  "CogVideoX"
+                     },
+                     {
+                         "mp4_basename":  "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest",
+                         "web_model_name":  "CogVideoX_lora"
+                     },
+                     {
+                         "mp4_basename":  "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers",
+                         "web_model_name":  "Wan2.2-5B"
+                     },
+                     {
+                         "mp4_basename":  "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest",
+                         "web_model_name":  "Wan2.2-5B_lora"
+                     },
+                     {
+                         "mp4_basename":  "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest",
+                         "web_model_name":  "Wan2.2-5B_sft"
+                     },
+                     {
+                         "mp4_basename":  "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest",
+                         "web_model_name":  "Wan2.2-5B_flt"
+                     },
+                     {
+                         "mp4_basename":  "gt",
+                         "web_model_name":  "GT (reference)"
+                     }
+                 ]
+}

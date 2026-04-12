@@ -1,0 +1,178 @@
+﻿{
+    "generated":  "2026-04-12 21:43:19",
+    "tasks":  [
+                  {
+                      "id":  "video-generation",
+                      "title":  "Physics-aware Video Generation",
+                      "hasCaption":  true,
+                      "hasInputFrame":  true,
+                      "hasInputVideo":  false,
+                      "scenes":  [
+                                     {
+                                         "name":  "22ChFW",
+                                         "caption":  "The rotating cylindrical platform contacted the bottle tethered by orange and green balloons. Rope tension transferred horizontal motion, displacing the bottle. Balloon buoyancy exceeded gravitational force, lifting the bottle vertically. Upward buoyant force equaled the bottle\u0027s weight, maintaining suspension without further platform contact. The mirror remained undisturbed on the ground.",
+                                         "inputFrame":  "Input Frame.jpg",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4",
+                                                         "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4",
+                                                         "vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4",
+                                                         "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4"
+                                                     ]
+                                     },
+                                     {
+                                         "name":  "h7zx2p",
+                                         "caption":  "The green ball strikes the golden bell. Momentum transfers during impact, moving both objects together. The green balloon experiences buoyant force, lifting the attached box upward. A silver mirror reflects these motions across its smooth surface. The collision carries the bell and ball in a shared path while the balloon ascends with the box. Reflection duplicates the concurrent motions within the mirrored plane.",
+                                         "inputFrame":  "Input Frame.jpg",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4",
+                                                         "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4",
+                                                         "vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4",
+                                                         "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4"
+                                                     ]
+                                     },
+                                     {
+                                         "name":  "lRK4PA",
+                                         "caption":  "Three yellow rubber ducks float in a bathtub, each oriented differently, bobbing gently as water flows downward. The current exerts dynamic forces on their surfaces, causing them to sway and rotate in response to fluid motion. Buoyancy counteracts gravity, keeping them afloat while subtle shifts in water pressure generate continuous, rhythmic movements. Their positions change slightly over time, influenced by the interplay of gravitational pull and the stream鈥檚 momentum, creating a quiet, fluid dance within the tub.",
+                                         "inputFrame":  "Input Frame.jpg",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4",
+                                                         "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4",
+                                                         "vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4",
+                                                         "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4"
+                                                     ]
+                                     },
+                                     {
+                                         "name":  "OJSQiq",
+                                         "caption":  "The white cup, suspended by red and green balloons, was released with initial velocity toward the barrel wall. Inertia maintained its forward motion until the cup and balloons contacted the wall. The collision exerted force on the barrels, overcoming their support, and caused them to fall. The cup then rose as the buoyant force from the balloons exceeded gravitational force, reaching floating suspension.",
+                                         "inputFrame":  "Input Frame.jpg",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4",
+                                                         "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4",
+                                                         "vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4",
+                                                         "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4"
+                                                     ]
+                                     },
+                                     {
+                                         "name":  "yMuSyi",
+                                         "caption":  "A transparent conical highball glass rests on a wooden dining table, filled with vibrant pink cocktail. A red strawberry descends from above, pulled by gravity, and plunges into the liquid with a soft splash. The impact sends ripples across the surface, creating concentric waves that spread outward. The strawberry, now submerged, bobs gently as the fluid鈥檚 motion carries it in slow, irregular oscillations, its color vivid against the translucent drink. The interplay of gravity and fluid dynamics animates the moment鈥攅ach subtle shift reflecting the natural forces at work.",
+                                         "inputFrame":  "Input Frame.jpg",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "flt_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "flt_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "lora_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "lora_THUDM_CogVideoX1.5-5B-I2V_ckpt_latest.mp4",
+                                                         "lora_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "sft_stabilityai_stable-video-diffusion-img2vid-xt_ckpt_latest.mp4",
+                                                         "sft_Wan-AI_Wan2.2-TI2V-5B-Diffusers_ckpt_latest.mp4",
+                                                         "vanilla_stabilityai_stable-video-diffusion-img2vid-xt.mp4",
+                                                         "vanilla_THUDM_CogVideoX1.5-5B-I2V.mp4",
+                                                         "vanilla_Wan-AI_Wan2.2-TI2V-5B-Diffusers.mp4"
+                                                     ]
+                                     }
+                                 ]
+                  },
+                  {
+                      "id":  "future-frame-prediction",
+                      "title":  "Future Frame Prediction",
+                      "hasCaption":  false,
+                      "hasInputFrame":  false,
+                      "hasInputVideo":  false,
+                      "scenes":  [
+                                     {
+                                         "name":  "MagnetAttract_MagnetRepel__bg265__rel0pp_trajectory",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "Def3g.mp4",
+                                                         "Extdm.mp4",
+                                                         "Freegave.mp4",
+                                                         "Magi.mp4",
+                                                         "Tineuvox.mp4",
+                                                         "TRACE.mp4"
+                                                     ]
+                                     }
+                                 ]
+                  },
+                  {
+                      "id":  "physical-properties-estimation",
+                      "title":  "Physical Properties Estimation",
+                      "hasCaption":  false,
+                      "hasInputFrame":  false,
+                      "hasInputVideo":  false,
+                      "scenes":  [
+                                     {
+                                         "name":  "ElasticFall__bg851__wBxhzP_trajectory_gap1",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "gic.mp4",
+                                                         "pacnerf.mp4"
+                                                     ]
+                                     },
+                                     {
+                                         "name":  "GranularFall__bg852__VyRLV3_trajectory_gap1",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "gic.mp4",
+                                                         "pacnerf.mp4"
+                                                     ]
+                                     },
+                                     {
+                                         "name":  "PlasticineFall__bg853__JqI201_trajectory_gap5",
+                                         "gt":  "gt.mp4",
+                                         "methods":  [
+                                                         "gic.mp4",
+                                                         "pacnerf.mp4"
+                                                     ]
+                                     }
+                                 ]
+                  },
+                  {
+                      "id":  "motion-transfer",
+                      "title":  "Motion Transfer",
+                      "hasCaption":  true,
+                      "hasInputFrame":  true,
+                      "hasInputVideo":  true,
+                      "scenes":  [
+                                     {
+                                         "name":  "motion_transfer_scene",
+                                         "caption":  "The keyboard, propped against the counter, formed a sloped surface. A red ball at the top was launched obliquely downward, accelerating under gravity\u0027s pull. It collided with a gray car, transferring momentum. The bottom gray car, initially stationary, then began moving uphill. It contacted the middle gray car, and the two cars slid upward together along the incline.",
+                                         "inputFrame":  "inputFrame.png",
+                                         "inputVideo":  "InputVideo.mp4",
+                                         "gt":  "GTVideo.mp4",
+                                         "methods":  [
+                                                         "gowiththeflow.mp4",
+                                                         "motionpro.mp4"
+                                                     ]
+                                     }
+                                 ]
+                  }
+              ]
+}

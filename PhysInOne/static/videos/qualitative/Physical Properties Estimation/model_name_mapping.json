@@ -1,0 +1,19 @@
+{
+    "task":  "Physical Properties Estimation",
+    "source":  "PhysInOne.html Quantitative Results",
+    "mappings":  [
+                     {
+                         "mp4_basename":  "pacnerf",
+                         "web_model_name":  "PAC-NeRF",
+                         "note":  "hyphen/case normalization"
+                     },
+                     {
+                         "mp4_basename":  "gic",
+                         "web_model_name":  "GIC"
+                     },
+                     {
+                         "mp4_basename":  "gt",
+                         "web_model_name":  "GT (reference)"
+                     }
+                 ]
+}

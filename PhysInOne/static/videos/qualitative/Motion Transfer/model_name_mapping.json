@@ -1,0 +1,24 @@
+{
+    "task":  "Motion Transfer",
+    "source":  "PhysInOne.html Quantitative Results",
+    "mappings":  [
+                     {
+                         "mp4_basename":  "gowiththeflow",
+                         "web_model_name":  "GoWithTheFlow",
+                         "note":  "case/style normalization"
+                     },
+                     {
+                         "mp4_basename":  "motionpro",
+                         "web_model_name":  "MotionPro",
+                         "note":  "case/style normalization"
+                     },
+                     {
+                         "mp4_basename":  "GTVideo",
+                         "web_model_name":  "GTVideo (reference)"
+                     },
+                     {
+                         "mp4_basename":  "InputVideo",
+                         "web_model_name":  "InputVideo (reference)"
+                     }
+                 ]
+}

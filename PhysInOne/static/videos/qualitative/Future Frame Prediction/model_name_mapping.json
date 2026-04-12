@@ -1,0 +1,39 @@
+{
+    "task":  "Future Frame Prediction",
+    "source":  "PhysInOne.html Quantitative Results",
+    "mappings":  [
+                     {
+                         "mp4_basename":  "Tineuvox",
+                         "web_model_name":  "TiNeuVox",
+                         "note":  "case/style normalization"
+                     },
+                     {
+                         "mp4_basename":  "Def3g",
+                         "web_model_name":  "DefGS",
+                         "note":  "folder/video naming variant"
+                     },
+                     {
+                         "mp4_basename":  "TRACE",
+                         "web_model_name":  "TRACE"
+                     },
+                     {
+                         "mp4_basename":  "Freegave",
+                         "web_model_name":  "FreeGave",
+                         "note":  "case/style normalization"
+                     },
+                     {
+                         "mp4_basename":  "Extdm",
+                         "web_model_name":  "ExtDM",
+                         "note":  "case/style normalization"
+                     },
+                     {
+                         "mp4_basename":  "Magi",
+                         "web_model_name":  "MAGI-1",
+                         "note":  "short alias in file name"
+                     },
+                     {
+                         "mp4_basename":  "gt",
+                         "web_model_name":  "GT (reference)"
+                     }
+                 ]
+}
