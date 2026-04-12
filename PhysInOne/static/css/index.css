@@ -105,15 +105,179 @@ html {
   margin-bottom: 0.35rem;
 }
 
-/* Acknowledgement Section */
-.acknowledgement-section {
+/* Acknowledgements Section */
+.acknowledgements-section {
   background: var(--background-primary);
   padding: 2rem 1.5rem;
 }
 
-.acknowledgement-content {
+.acknowledgements-content {
   font-size: 0.95rem;
   color: var(--text-secondary);
+}
+
+/* Results Section */
+.results-section {
+  background: var(--background-secondary);
+  padding: 3rem 1.5rem;
+}
+
+.results-section .tabs {
+  margin-bottom: 2rem;
+}
+
+.results-section .tabs ul {
+  border-bottom-color: var(--border-color);
+}
+
+.results-section .tabs a {
+  color: var(--text-secondary);
+  border-bottom-color: transparent;
+  padding: 0.75rem 1.25rem;
+}
+
+.results-section .tabs li.is-active a {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.results-section .tabs a:hover {
+  color: var(--primary-color);
+  background-color: transparent;
+  border-bottom-color: var(--border-color);
+}
+
+.result-block {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--background-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.result-block:last-child {
+  margin-bottom: 0;
+}
+
+.result-block .title.is-4 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.result-block .subtitle.is-5 {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.result-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Result Tables */
+.result-table {
+  font-size: 0.9rem;
+  background: var(--background-primary);
+}
+
+.result-table thead th {
+  background: var(--background-accent);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+}
+
+.result-table tbody td {
+  padding: 0.6rem 1rem;
+  vertical-align: middle;
+  border-color: var(--border-color);
+}
+
+.result-table tbody tr:hover {
+  background: var(--background-accent);
+}
+
+.result-table tbody td strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.result-table sub {
+  font-size: 0.75em;
+  color: var(--text-secondary);
+}
+
+.result-table .table-separator td {
+  padding: 0.25rem;
+  background: var(--background-accent);
+  border: none;
+}
+
+/* Method column header - diagonal style */
+.result-table .method-col {
+  background: linear-gradient(to top right, var(--background-accent) 49.5%, var(--border-color) 49.5%, var(--border-color) 50.5%, var(--background-accent) 50.5%);
+  min-width: 120px;
+  position: relative;
+}
+
+.result-table .method-col::before {
+  content: 'Method';
+  position: absolute;
+  bottom: 4px;
+  left: 6px;
+  font-size: 0.8em;
+}
+
+.result-table .method-col::after {
+  content: 'Metrics';
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.8em;
+}
+
+/* Compact tables for property estimation */
+.compact-table {
+  font-size: 0.85rem;
+}
+
+.compact-table thead th {
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-table tbody td {
+  padding: 0.4rem 0.75rem;
+}
+
+/* Responsive adjustments for results */
+@media screen and (max-width: 768px) {
+  .results-section {
+    padding: 2rem 1rem;
+  }
+
+  .result-block {
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-table {
+    font-size: 0.8rem;
+  }
+
+  .result-table thead th,
+  .result-table tbody td {
+    padding: 0.5rem 0.6rem;
+  }
+
+  .compact-table {
+    font-size: 0.75rem;
+  }
 }
 
 /* Header Logos (in hero section) */
@@ -934,17 +1098,17 @@ a:focus {
 }
 
 .physics-badge-single {
-  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
   color: white;
 }
 
 .physics-badge-double {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   color: white;
 }
 
 .physics-badge-triple {
-  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
   color: white;
 }
 

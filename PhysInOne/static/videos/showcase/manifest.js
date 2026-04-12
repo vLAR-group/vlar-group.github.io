@@ -21,8 +21,8 @@ window.SHOWCASE_MANIFEST = {
       "mode": "multi",
       "scenes": [
         {
-          "basePath": "PhysInOne/static/videos/showcase/Fluid Dynamics/ElasticFall_PlasticineFall_GranularFall__bg903__VMFpms_trajectory",
-          "sceneName": "ElasticFall_PlasticineFall_GranularFall__bg903__VMFpms",
+          "basePath": "PhysInOne/static/videos/showcase/Fluid Dynamics/DropInLiquid__bg688__YSlhnV_trajectory",
+          "sceneName": "DropInLiquid__bg688__YSlhnV",
           "cameras": [
             "camera0",
             "camera1",
@@ -36,9 +36,6 @@ window.SHOWCASE_MANIFEST = {
             "camera9",
             "camera10",
             "camera11",
-            "camera12",
-            "camera13",
-            "camera14",
             "cameraMoving"
           ]
         },
@@ -127,8 +124,8 @@ window.SHOWCASE_MANIFEST = {
           ]
         },
         {
-          "basePath": "PhysInOne/static/videos/showcase/Magnetism/MagnetRepel__bg175__aVA9WC_trajectory",
-          "sceneName": "MagnetRepel__bg175__aVA9WC",
+          "basePath": "PhysInOne/static/videos/showcase/Magnetism/ObliqueProjectile_MagnetAttract__bg162__U7NHVI_trajectory",
+          "sceneName": "ObliqueProjectile_RollUpSlope_MagnetAttract__bg162__U7NHVI",
           "cameras": [
             "camera0",
             "camera1",
@@ -140,8 +137,8 @@ window.SHOWCASE_MANIFEST = {
             "camera7",
             "camera8",
             "camera9",
-            "camera10",
             "camera11",
+            "camera12",
             "cameraMoving"
           ]
         }
@@ -232,11 +229,10 @@ window.SHOWCASE_MANIFEST = {
           ]
         },
         {
-          "basePath": "PhysInOne/static/videos/showcase/Optics/FixedConcaveRedirect__bg171__jTtp3c_trajectory",
-          "sceneName": "FixedConcaveRedirect__bg171__jTtp3c",
+          "basePath": "PhysInOne/static/videos/showcase/Optics/FixedConvexRedirect__bg177__2YMn3l_trajectory",
+          "sceneName": "FixedConvexRedirect__bg177__2YMn3l",
           "cameras": [
             "camera0",
-            "camera1",
             "camera2",
             "camera3",
             "camera4",
@@ -247,14 +243,15 @@ window.SHOWCASE_MANIFEST = {
             "camera9",
             "camera10",
             "camera11",
+            "camera12",
             "cameraMoving"
           ]
         },
         {
-          "basePath": "PhysInOne/static/videos/showcase/Optics/FixedConvexRedirect__bg177__2YMn3l_trajectory",
-          "sceneName": "FixedConvexRedirect__bg177__2YMn3l",
+          "basePath": "PhysInOne/static/videos/showcase/Optics/MirrorFragmentReflect_RotTurnableInertia__bg177__L8hpqo_trajectory",
+          "sceneName": "MirrorFragmentReflect_RotTurnableInertia__bg177__L8hpqo",
           "cameras": [
-            "camera0",
+            "camera1",
             "camera2",
             "camera3",
             "camera4",

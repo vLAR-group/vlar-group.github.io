@@ -56,19 +56,31 @@ def find_trajectory_scenes(category_path: Path) -> List[Dict[str, Any]]:
     
     for item in category_path.iterdir():
         if item.is_dir() and "_trajectory" in item.name:
-            # Extract scene name from folder name (remove _trajectory suffix)
-            scene_name = item.name.replace("_trajectory", "")
+            # Find RGB camera videos and detect available cameras.
+            # Support both legacy names (*_camera0_h264.mp4) and current names
+            # (*_camera0.mp4), while excluding depth/seg files.
+            mp4_files = list(item.glob("*.mp4"))
+            cameras = set()
+            scene_name = None
             
-            # Find all H264 video files and detect available cameras
-            h264_files = list(item.glob("*_h264.mp4"))
-            if h264_files:
-                # Detect cameras from RGB h264 files (not depth or seg)
-                cameras = set()
-                camera_pattern = re.compile(r'(camera\d+|cameraMoving)_h264\.mp4$')
-                for f in h264_files:
-                    match = camera_pattern.search(f.name)
-                    if match:
-                        cameras.add(match.group(1))
+            # Pattern to extract scene name and camera from filename
+            # e.g., "SceneName__bg123__ABC_camera0.mp4" or "SceneName__bg123__ABC_camera0_h264.mp4"
+            file_pattern = re.compile(r'^(.+?)_(camera\d+|cameraMoving)(?:_h264)?\.mp4$', re.IGNORECASE)
+            
+            for f in mp4_files:
+                name_lower = f.name.lower()
+                # Skip depth and seg files
+                if '_depth' in name_lower or '_seg' in name_lower:
+                    continue
+                    
+                match = file_pattern.match(f.name)
+                if match:
+                    # Extract scene name from the first RGB video found
+                    if scene_name is None:
+                        scene_name = match.group(1)
+                    cameras.add(match.group(2))
+
+            if cameras and scene_name:
                 
                 # Sort cameras: numeric cameras first (sorted), then cameraMoving
                 def camera_sort_key(cam):
@@ -80,7 +92,7 @@ def find_trajectory_scenes(category_path: Path) -> List[Dict[str, Any]]:
                 sorted_cameras = sorted(cameras, key=camera_sort_key)
                 
                 scenes.append({
-                    "basePath": str(item.relative_to(SHOWCASE_ROOT.parent.parent.parent)).replace("\\", "/"),
+                    "basePath": "PhysInOne/" + str(item.relative_to(SHOWCASE_ROOT.parent.parent.parent)).replace("\\", "/"),
                     "sceneName": scene_name,
                     "cameras": sorted_cameras
                 })

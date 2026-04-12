@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -489,8 +489,15 @@ function getPhysicsTypeClass(type) {
   return 'physics-badge-single';
 }
 
-// Build video path
+// Build video path - tries multiple naming patterns
 function buildVideoPath(scene, camera, modality) {
+  const suffix = modality === 'rgb' ? '' : '_' + modality;
+  // Return path without _h264 - we'll handle fallback in loadCategoryVideos
+  return `${scene.basePath}/${scene.sceneName}_${camera}${suffix}.mp4`;
+}
+
+// Build video path with h264 suffix
+function buildVideoPathH264(scene, camera, modality) {
   const suffix = modality === 'rgb' ? '' : '_' + modality;
   return `${scene.basePath}/${scene.sceneName}_${camera}${suffix}_h264.mp4`;
 }
@@ -638,9 +645,27 @@ function loadCategoryVideos(categoryName) {
   const depthPath = buildVideoPath(scene, state.camera, 'depth');
   const segPath = buildVideoPath(scene, state.camera, 'seg');
   
+  // Fallback paths with _h264 suffix
+  const rgbPathH264 = buildVideoPathH264(scene, state.camera, 'rgb');
+  const depthPathH264 = buildVideoPathH264(scene, state.camera, 'depth');
+  const segPathH264 = buildVideoPathH264(scene, state.camera, 'seg');
+  
+  const paths = [rgbPath, depthPath, segPath];
+  const fallbackPaths = [rgbPathH264, depthPathH264, segPathH264];
+  
   [videoRgb, videoDepth, videoSeg].forEach((video, idx) => {
     if (!video) return;
-    const path = [rgbPath, depthPath, segPath][idx];
+    const path = paths[idx];
+    const fallbackPath = fallbackPaths[idx];
+    
+    // Try primary path first, fallback to h264 on error
+    video.onerror = () => {
+      if (video.src !== encodeURI(fallbackPath) && !video.src.includes(fallbackPath)) {
+        video.src = encodeURI(fallbackPath);
+        video.load();
+      }
+    };
+    
     video.src = encodeURI(path);
     video.load();
     // Auto-play when loaded
@@ -787,6 +812,493 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<!-- Results Section -->
+<section class="section results-section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Benchmark Results</h2>
+    <p class="has-text-centered" style="margin-bottom: 2rem; color: #666;">
+      Quantitative evaluation results across four physics-related tasks using PhysInOne dataset.
+    </p>
+
+    <!-- Tabs for Quantitative / Qualitative -->
+    <div class="tabs is-centered is-boxed" style="margin-bottom: 2rem;">
+      <ul>
+        <li class="is-active" data-tab="quantitative"><a onclick="switchResultTab('quantitative')">Quantitative Results</a></li>
+        <li data-tab="qualitative"><a onclick="switchResultTab('qualitative')">Qualitative Results</a></li>
+      </ul>
+    </div>
+
+    <!-- Quantitative Results -->
+    <div id="quantitative-results" class="results-content">
+
+      <!-- Physics-aware Video Generation -->
+      <div class="result-block">
+        <h3 class="title is-4">Physics-aware Video Generation</h3>
+        <p class="result-description">Evaluation of video generation models with and without fine-tuning on PhysInOne.</p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th class="method-col"></th>
+                <th>PMF ↑</th>
+                <th>FVD ↓</th>
+                <th>Human Rating ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SVD</td>
+                <td>2.753</td>
+                <td>203</td>
+                <td><strong>6.09</strong></td>
+              </tr>
+              <tr>
+                <td>SVD<sub>lora</sub></td>
+                <td>2.446</td>
+                <td>150</td>
+                <td>5.82</td>
+              </tr>
+              <tr>
+                <td>SVD<sub>sft</sub></td>
+                <td><strong>3.147</strong></td>
+                <td><strong>143</strong></td>
+                <td>6.08</td>
+              </tr>
+              <tr>
+                <td>SVD<sub>flt</sub></td>
+                <td>2.464</td>
+                <td>147</td>
+                <td>5.45</td>
+              </tr>
+              <tr class="table-separator"><td colspan="4"></td></tr>
+              <tr>
+                <td>CogVideoX</td>
+                <td><strong>2.877</strong></td>
+                <td>165</td>
+                <td><strong>2.98</strong></td>
+              </tr>
+              <tr>
+                <td>CogVideoX<sub>lora</sub></td>
+                <td>2.869</td>
+                <td><strong>149</strong></td>
+                <td>2.95</td>
+              </tr>
+              <tr class="table-separator"><td colspan="4"></td></tr>
+              <tr>
+                <td>Wan2.2-5B</td>
+                <td>2.041</td>
+                <td>258</td>
+                <td>2.26</td>
+              </tr>
+              <tr>
+                <td>Wan2.2-5B<sub>lora</sub></td>
+                <td>2.785</td>
+                <td><strong>178</strong></td>
+                <td>4.80</td>
+              </tr>
+              <tr>
+                <td>Wan2.2-5B<sub>sft</sub></td>
+                <td><strong>2.978</strong></td>
+                <td>190</td>
+                <td><strong>5.95</strong></td>
+              </tr>
+              <tr>
+                <td>Wan2.2-5B<sub>flt</sub></td>
+                <td>2.227</td>
+                <td>341</td>
+                <td>2.61</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Future Frame Prediction -->
+      <div class="result-block">
+        <h3 class="title is-4">Future Frame Prediction</h3>
+        
+        <!-- Long-term -->
+        <h4 class="subtitle is-5" style="margin-top: 1.5rem;">Long-term Prediction (Seen / Novel Viewpoints)</h4>
+        <p class="result-description">Models predict ~78 future frames (~2.6 seconds ahead) from the first half of video clips.</p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th class="method-col"></th>
+                <th>PMF ↑</th>
+                <th>PSNR ↑</th>
+                <th>SSIM ↑</th>
+                <th>LPIPS ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TiNeuVox</td>
+                <td>3.710 / 2.885</td>
+                <td>21.49 / 15.20</td>
+                <td>0.633 / 0.452</td>
+                <td>0.517 / 0.665</td>
+              </tr>
+              <tr>
+                <td>DefGS</td>
+                <td>3.980 / 3.347</td>
+                <td>22.85 / 17.95</td>
+                <td><strong>0.833</strong> / 0.598</td>
+                <td><strong>0.192</strong> / <strong>0.348</strong></td>
+              </tr>
+              <tr>
+                <td>TRACE</td>
+                <td>3.869 / 3.242</td>
+                <td>22.42 / 17.44</td>
+                <td>0.756 / 0.599</td>
+                <td>0.295 / 0.422</td>
+              </tr>
+              <tr>
+                <td>FreeGave</td>
+                <td>3.897 / 3.265</td>
+                <td>22.57 / 17.75</td>
+                <td>0.818 / <strong>0.619</strong></td>
+                <td>0.219 / 0.355</td>
+              </tr>
+              <tr class="table-separator"><td colspan="5"></td></tr>
+              <tr>
+                <td>ExtDM</td>
+                <td>3.363 / -</td>
+                <td>19.55 / -</td>
+                <td>0.657 / -</td>
+                <td>0.771 / -</td>
+              </tr>
+              <tr>
+                <td>MAGI-1</td>
+                <td><strong>4.086</strong> / -</td>
+                <td><strong>23.14</strong> / -</td>
+                <td>0.788 / -</td>
+                <td>0.364 / -</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Short-term -->
+        <h4 class="subtitle is-5" style="margin-top: 2rem;">Short-term Prediction (Seen / Novel Viewpoints)</h4>
+        <p class="result-description">Models continuously predict the next 10 frames in real-time from streaming input.</p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th class="method-col"></th>
+                <th>PMF ↑</th>
+                <th>PSNR ↑</th>
+                <th>SSIM ↑</th>
+                <th>LPIPS ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DefGS</td>
+                <td>4.536 / 3.728</td>
+                <td>26.02 / <strong>20.92</strong></td>
+                <td>0.861 / <strong>0.739</strong></td>
+                <td>0.206 / <strong>0.322</strong></td>
+              </tr>
+              <tr>
+                <td>FreeGave</td>
+                <td><strong>4.742</strong> / 3.706</td>
+                <td><strong>27.09</strong> / 20.80</td>
+                <td>0.876 / 0.715</td>
+                <td>0.199 / 0.336</td>
+              </tr>
+              <tr class="table-separator"><td colspan="5"></td></tr>
+              <tr>
+                <td>ExtDM</td>
+                <td>3.774 / -</td>
+                <td>22.14 / -</td>
+                <td>0.717 / -</td>
+                <td>0.715 / -</td>
+              </tr>
+              <tr>
+                <td>MAGI-1</td>
+                <td>4.696 / -</td>
+                <td>26.75 / -</td>
+                <td><strong>0.886</strong> / -</td>
+                <td><strong>0.116</strong> / -</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Physical Properties Estimation -->
+      <div class="result-block">
+        <h3 class="title is-4">Physical Properties Estimation</h3>
+        
+        <!-- Resimulation Results -->
+        <h4 class="subtitle is-5" style="margin-top: 1.5rem;">Resimulation with Estimated Properties</h4>
+        <p class="result-description">Quantitative comparison of resimulated videos using estimated physical properties.</p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th class="method-col"></th>
+                <th>PMF ↑</th>
+                <th>PSNR ↑</th>
+                <th>SSIM ↑</th>
+                <th>LPIPS ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PAC-NeRF</td>
+                <td>5.617</td>
+                <td>24.12</td>
+                <td>0.942</td>
+                <td>0.086</td>
+              </tr>
+              <tr>
+                <td>GIC</td>
+                <td><strong>5.938</strong></td>
+                <td><strong>26.90</strong></td>
+                <td><strong>0.950</strong></td>
+                <td><strong>0.074</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Properties Estimation by Material -->
+        <h4 class="subtitle is-5" style="margin-top: 2rem;">Property Estimation Error by Material Type</h4>
+        <p class="result-description">Percentage error (%) of estimated physical parameters. Lower is better. <em>v</em> denotes initial velocity.</p>
+        
+        <div class="columns is-multiline" style="margin-top: 1rem;">
+          <!-- Elastic Solids -->
+          <div class="column is-half">
+            <p class="has-text-weight-semibold" style="margin-bottom: 0.5rem;">Elastic Solids</p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table compact-table">
+                <thead>
+                  <tr>
+                    <th class="method-col"></th>
+                    <th>log₁₀(E)</th>
+                    <th>ν</th>
+                    <th>v</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PAC-NeRF</td>
+                    <td>117.18</td>
+                    <td><strong>14.26</strong></td>
+                    <td>4.04</td>
+                  </tr>
+                  <tr>
+                    <td>GIC</td>
+                    <td><strong>49.76</strong></td>
+                    <td>16.35</td>
+                    <td><strong>3.32</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Plasticine -->
+          <div class="column is-half">
+            <p class="has-text-weight-semibold" style="margin-bottom: 0.5rem;">Plasticine</p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table compact-table">
+                <thead>
+                  <tr>
+                    <th class="method-col"></th>
+                    <th>log₁₀(E)</th>
+                    <th>ν</th>
+                    <th>log₁₀(τ<sub>Y</sub>)</th>
+                    <th>v</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PAC-NeRF</td>
+                    <td><strong>68.38</strong></td>
+                    <td><strong>15.79</strong></td>
+                    <td>25.51</td>
+                    <td><strong>3.25</strong></td>
+                  </tr>
+                  <tr>
+                    <td>GIC</td>
+                    <td>178.36</td>
+                    <td>42.72</td>
+                    <td><strong>17.11</strong></td>
+                    <td>3.39</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Newtonian Fluids -->
+          <div class="column is-half">
+            <p class="has-text-weight-semibold" style="margin-bottom: 0.5rem;">Newtonian Fluids</p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table compact-table">
+                <thead>
+                  <tr>
+                    <th class="method-col"></th>
+                    <th>log₁₀(μ)</th>
+                    <th>log₁₀(κ)</th>
+                    <th>v</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PAC-NeRF</td>
+                    <td>42.64</td>
+                    <td>287.56</td>
+                    <td><strong>3.11</strong></td>
+                  </tr>
+                  <tr>
+                    <td>GIC</td>
+                    <td><strong>8.78</strong></td>
+                    <td><strong>70.07</strong></td>
+                    <td>3.28</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Granular Substances -->
+          <div class="column is-half">
+            <p class="has-text-weight-semibold" style="margin-bottom: 0.5rem;">Granular Substances</p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table compact-table">
+                <thead>
+                  <tr>
+                    <th class="method-col"></th>
+                    <th>θ<sub>fric</sub></th>
+                    <th>v</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PAC-NeRF</td>
+                    <td><strong>16.87</strong></td>
+                    <td><strong>3.29</strong></td>
+                  </tr>
+                  <tr>
+                    <td>GIC</td>
+                    <td>18.85</td>
+                    <td>3.57</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Non-Newtonian Fluids (full width) -->
+          <div class="column is-full">
+            <p class="has-text-weight-semibold" style="margin-bottom: 0.5rem;">Non-Newtonian Fluids</p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table compact-table">
+                <thead>
+                  <tr>
+                    <th class="method-col"></th>
+                    <th>log₁₀(μ)</th>
+                    <th>log₁₀(κ)</th>
+                    <th>log₁₀(τ<sub>Y</sub>)</th>
+                    <th>log₁₀(η)</th>
+                    <th>v</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PAC-NeRF</td>
+                    <td>309.42</td>
+                    <td>552.89</td>
+                    <td>339.20</td>
+                    <td>65.60</td>
+                    <td><strong>2.95</strong></td>
+                  </tr>
+                  <tr>
+                    <td>GIC</td>
+                    <td><strong>124.26</strong></td>
+                    <td><strong>181.87</strong></td>
+                    <td><strong>28.78</strong></td>
+                    <td><strong>24.97</strong></td>
+                    <td>3.73</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motion Transfer -->
+      <div class="result-block">
+        <h3 class="title is-4">Motion Transfer</h3>
+        <p class="result-description">Evaluation of transferring physical motion dynamics from source videos to target images.</p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th class="method-col"></th>
+                <th>PMF ↑</th>
+                <th>PSNR ↑</th>
+                <th>SSIM ↑</th>
+                <th>LPIPS ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GoWithTheFlow</td>
+                <td>3.309</td>
+                <td>18.98</td>
+                <td>0.691</td>
+                <td><strong>0.410</strong></td>
+              </tr>
+              <tr>
+                <td>MotionPro</td>
+                <td><strong>3.484</strong></td>
+                <td><strong>20.28</strong></td>
+                <td><strong>0.775</strong></td>
+                <td>0.467</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <!-- End Quantitative Results -->
+
+    <!-- Qualitative Results (Placeholder for future) -->
+    <div id="qualitative-results" class="results-content" style="display: none;">
+      <div class="notification is-info is-light">
+        <p class="has-text-centered">Qualitative results coming soon.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Results Section -->
+
+<script>
+function switchResultTab(tabName) {
+  // Update tab active state
+  document.querySelectorAll('.tabs li').forEach(li => {
+    if (li.getAttribute('data-tab') === tabName) {
+      li.classList.add('is-active');
+    } else {
+      li.classList.remove('is-active');
+    }
+  });
+  
+  // Show/hide content
+  document.getElementById('quantitative-results').style.display = tabName === 'quantitative' ? 'block' : 'none';
+  document.getElementById('qualitative-results').style.display = tabName === 'qualitative' ? 'block' : 'none';
+}
+</script>
+
 <!-- Authors Wall -->
 <section class="section contributor-wall-section">
   <div class="container is-max-desktop">
@@ -802,13 +1314,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 <!-- End Authors Wall -->
 
-<!-- Acknowledgement -->
-<section class="section acknowledgement-section">
+<!-- Acknowledgements -->
+<section class="section acknowledgements-section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-4 has-text-centered">Acknowledgement</h2>
-        <div class="content has-text-justified acknowledgement-content">
+        <h2 class="title is-4 has-text-centered">Acknowledgements</h2>
+        <div class="content has-text-justified acknowledgements-content">
           <p>
             We would like to express our sincere gratitude to (in alphabetical order) Geer Chen, Jinhe Chen, Zhiyuan Chen, Yuanhaonan Deng, Shuo Feng, Wenxuan Guo, Junpeng Hu, Ruitao Hu, Ying Ji, Yixuan Jiang, Jiani Liu, Xinjie Liu, Xinsheng Liu, Jiyuan Ma, Qiyue Ma, Chenyang Mao, Yukun Miao, Ye Peng, Yuanyue Qiao, Dacheng Qin, Xiangnuo Ren, Xiaowen Song, Jingqi Tian, Hong Wang, Huixuechun Wang, Zheng Wang, Weipeng Wu, Zhaowei Wu, Kai Xing, Ran Yan, Leize Yang, Ruizhe Yang, Ao Yu, and Minhao Zhu for their essential contributions and dedicated efforts in conducting human evaluations.
           </p>
@@ -817,7 +1329,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </section>
-<!-- End Acknowledgement -->
+<!-- End Acknowledgements -->
 
 <!-- Visitor Distribution -->
 <section class="section visitor-section">
