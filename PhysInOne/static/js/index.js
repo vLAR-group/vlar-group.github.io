@@ -1,5 +1,19 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
+// Personal website links for authors
+window.PERSONAL_WEBSITES = {
+  "Siyuan Zhou": "https://mt-shark.github.io/ZhouSiyuan/",
+  "Hu Cheng": "http://www.ee.cuhk.edu.hk/~hcheng/",
+  "Yafei Yang": "https://yafeiy.github.io/",
+  "Hongtao Wen": "https://hatimwen.github.io/",
+  "Hejun Wang": "https://baiyebutingxuan.github.io/",
+  "Bing Wang": "https://www.polyu.edu.hk/en/aae/people/academic-staff/dr-wang-bing/",
+  "Bo Yang": "https://yang7879.github.io/",
+  "Chuhang Zou": "https://zouchuhang.github.io/",
+  "Junwei Jiang": "https://junwei-jiang.github.io/",
+  "Ziqi Li": "https://github.com/turswiming"
+};
+
 // Contributors functions
 function sortPhotosByOrder(photos) {
     const order = window.CONTRIBUTORS_ORDER || [];
@@ -73,9 +87,27 @@ function renderContributors(photos, grid) {
         image.alt = 'Contributor photo';
         image.loading = 'lazy';
 
+        const contributorName = extractContributorName(photoPath);
+        const personalWebsite = window.PERSONAL_WEBSITES && window.PERSONAL_WEBSITES[contributorName];
+
         const name = document.createElement('p');
         name.className = 'contributor-name';
-        name.textContent = extractContributorName(photoPath);
+
+        if (personalWebsite) {
+            const link = document.createElement('a');
+            link.href = personalWebsite;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = contributorName;
+            link.style.color = 'inherit';
+            link.style.textDecoration = 'none';
+            name.appendChild(link);
+            // Add hover effect
+            link.addEventListener('mouseenter', () => { link.style.color = '#4a90d9'; });
+            link.addEventListener('mouseleave', () => { link.style.color = 'inherit'; });
+        } else {
+            name.textContent = contributorName;
+        }
 
         avatarWrap.appendChild(image);
         card.appendChild(avatarWrap);
