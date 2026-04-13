@@ -11,7 +11,12 @@ window.PERSONAL_WEBSITES = {
   "Bo Yang": "https://yang7879.github.io/",
   "Chuhang Zou": "https://zouchuhang.github.io/",
   "Junwei Jiang": "https://junwei-jiang.github.io/",
-  "Ziqi Li": "https://github.com/turswiming"
+  "Ziqi Li": "https://github.com/turswiming",
+  "Jinxi Li": "https://scholar.google.com/citations?user=agnxFRoAAAAJ&hl=en",
+  "Peng Yun": "https://scholar.google.com.hk/citations?user=alRGtgwAAAAJ",
+  "Zihui Zhang": "https://scholar.google.com/citations?user=jiwazT8AAAAJ",
+  "Shenxing Wei": "https://scholar.google.com.hk/citations?user=5RH0zBMAAAAJ",
+  "Bowen Cheng": "https://scholar.google.com/citations?user=mmFhKOAAAAAJ&hl=en"
 };
 
 // Contributors functions
