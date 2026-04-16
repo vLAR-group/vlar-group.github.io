@@ -17,7 +17,8 @@ window.PERSONAL_WEBSITES = {
   "Zihui Zhang": "https://scholar.google.com/citations?user=jiwazT8AAAAJ",
   "Shenxing Wei": "https://scholar.google.com.hk/citations?user=5RH0zBMAAAAJ",
   "Bowen Cheng": "https://scholar.google.com/citations?user=mmFhKOAAAAAJ&hl=en",
-  "Jiahao Chen": "https://github.com/D2Simon"
+    "Jiahao Chen": "https://github.com/D2Simon",
+    "Chun Ho Yuen": "https://github.com/pych0413"
 };
 
 // Contributors functions
