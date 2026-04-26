@@ -14,7 +14,7 @@ window.PERSONAL_WEBSITES = {
   "Ziqi Li": "https://github.com/turswiming",
   "Jinxi Li": "https://scholar.google.com/citations?user=agnxFRoAAAAJ&hl=en",
   "Peng Yun": "https://scholar.google.com.hk/citations?user=alRGtgwAAAAJ",
-  "Zihui Zhang": "https://scholar.google.com/citations?user=jiwazT8AAAAJ",
+    "Zihui Zhang": "https://zihui0930.github.io",
   "Shenxing Wei": "https://scholar.google.com.hk/citations?user=5RH0zBMAAAAJ",
   "Bowen Cheng": "https://scholar.google.com/citations?user=mmFhKOAAAAAJ&hl=en",
     "Jiahao Chen": "https://github.com/D2Simon",
