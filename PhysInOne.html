@@ -219,6 +219,7 @@
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="#abstract">Dataset Overview</a>
+        <a class="navbar-item" href="#downloads">Live Downloads</a>
         <a class="navbar-item" href="#showcase">Dataset Examples</a>
         <a class="navbar-item" href="#results">Benchmark Results</a>
         <a class="navbar-item" href="#authors">Authors</a>
@@ -446,6 +447,80 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 <!-- End paper abstract -->
+
+
+<!-- Live Download Statistics -->
+<section id="downloads" class="section download-stats-section">
+  <div class="container is-max-desktop">
+    <div class="download-stats-heading has-text-centered">
+      <span class="download-stats-kicker">Hugging Face &middot; Live statistics</span>
+      <h2 class="title is-3">Dataset Downloads</h2>
+      <p class="subtitle is-6">
+        Live usage across the main dataset repository and all 16 released data shards.
+      </p>
+    </div>
+
+    <div class="download-status-bar" aria-live="polite">
+      <div class="download-status-copy">
+        <span id="download-live-dot" class="download-live-dot is-loading" aria-hidden="true"></span>
+        <span id="download-status-text">Showing the Aug 28 snapshot while live data loads&hellip;</span>
+      </div>
+      <button id="download-refresh" class="download-refresh-button" type="button" aria-label="Refresh download statistics">
+        <span class="icon" aria-hidden="true"><i class="fas fa-sync-alt"></i></span>
+        <span>Refresh</span>
+      </button>
+    </div>
+
+    <div class="download-metrics-grid">
+      <article class="download-metric-card download-metric-card-primary">
+        <div class="download-metric-icon" aria-hidden="true"><i class="fas fa-download"></i></div>
+        <p class="download-metric-label">All-time downloads</p>
+        <p id="download-total-all-time" class="download-metric-value">804,802</p>
+        <p class="download-metric-note">Main repository + P01&ndash;P16</p>
+      </article>
+
+      <article class="download-metric-card">
+        <div class="download-metric-icon" aria-hidden="true"><i class="fas fa-calendar-alt"></i></div>
+        <p class="download-metric-label">Last 30 days</p>
+        <p id="download-total-30d" class="download-metric-value">450,327</p>
+        <p class="download-metric-note">Rolling Hugging Face reporting window</p>
+      </article>
+
+      <article class="download-metric-card">
+        <div class="download-metric-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></div>
+        <p class="download-metric-label">Shard downloads</p>
+        <p id="download-shards-all-time" class="download-metric-value">791,512</p>
+        <p class="download-metric-note">P01&ndash;P16 &middot; all time</p>
+      </article>
+
+      <article class="download-metric-card">
+        <div class="download-metric-icon" aria-hidden="true"><i class="fas fa-database"></i></div>
+        <p class="download-metric-label">Repositories tracked</p>
+        <p id="download-repositories-loaded" class="download-metric-value">17<span class="download-metric-denominator">/17</span></p>
+        <p class="download-metric-note">Main repository + 16 complete shards</p>
+      </article>
+    </div>
+
+    <details class="download-breakdown">
+      <summary>
+        <span>
+          <span class="download-breakdown-title">Per-repository breakdown</span>
+          <span class="download-breakdown-hint">All-time and 30-day downloads for every repository</span>
+        </span>
+        <span class="download-breakdown-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+      </summary>
+      <div id="download-repository-grid" class="download-repository-grid" aria-live="polite">
+        <p class="download-repository-loading">Loading repository statistics&hellip;</p>
+      </div>
+    </details>
+
+    <p class="download-stats-footnote has-text-centered">
+      Counts are repository-level download events reported by Hugging Face and are not deduplicated users.
+      <a href="https://huggingface.co/datasets/vLAR/PhysInOne" target="_blank" rel="noopener">Open the dataset on Hugging Face <span aria-hidden="true">&nearr;</span></a>
+    </p>
+  </div>
+</section>
+<!-- End Live Download Statistics -->
 
 
 <!-- Video Showcase Section -->

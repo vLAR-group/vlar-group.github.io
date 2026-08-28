@@ -202,3 +202,286 @@ document.addEventListener('DOMContentLoaded', function() {
     setupVideoCarouselAutoplay();
     initContributors();
 });
+
+// ========================================
+// Live Hugging Face download statistics
+// ========================================
+
+const DOWNLOAD_STATS_REPOSITORIES = [
+  { id: 'vLAR/PhysInOne', label: 'vLAR/PhysInOne', shortLabel: 'Main', isMain: true },
+  ...Array.from({ length: 16 }, (_, index) => {
+    const part = String(index + 1).padStart(2, '0');
+    return {
+      id: 'PhysInOneP' + part + '/PhysInOneP' + part,
+      label: 'PhysInOneP' + part,
+      shortLabel: 'P' + part,
+      isMain: false
+    };
+  })
+];
+
+const DOWNLOAD_STATS_FALLBACK = [
+  { id: 'vLAR/PhysInOne', allTime: 13290, last30Days: 1340 },
+  { id: 'PhysInOneP01/PhysInOneP01', allTime: 71050, last30Days: 34493 },
+  { id: 'PhysInOneP02/PhysInOneP02', allTime: 80052, last30Days: 41552 },
+  { id: 'PhysInOneP03/PhysInOneP03', allTime: 73893, last30Days: 44654 },
+  { id: 'PhysInOneP04/PhysInOneP04', allTime: 73995, last30Days: 43596 },
+  { id: 'PhysInOneP05/PhysInOneP05', allTime: 70670, last30Days: 41550 },
+  { id: 'PhysInOneP06/PhysInOneP06', allTime: 70519, last30Days: 41665 },
+  { id: 'PhysInOneP07/PhysInOneP07', allTime: 56326, last30Days: 36665 },
+  { id: 'PhysInOneP08/PhysInOneP08', allTime: 57754, last30Days: 37762 },
+  { id: 'PhysInOneP09/PhysInOneP09', allTime: 55755, last30Days: 36055 },
+  { id: 'PhysInOneP10/PhysInOneP10', allTime: 58132, last30Days: 37951 },
+  { id: 'PhysInOneP11/PhysInOneP11', allTime: 53900, last30Days: 36206 },
+  { id: 'PhysInOneP12/PhysInOneP12', allTime: 18636, last30Days: 4176 },
+  { id: 'PhysInOneP13/PhysInOneP13', allTime: 15496, last30Days: 492 },
+  { id: 'PhysInOneP14/PhysInOneP14', allTime: 18991, last30Days: 4585 },
+  { id: 'PhysInOneP15/PhysInOneP15', allTime: 15865, last30Days: 7107 },
+  { id: 'PhysInOneP16/PhysInOneP16', allTime: 478, last30Days: 478 }
+];
+
+const DOWNLOAD_STATS_CACHE_KEY = 'physinone-hf-download-stats-v1';
+const DOWNLOAD_STATS_FALLBACK_DATE = 'Aug 28, 2026';
+const downloadNumberFormatter = new Intl.NumberFormat();
+
+function isCompleteDownloadStats(rows) {
+  if (!Array.isArray(rows) || rows.length !== DOWNLOAD_STATS_REPOSITORIES.length) {
+    return false;
+  }
+
+  const expectedIds = new Set(DOWNLOAD_STATS_REPOSITORIES.map((repo) => repo.id));
+  return rows.every((row) => (
+    expectedIds.has(row.id) &&
+    Number.isFinite(row.allTime) &&
+    Number.isFinite(row.last30Days)
+  ));
+}
+
+function readDownloadStatsCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(DOWNLOAD_STATS_CACHE_KEY));
+    if (cached && isCompleteDownloadStats(cached.rows) && cached.updatedAt) {
+      return cached;
+    }
+  } catch (error) {
+    console.warn('Unable to read download statistics cache:', error);
+  }
+  return null;
+}
+
+function writeDownloadStatsCache(rows, updatedAt) {
+  try {
+    localStorage.setItem(DOWNLOAD_STATS_CACHE_KEY, JSON.stringify({ rows, updatedAt }));
+  } catch (error) {
+    console.warn('Unable to cache download statistics:', error);
+  }
+}
+
+function setDownloadStatsStatus(state, message) {
+  const dot = document.getElementById('download-live-dot');
+  const text = document.getElementById('download-status-text');
+
+  if (dot) {
+    dot.className = 'download-live-dot';
+    if (state === 'live') dot.classList.add('is-live');
+    if (state === 'error') dot.classList.add('is-error');
+    if (state === 'loading') dot.classList.add('is-loading');
+  }
+
+  if (text) {
+    text.textContent = message;
+  }
+}
+
+function formatDownloadStatsTime(timestamp) {
+  const date = new Date(timestamp);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short'
+  }).format(date);
+}
+
+function renderDownloadStats(rows) {
+  if (!isCompleteDownloadStats(rows)) return;
+
+  const orderedRows = DOWNLOAD_STATS_REPOSITORIES.map((repo) => {
+    const stats = rows.find((row) => row.id === repo.id);
+    return { ...repo, ...stats };
+  });
+
+  const allTime = orderedRows.reduce((sum, row) => sum + row.allTime, 0);
+  const last30Days = orderedRows.reduce((sum, row) => sum + row.last30Days, 0);
+  const shardAllTime = orderedRows
+    .filter((row) => !row.isMain)
+    .reduce((sum, row) => sum + row.allTime, 0);
+
+  const allTimeElement = document.getElementById('download-total-all-time');
+  const last30DaysElement = document.getElementById('download-total-30d');
+  const shardElement = document.getElementById('download-shards-all-time');
+  const loadedElement = document.getElementById('download-repositories-loaded');
+
+  if (allTimeElement) allTimeElement.textContent = downloadNumberFormatter.format(allTime);
+  if (last30DaysElement) last30DaysElement.textContent = downloadNumberFormatter.format(last30Days);
+  if (shardElement) shardElement.textContent = downloadNumberFormatter.format(shardAllTime);
+  if (loadedElement) {
+    loadedElement.textContent = '';
+    loadedElement.append(document.createTextNode(String(orderedRows.length)));
+    const denominator = document.createElement('span');
+    denominator.className = 'download-metric-denominator';
+    denominator.textContent = '/' + DOWNLOAD_STATS_REPOSITORIES.length;
+    loadedElement.appendChild(denominator);
+  }
+
+  renderDownloadRepositoryCards(orderedRows);
+}
+
+function renderDownloadRepositoryCards(rows) {
+  const grid = document.getElementById('download-repository-grid');
+  if (!grid) return;
+
+  const cards = rows.map((repo) => {
+    const card = document.createElement('article');
+    card.className = 'download-repository-card' + (repo.isMain ? ' is-main' : '');
+
+    const heading = document.createElement('div');
+    heading.className = 'download-repository-name';
+
+    const link = document.createElement('a');
+    link.href = 'https://huggingface.co/datasets/' + repo.id;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = repo.label;
+    link.title = 'Open ' + repo.label + ' on Hugging Face';
+
+    const tag = document.createElement('span');
+    tag.className = 'download-repository-tag';
+    tag.textContent = repo.isMain ? 'Main' : 'Complete';
+
+    heading.append(link, tag);
+
+    const values = document.createElement('div');
+    values.className = 'download-repository-values';
+
+    const allTime = document.createElement('div');
+    allTime.className = 'download-repository-value';
+    const allTimeNumber = document.createElement('strong');
+    allTimeNumber.textContent = downloadNumberFormatter.format(repo.allTime);
+    const allTimeLabel = document.createElement('span');
+    allTimeLabel.textContent = 'All time';
+    allTime.append(allTimeNumber, allTimeLabel);
+
+    const recent = document.createElement('div');
+    recent.className = 'download-repository-value';
+    const recentNumber = document.createElement('strong');
+    recentNumber.textContent = downloadNumberFormatter.format(repo.last30Days);
+    const recentLabel = document.createElement('span');
+    recentLabel.textContent = 'Last 30 days';
+    recent.append(recentNumber, recentLabel);
+
+    values.append(allTime, recent);
+    card.append(heading, values);
+    return card;
+  });
+
+  grid.replaceChildren(...cards);
+}
+
+async function fetchDownloadStats() {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 12000);
+
+  try {
+    const requests = DOWNLOAD_STATS_REPOSITORIES.map(async (repo) => {
+      const encodedId = repo.id.split('/').map(encodeURIComponent).join('/');
+      const url = 'https://huggingface.co/api/datasets/' + encodedId + '?expand=downloads&expand=downloadsAllTime';
+      const response = await fetch(url, {
+        headers: { Accept: 'application/json' },
+        cache: 'no-store',
+        signal: controller.signal
+      });
+
+      if (!response.ok) {
+        throw new Error(repo.id + ' returned HTTP ' + response.status);
+      }
+
+      const payload = await response.json();
+      const allTime = Number(payload.downloadsAllTime);
+      const last30Days = Number(payload.downloads);
+
+      if (!Number.isFinite(allTime) || !Number.isFinite(last30Days)) {
+        throw new Error(repo.id + ' returned invalid download statistics');
+      }
+
+      return { id: repo.id, allTime, last30Days };
+    });
+
+    const results = await Promise.allSettled(requests);
+    const rows = results
+      .filter((result) => result.status === 'fulfilled')
+      .map((result) => result.value);
+
+    if (!isCompleteDownloadStats(rows)) {
+      const failures = results.filter((result) => result.status === 'rejected');
+      throw new Error('Only ' + rows.length + '/' + DOWNLOAD_STATS_REPOSITORIES.length + ' repositories responded (' + failures.length + ' failed)');
+    }
+
+    return rows;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function refreshDownloadStats() {
+  const refreshButton = document.getElementById('download-refresh');
+  if (refreshButton) {
+    refreshButton.disabled = true;
+    refreshButton.classList.add('is-refreshing');
+  }
+
+  setDownloadStatsStatus('loading', 'Refreshing live statistics from Hugging Face...');
+
+  try {
+    const rows = await fetchDownloadStats();
+    const updatedAt = new Date().toISOString();
+    renderDownloadStats(rows);
+    writeDownloadStatsCache(rows, updatedAt);
+    setDownloadStatsStatus('live', 'Live from Hugging Face \u00b7 updated ' + formatDownloadStatsTime(updatedAt));
+  } catch (error) {
+    console.warn('Failed to refresh Hugging Face download statistics:', error);
+    const cached = readDownloadStatsCache();
+    if (cached) {
+      renderDownloadStats(cached.rows);
+      setDownloadStatsStatus('error', 'Live refresh unavailable \u00b7 showing data from ' + formatDownloadStatsTime(cached.updatedAt));
+    } else {
+      renderDownloadStats(DOWNLOAD_STATS_FALLBACK);
+      setDownloadStatsStatus('error', 'Live refresh unavailable \u00b7 showing the ' + DOWNLOAD_STATS_FALLBACK_DATE + ' snapshot');
+    }
+  } finally {
+    if (refreshButton) {
+      refreshButton.disabled = false;
+      refreshButton.classList.remove('is-refreshing');
+    }
+  }
+}
+
+function initDownloadStats() {
+  if (!document.getElementById('downloads')) return;
+
+  const cached = readDownloadStatsCache();
+  if (cached) {
+    renderDownloadStats(cached.rows);
+    setDownloadStatsStatus('loading', 'Updating cached statistics from ' + formatDownloadStatsTime(cached.updatedAt) + '...');
+  } else {
+    renderDownloadStats(DOWNLOAD_STATS_FALLBACK);
+  }
+
+  const refreshButton = document.getElementById('download-refresh');
+  if (refreshButton) {
+    refreshButton.addEventListener('click', refreshDownloadStats);
+  }
+
+  refreshDownloadStats();
+}
+
+document.addEventListener('DOMContentLoaded', initDownloadStats);
