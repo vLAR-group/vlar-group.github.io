@@ -319,20 +319,10 @@ function renderDownloadStats(rows) {
   const allTimeElement = document.getElementById('download-total-all-time');
   const last30DaysElement = document.getElementById('download-total-30d');
   const shardElement = document.getElementById('download-shards-all-time');
-  const loadedElement = document.getElementById('download-repositories-loaded');
 
   if (allTimeElement) allTimeElement.textContent = downloadNumberFormatter.format(allTime);
   if (last30DaysElement) last30DaysElement.textContent = downloadNumberFormatter.format(last30Days);
   if (shardElement) shardElement.textContent = downloadNumberFormatter.format(shardAllTime);
-  if (loadedElement) {
-    loadedElement.textContent = '';
-    loadedElement.append(document.createTextNode(String(orderedRows.length)));
-    const denominator = document.createElement('span');
-    denominator.className = 'download-metric-denominator';
-    denominator.textContent = '/' + DOWNLOAD_STATS_REPOSITORIES.length;
-    loadedElement.appendChild(denominator);
-  }
-
   renderDownloadRepositoryCards(orderedRows);
 }
 
