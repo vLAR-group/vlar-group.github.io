@@ -82,15 +82,22 @@
                 Visual Physics Learning and Reasoning
             </h1>
             <p class="text-xl text-slate-300 font-light mb-8">
-                Bridging Computer Vision, Physical Simulation, and Embodied AI
+                Advancing Physical World Understanding, Generation, Simulation, and Embodied AI
             </p>
-            <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
-                <a href="https://huggingface.co/datasets/vLAR/PhysInOne" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition flex items-center gap-2">
-                    🤗 PhysInOne Dataset (Hugging Face)
-                </a>
-                <a href="https://huggingface.co/spaces/vLAR/PhysInOne-Leaderboard" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg transition">
-                    🏆 Explore Challenge
-                </a>
+            <div class="space-y-4">
+                <!-- 两个宽度一致的按钮 -->
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+                    <a href="https://huggingface.co/datasets/vLAR/PhysInOne" target="_blank" class="w-64 py-3 px-6 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-lg shadow transition flex items-center justify-center gap-2 text-center">
+                        🤗 PhysInOne Dataset
+                    </a>
+                    <a href="#challenge" class="w-64 py-3 px-6 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white rounded-lg shadow transition flex items-center justify-center gap-2 text-center">
+                        🏆 PhysInOne Challenge
+                    </a>
+                </div>
+                <!-- 按钮下方的地点与时间说明 -->
+                <p class="text-slate-300 text-sm font-medium tracking-wide">
+                    Seattle, USA · June 20 or 21, 2027 (Half Day, Tentative)
+                </p>
             </div>
         </div>
     </header>
@@ -105,7 +112,7 @@
                 At its core, visual scenes are more than appearance or geometry. They are active reflections of the physical nature of our world. Unlocking this physical essence within visual content represents a crucial milestone for artificial intelligence, driving the transition from passive observation to actionable, physically grounded reasoning.
             </p>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-                The <strong>ViPhi</strong> workshop unites researchers across computer vision, simulation, and robotics to anchor physics learning from visual inputs. Our scope spans physics-aware video generation, future frame prediction, physical property estimation, motion transfer, physics-grounded 3D and 4D reconstruction, physical fidelity benchmarking, and physics-aware robotic manipulation, paving the way for physically grounded, actionable AI.
+                The <strong>ViPhi</strong> workshop unites researchers across computer vision, machine learning, and robotics to anchor physics learning from visual inputs. Our scope spans physics-aware video generation, future frame prediction, physical property estimation, motion transfer, physics-grounded 3D and 4D reconstruction, physical fidelity benchmarking, and physics-aware robotic manipulation, paving the way for physically grounded, actionable AI.
             </p>
         </section>
 
@@ -113,6 +120,10 @@
         <section id="topics" class="space-y-6">
             <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Workshop Core Topics</h2>
             <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <h3 class="font-semibold text-lg text-blue-900 dark:text-blue-400 mb-2">Physics-Grounded 3D/4D World Models</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Integrating physical dynamics into neural or explicit spatial representations (e.g., dynamic Gaussian Splatting) to capture physical response over time.</p>
+                </div>
                 <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <h3 class="font-semibold text-lg text-blue-900 dark:text-blue-400 mb-2">Physics-Aware Video Generation</h3>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Injecting explicit physical principles into generative video models to eradicate unphysical artifacts like ungrounded acceleration and object penetration.</p>
@@ -129,10 +140,7 @@
                     <h3 class="font-semibold text-lg text-blue-900 dark:text-blue-400 mb-2">Motion Transfer</h3>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Transferring complex motion patterns across heterogeneous shapes respecting realistic kinematics, force propagation, and contact boundaries.</p>
                 </div>
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                    <h3 class="font-semibold text-lg text-blue-900 dark:text-blue-400 mb-2">Physics-Grounded 3D/4D Representation</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-300">Integrating physical dynamics into neural or explicit spatial representations (e.g., dynamic Gaussian Splatting) to capture physical response over time.</p>
-                </div>
+                
                 <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <h3 class="font-semibold text-lg text-blue-900 dark:text-blue-400 mb-2">Metrics & Physical Fidelity Benchmarking</h3>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Establishing rigorous quantitative evaluation protocols and datasets dedicated to measuring physical plausibility beyond standard PSNR/FVD.</p>
