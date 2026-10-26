@@ -19,33 +19,56 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased transition-colors duration-300">
 
-    <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+<!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <!-- Group Logo Image Placeholder -->
-                <!-- <a href="#" class="flex items-center space-x-2">
-                    <img src="ViPhi/vlar_logo.png" alt="VLAR Lab Logo" class="h-9 w-auto object-contain">
+                <!-- <a href="https://vlar-group.github.io/" target="_blank" class="flex items-center space-x-2">
+                    <img src="assets/logo.png" alt="VLAR Lab Logo" class="h-9 w-auto object-contain">
                 </a> -->
                 <div class="font-bold text-xl text-blue-900 dark:text-blue-400 tracking-tight">
                     ViPhi <span class="text-xs px-2 py-0.5 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 rounded-full font-medium ml-2">CVPR 2027</span>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600 dark:text-slate-300">
-                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
-                <a href="#topics" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Topics</a>
-                <a href="#challenge" class="hover:text-blue-600 dark:hover:text-blue-400 transition">PhysInOne Challenge</a>
-                <a href="#schedule" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Schedule</a>
-                <a href="#speakers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Speakers</a>
-                <a href="#dates" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Dates</a>
-                <a href="#organizers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Organizers</a>
+
+            <!-- Desktop & Right Actions -->
+            <div class="flex items-center space-x-4">
+                <!-- Desktop Menu Links -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+                    <a href="#topics" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Topics</a>
+                    <a href="#challenge" class="hover:text-blue-600 dark:hover:text-blue-400 transition">PhysInOne Challenge</a>
+                    <a href="#schedule" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Schedule</a>
+                    <a href="#speakers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Speakers</a>
+                    <a href="#dates" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Dates</a>
+                    <a href="#organizers" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Organizers</a>
+                </div>
                 
                 <!-- Dark Mode Toggle Button -->
                 <button id="theme-toggle" type="button" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition focus:outline-none">
                     <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" type="button" class="md:hidden p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#topics" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Topics</a>
+            <a href="#challenge" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">PhysInOne Challenge</a>
+            <a href="#schedule" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Schedule</a>
+            <a href="#speakers" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Speakers</a>
+            <a href="#dates" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Dates</a>
+            <a href="#organizers" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Organizers</a>
         </div>
     </nav>
 
@@ -402,6 +425,19 @@
                     localStorage.setItem('color-theme', 'dark');
                 }
             }
+        });
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 点击菜单项后自动收起菜单（可选）
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>
