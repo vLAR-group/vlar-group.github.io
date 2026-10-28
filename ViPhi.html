@@ -275,24 +275,37 @@
 
         <!-- Invited Speakers -->
         <section id="speakers" class="space-y-6">
-            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Invited Speakers</h2>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Speakers (A-Z by Last Name)</h2>
             <div class="grid sm:grid-cols-2 gap-6">
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
-                    <div class="w-16 h-16 bg-slate-200 dark:bg-slate-800 rounded-full flex-shrink-0 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold">A</div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 dark:text-white">To Be Announced</h3>
-                        <p class="text-xs text-blue-600 dark:text-blue-400 font-medium mb-2">To Be Announced</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">To Be Announced</p>
+                
+                <!-- Speaker 1 卡片 -->
+                <a href="https://research.nvidia.com/person/shalini-de-mello" target="_blank" class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4 hover:border-blue-500 dark:hover:border-blue-500 transition group">
+                    <!-- 放照片的位置 -->
+                    <div class="w-16 h-16 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden flex-shrink-0 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500 font-bold">
+                        <img src="ViPhi/speakers/Shalini De Mello.jpg" alt="Shalini De Mello" class="w-full h-full object-cover hidden" onload="this.classList.remove('hidden')">
+                        <!-- <span class="group-hover:hidden">A</span> -->
                     </div>
-                </div>
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
-                    <div class="w-16 h-16 bg-slate-200 dark:bg-slate-800 rounded-full flex-shrink-0 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold">B</div>
                     <div>
-                        <h3 class="font-bold text-slate-900 dark:text-white">To Be Announced</h3>
-                        <p class="text-xs text-blue-600 dark:text-blue-400 font-medium mb-2">To Be Announced</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">To Be Announced</p>
+                        <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Shalini De Mello</h3>
+                        <p class="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">Director of Research & Distinguished Research Scientist</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">NVIDIA</p>
                     </div>
-                </div>
+                </a>
+
+                <!-- Speaker 2 卡片 -->
+                <a href="https://www.robots.ox.ac.uk/~vedaldi/" target="_blank" class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4 hover:border-blue-500 dark:hover:border-blue-500 transition group">
+                    <!-- 放照片的位置 -->
+                    <div class="w-16 h-16 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden flex-shrink-0 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-500 font-bold">
+                        <img src="ViPhi/speakers/Andrea Vedaldi.jpg" alt="Andrea Vedaldi" class="w-full h-full object-cover hidden" onload="this.classList.remove('hidden')">
+                        <!-- <span class="group-hover:hidden">B</span> -->
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">Andrea Vedaldi</h3>
+                        <p class="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">Professor</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Oxford</p>
+                    </div>
+                </a>
+
             </div>
         </section>
 
@@ -338,7 +351,7 @@
 
         <!-- Organizers & Senior Advisor Section (Photo Grid Style) -->
         <section id="organizers" class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 space-y-10">
-<!-- Organizers -->
+        <!-- Organizers -->
             <div>
                 <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">Organizers</h2>
                 <!-- 使用 Flex 布局 + justify-center 实现整体居中，并用 gap 控制间距 -->
