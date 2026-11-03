@@ -83,8 +83,11 @@
             <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm font-semibold mb-6 border border-blue-400/30">
                 CVPR 2027 Workshop Proposal
             </span>
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-                Visual Physics Learning and Reasoning
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-snug sm:leading-tight">
+                ViPhi: Challenge on<br>
+                <span class="inline-block mt-0.5 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent dark:from-teal-300 dark:via-cyan-300 dark:to-sky-400">
+                    Visual Physics Learning and Reasoning
+                </span>
             </h1>
             <p class="text-xl text-slate-300 font-light mb-8">
                 Advancing Physical World Understanding, Generation, Simulation, and Embodied AI
@@ -106,6 +109,7 @@
             </div>
         </div>
     </header>
+
 
     <!-- Main Container -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
@@ -154,40 +158,78 @@
         </section>
 
         <!-- PhysInOne Challenge -->
-        <section id="challenge" class="bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-2xl p-8 shadow-md">
-            <h2 class="text-2xl font-bold mb-4">PhysInOne Challenge</h2>
-            <p class="text-slate-300 mb-6 leading-relaxed">
-                We host the <strong>PhysInOne Challenge</strong> utilizing the large-scale multi-physics dataset collected and annotated by our group. All training data is publicly available on Hugging Face, evaluated via a dedicated private test split.
-            </p>
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div class="bg-white/10 p-4 rounded-lg border border-white/10">
-                    <span class="text-blue-300 font-semibold text-sm">Track 1</span>
-                    <h4 class="font-bold text-lg mb-1">Physics-Aware Video Generation</h4>
-                    <p class="text-xs text-slate-300">Evaluating temporal smoothness and real-world mechanics compliance.</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg border border-white/10">
-                    <span class="text-blue-300 font-semibold text-sm">Track 2</span>
-                    <h4 class="font-bold text-lg mb-1">Future Frame Prediction</h4>
-                    <p class="text-xs text-slate-300">Benchmarking predictive capabilities across short-term and long-term horizons.</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg border border-white/10">
-                    <span class="text-blue-300 font-semibold text-sm">Track 3</span>
-                    <h4 class="font-bold text-lg mb-1">Physical Properties Estimation</h4>
-                    <p class="text-xs text-slate-300">Testing inverse physics performance to recover stiffness, viscosity, and friction.</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg border border-white/10">
-                    <span class="text-blue-300 font-semibold text-sm">Track 4</span>
-                    <h4 class="font-bold text-lg mb-1">Motion Transfer</h4>
-                    <p class="text-xs text-slate-300">Assessing fidelity of transferring complex multi-physics motions to novel targets.</p>
-                </div>
+<section id="challenge" class="bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-2xl p-8 shadow-md space-y-6">
+    <!-- Header with Server Ready Status -->
+    <div>
+        <div class="flex items-center gap-2 mb-3">
+            <span class="px-2.5 py-0.5 text-xs font-semibold bg-blue-500/30 text-blue-200 border border-blue-400/30 rounded-full">Official Competition</span>
+            <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wide">Evaluation Server Ready</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-3">PhysInOne Challenge</h2>
+        <p class="text-slate-300 leading-relaxed text-sm">
+            We host the <strong>PhysInOne Challenge</strong> utilizing the large-scale multi-physics dataset collected and annotated by our group. All training data is publicly available on Hugging Face, evaluated via a dedicated private test split.
+        </p>
+    </div>
+
+    <!-- 4 Tracks Grid -->
+    <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-white/10 p-4 rounded-lg border border-white/10">
+            <span class="text-blue-300 font-semibold text-sm">Track 1</span>
+            <h4 class="font-bold text-base mb-1">Physics-Aware Video Generation</h4>
+            <p class="text-xs text-slate-300">Evaluating temporal smoothness and real-world mechanics compliance.</p>
+        </div>
+        <div class="bg-white/10 p-4 rounded-lg border border-white/10">
+            <span class="text-blue-300 font-semibold text-sm">Track 2</span>
+            <h4 class="font-bold text-base mb-1">Future Frame Prediction</h4>
+            <p class="text-xs text-slate-300">Benchmarking predictive capabilities across short-term and long-term horizons.</p>
+        </div>
+        <div class="bg-white/10 p-4 rounded-lg border border-white/10">
+            <span class="text-blue-300 font-semibold text-sm">Track 3</span>
+            <h4 class="font-bold text-base mb-1">Physical Properties Estimation</h4>
+            <p class="text-xs text-slate-300">Testing inverse physics performance to recover stiffness, viscosity, and friction.</p>
+        </div>
+        <div class="bg-white/10 p-4 rounded-lg border border-white/10">
+            <span class="text-blue-300 font-semibold text-sm">Track 4</span>
+            <h4 class="font-bold text-base mb-1">Motion Transfer</h4>
+            <p class="text-xs text-slate-300">Assessing fidelity of transferring complex multi-physics motions to novel targets.</p>
+        </div>
+    </div>
+
+    <!-- Live Leaderboard Embedded Widget -->
+    <div class="bg-slate-950/80 rounded-xl p-4 shadow-xl border border-slate-800 text-left">
+        <!-- Header / Status Bar -->
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                    🏆 Live Challenge Leaderboard
+                </span>
             </div>
-        </section>
+            <a href="https://huggingface.co/spaces/vLAR/PhysInOne-Leaderboard" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1 transition">
+                Open Fullscreen Leaderboard ↗
+            </a>
+        </div>
+
+        <!-- Embedded Leaderboard Iframe -->
+        <div class="relative w-full rounded-lg overflow-hidden bg-slate-950 border border-slate-800/80 shadow-inner" style="height: 420px;">
+            <iframe 
+                src="https://vlar-physinone-leaderboard.hf.space" 
+                frameborder="0" 
+                class="w-full h-full"
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
 
         <!-- Schedule Section -->
         <section id="schedule" class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
             <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Tentative Schedule (Half-Day)</h2>
             <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                The workshop is a half-day program assigned by CVPR to take place either in the <strong class="text-slate-900 dark:text-white">Morning Session (08:00 - 12:30)</strong> <span class="text-blue-600 dark:text-blue-400 font-semibold">OR</span> the <strong class="text-slate-900 dark:text-white">Afternoon Session (12:30 - 17:00)</strong> on June 20 or 21, 2027.
+                The workshop is a half-day program assigned by CVPR to take place either in the <strong class="text-slate-900 dark:text-white">Morning Session (08:00 - 12:30)</strong> <span class="text-blue-600 dark:text-blue-400 font-semibold">OR</span> the <strong class="text-slate-900 dark:text-white">Afternoon Session (13:00 - 17:30)</strong> on June 20 or 21, 2027.
             </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -202,82 +244,82 @@
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
                                 08:00 - 08:05
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 12:30 - 12:35</div>
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 13:00 - 13:05</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Opening Remarks</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Welcome & Workshop Overview by Organizers</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Welcome & Workshop Overview</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
                                 08:05 - 08:40
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 12:35 - 13:10</div>
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 13:05 - 13:40</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Keynote Talk 1</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 1 (30m talk + 5m Q&A)</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 1 (30m + 5m Q&A)</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
                                 08:40 - 09:15
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 13:10 - 13:45</div>
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 13:40 - 14:15</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Keynote Talk 2</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 2 (30m talk + 5m Q&A)</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 2 (30m + 5m Q&A)</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
-                                09:15 - 10:10
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 13:45 - 14:40</div>
+                                09:15 - 10:00
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 14:15 - 15:00</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Coffee Break & Poster Session</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Networking, Refreshments & Extended Interactive Posters</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Networking & Posters</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
-                                10:10 - 10:45
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 14:40 - 15:15</div>
+                                10:00 - 10:25
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 15:00 - 15:25</div>
+                            </td>
+                            <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Oral Presentations (Part I)</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">4 papers × 6m (5m talk + 1m Q&A)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
+                                10:25 - 11:00
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 15:25 - 16:00</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Keynote Talk 3</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 3 (30m talk + 5m Q&A)</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 3 (30m + 5m Q&A)</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
-                                10:45 - 11:05
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 15:15 - 15:35</div>
+                                11:00 - 11:25
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 16:00 - 16:25</div>
                             </td>
-                            <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Oral Paper Presentations (Part I)</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Accepted Papers Spotlight (4 papers × 5m: 4m talk + 1m Q&A)</td>
+                            <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Oral Presentations (Part II)</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">4 papers × 6m (5m talk + 1m Q&A)</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
-                                11:05 - 11:40
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 15:35 - 16:10</div>
+                                11:25 - 12:00
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 16:25 - 17:00</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Keynote Talk 4</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 4 (30m talk + 5m Q&A)</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
-                                11:40 - 12:00
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 16:10 - 16:30</div>
-                            </td>
-                            <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Oral Paper Presentations (Part II)</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Accepted Papers Spotlight (4 papers × 5m: 4m talk + 1m Q&A)</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Invited Speaker 4 (30m + 5m Q&A)</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
                                 12:00 - 12:25
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 16:30 - 16:55</div>
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 17:00 - 17:25</div>
                             </td>
-                            <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">PhysInOne Challenge & Award Ceremony</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Challenge Summary, 4 Track Winner Talks (4 × 5m: 4m talk + 1m Q&A) & Award Ceremony</td>
+                            <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">PhysInOne Challenge & Awards</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Challenge Summary & 4 Winner Talks</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-medium text-blue-600 dark:text-blue-400 leading-snug">
                                 12:25 - 12:30
-                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 16:55 - 17:00</div>
+                                <div class="text-xs text-slate-400 dark:text-slate-500 font-normal mt-0.5">or 17:25 - 17:30</div>
                             </td>
                             <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">Closing Remarks</td>
-                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Best Paper Award Announcement & Concluding Remarks</td>
+                            <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Best Paper & Concluding Remarks</td>
                         </tr>
                     </tbody>
                 </table>
@@ -339,43 +381,112 @@
 
             </div>
         </section>
-        <!-- Important Dates / Timeline -->
+
+        <!-- Important Dates / Timeline Section -->
         <section id="dates" class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200 dark:border-slate-800">
-            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Important Dates & Timeline</h2>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Important Dates & Timeline</h2>
             <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">All submission deadlines are at 23:59 Anywhere on Earth (AoE).</p>
-            <div class="space-y-4 border-l-2 border-blue-600 dark:border-blue-500 pl-4 ml-2">
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">February 15, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Abstract registration deadline</h4>
+
+            <!-- 3-Column Timeline Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Track 1: Proceedings (Archival) -->
+                <div class="bg-purple-50/50 dark:bg-purple-950/20 rounded-xl p-5 border border-purple-200 dark:border-purple-800/50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-purple-200 dark:border-purple-800/60">
+                            <h3 class="font-bold text-purple-900 dark:text-purple-300 text-sm">Proceedings</h3>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 bg-purple-200 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded">Archival</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="text-xs font-semibold text-purple-700 dark:text-purple-400">Feb 15, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Abstract Registration</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-purple-700 dark:text-purple-400">Feb 19, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Submission Deadline</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-purple-700 dark:text-purple-400">Mar 12, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Reviewer Deadline</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-purple-700 dark:text-purple-400">Mar 22, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Notification to Authors</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-purple-700 dark:text-purple-400">Apr 23, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Camera-Ready Deadline</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">February 19, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Paper submission deadline</h4>
+
+                <!-- Track 2: Non-Proceedings (Non-Archival) -->
+                <div class="bg-teal-50/50 dark:bg-teal-950/20 rounded-xl p-5 border border-teal-200 dark:border-teal-800/50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-teal-200 dark:border-teal-800/60">
+                            <h3 class="font-bold text-teal-900 dark:text-teal-300 text-sm">Non-Proceedings</h3>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 bg-teal-200 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded">Non-Archival</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="text-xs font-semibold text-teal-700 dark:text-teal-400">Feb 15, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Abstract Registration</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-teal-700 dark:text-teal-400">Mar 22, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Submission Deadline</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-teal-700 dark:text-teal-400">Apr 05, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Reviewer Deadline</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-teal-700 dark:text-teal-400">Apr 09, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Notification to Authors</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-teal-700 dark:text-teal-400">Apr 23, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Camera-Ready Deadline</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">February 20 - 24, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Review bidding period</h4>
+
+                <!-- PhysInOne Challenge Track -->
+                <div class="bg-blue-50/50 dark:bg-blue-950/20 rounded-xl p-5 border border-blue-200 dark:border-blue-800/50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-blue-200 dark:border-blue-800/60">
+                            <h3 class="font-bold text-blue-900 dark:text-blue-300 text-sm">PhysInOne Challenge</h3>
+                            <span class="text-[10px] font-semibold px-2 py-0.5 bg-blue-200 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">Competition</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="text-xs font-semibold text-blue-700 dark:text-blue-400">Nov 04, 2026</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Server Ready</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-blue-700 dark:text-blue-400">May 01, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Submission Deadline</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-blue-700 dark:text-blue-400">May 02 – 20, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Results Verification & Notification</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-blue-700 dark:text-blue-400">Jun 20 / 21, 2027</div>
+                                <div class="text-sm font-medium text-slate-800 dark:text-slate-200">Winner Presentations</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">March 12, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Reviewer deadline</h4>
-                </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">March 22, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Acceptance notification</h4>
-                </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">March 29, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Accepted non-archival paper author metadata submission</h4>
-                </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">April 23, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Camera-ready submission</h4>
-                </div>
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">June 20 or 21, 2027</span>
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Workshop date (assigned by CVPR)</h4>
-                </div>
+
+            </div>
+
+            <!-- Common Workshop Banner -->
+            <div class="mt-6 p-3 bg-slate-100 dark:bg-slate-800/60 rounded-lg text-center text-xs font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                🏆 Jun 20 / 21, 2027: ViPhi Workshop Date at CVPR 2027
             </div>
         </section>
 
