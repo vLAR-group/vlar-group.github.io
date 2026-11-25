@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="FoundSurface: feedforward ray-based 3D scene surface reconstruction from unposed images. Project page with method overview and comparison videos on Scannet++ and ScanNet.">
+  <meta name="theme-color" content="#f8faf9">
+  <title>FoundSurface: Feedforward Ray-Based 3D Scene Surface Reconstruction from Unposed Images</title>
+  <link rel="icon" type="image/svg+xml" href="FoundSurface/static/icons/favicon.svg?v=20261125x">
+  <link rel="icon" type="image/png" sizes="32x32" href="FoundSurface/static/icons/favicon-32.png?v=20261125x">
+  <link rel="icon" type="image/png" sizes="192x192" href="FoundSurface/static/icons/favicon-192.png?v=20261125x">
+  <link rel="apple-touch-icon" href="FoundSurface/static/icons/apple-touch-icon.png?v=20261125x">
+  <link rel="stylesheet" href="FoundSurface/static/css/style.css?v=20261125x">
+  <script src="FoundSurface/static/js/app.js?v=20261125x" defer></script>
+</head>
+<body>
+<header class="navigation">
+  <a class="wordmark gradient-text" href="#top">FoundSurface</a>
+  <nav aria-label="Main navigation">
+    <a href="#overview">Overview</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a href="#abstract">Abstract</a>
+    <a href="#bibtex">BibTeX</a>
+    <a href="#related">Related</a>
+    <a href="https://vlar-group.github.io/" target="_blank" rel="noopener">vLAR &#8599;</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="venue-row">
+    <a class="venue-badge" href="https://neurips.cc/virtual/2026/loc/sydney/poster/149835" target="_blank" rel="noopener">
+      <img src="FoundSurface/static/images/neurips_mark.png?v=20261125d" alt="NeurIPS 2026">
+      <span class="venue-copy">
+        <strong>NeurIPS 2026</strong>
+        <span class="venue-sub">Neural Information Processing Systems</span>
+        <span class="venue-loc">Sydney, Australia</span>
+      </span>
+    </a>
+  </div>
+  <!-- ======================= hero ======================= -->
+  <section class="hero wrap">
+    <h1 class="gradient-text">FoundSurface</h1>
+    <p class="paper-title gradient-text">Feedforward Ray-Based 3D Scene Surface Reconstruction from Unposed Images</p>
+
+    <div class="inst-logos">
+      <a href="https://vlar-group.github.io/" target="_blank" rel="noopener">
+        <img src="FoundSurface/static/images/vlar_logo.png?v=20261125c" alt="vLAR Group">
+      </a>
+      <a href="https://www.polyu.edu.hk/" target="_blank" rel="noopener">
+        <img src="FoundSurface/static/images/polyu_logo.png?v=20261125c" alt="The Hong Kong Polytechnic University">
+      </a>
+    </div>
+
+    <!-- EDIT: author links / per-author affiliations can be added here -->
+    <div class="authors">
+      <span><a href="https://whishing.github.io/" target="_blank" rel="noopener">Shenxing Wei</a><sup>1</sup></span>
+      <span><a href="https://jinxi-li.github.io/" target="_blank" rel="noopener">Jinxi Li</a><sup>1</sup></span>
+      <span><a href="https://zihui0930.github.io" target="_blank" rel="noopener">Zihui Zhang</a><sup>1</sup></span>
+      <span><a href="https://www.polyu.edu.hk/dsai/people/academic-staff/kumarajay/" target="_blank" rel="noopener">Ajay Kumar</a><sup>2</sup></span>
+      <span>Wei Wang<sup>3,&lowast;</sup></span>
+      <span><a href="https://yang7879.github.io/" target="_blank" rel="noopener">Bo Yang</a><sup>1,&lowast;</sup></span>
+    </div>
+    <p class="affiliations">
+      <sup>1</sup> vLAR Group &nbsp;&middot;&nbsp; <sup>2</sup> DSAI, The Hong Kong Polytechnic University
+      &nbsp;&middot;&nbsp; <sup>3</sup> Regressor, Inc.
+    </p>
+    <p class="emails">{shenxing.wei, jinxi.li, zihui.zhang}@connect.polyu.hk &nbsp;&middot;&nbsp; bo.yang@polyu.edu.hk</p>
+    <p class="affiliations" style="margin-top:4px"><sup>&lowast;</sup> Corresponding authors</p>
+
+    <div class="resources">
+      <a class="resource" href="FoundSurface/static/paper.pdf" target="_blank" rel="noopener noreferrer">Paper <span>↗</span></a>
+      <a class="resource" href="https://github.com/vLAR-group/FoundSurface" target="_blank" rel="noopener noreferrer">Code <span>↗</span></a>
+      <a class="resource ghost" href="#bibtex">BibTeX</a>
+    </div>
+
+    <figure class="media-card bleed">
+      <div class="hero-stage" id="hero-stage">
+        <video class="hero-clip is-active" id="hero-video"
+               data-src-key="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261125x"
+               src="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261125x"
+               poster="FoundSurface/static/images/teaser_replica_office.jpg?v=20261125x"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <video class="hero-clip" id="hero-video-b" muted loop playsinline preload="auto"></video>
+        <span class="scan-edge" aria-hidden="true"></span>
+      </div>
+      <div class="scene-switch">
+        <div class="scene-strip" id="scene-strip" role="tablist" aria-label="Teaser scenes">
+          <button class="scene-thumb is-active" role="tab" aria-selected="true"
+                  title="Replica · office" aria-label="Replica office"
+                  data-src="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_replica_office.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_office.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+          <button class="scene-thumb" role="tab" aria-selected="false"
+                  title="Replica · room" aria-label="Replica room"
+                  data-src="FoundSurface/static/videos/teaser_replica_room.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_replica_room.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_room.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+          <button class="scene-thumb" role="tab" aria-selected="false"
+                  title="ScanNet · bedroom" aria-label="ScanNet bedroom"
+                  data-src="FoundSurface/static/videos/teaser_scannet_bed.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_scannet_bed.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_sn_bed.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+          <button class="scene-thumb" role="tab" aria-selected="false"
+                  title="ScanNet · bathroom" aria-label="ScanNet bathroom"
+                  data-src="FoundSurface/static/videos/teaser_scannet_bath.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_scannet_bath.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_sn_bath.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+          <button class="scene-thumb" role="tab" aria-selected="false"
+                  title="ScanNet++ · bathroom" aria-label="ScanNet++ bathroom"
+                  data-src="FoundSurface/static/videos/teaser_wide.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_wide.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_bathroom.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+          <button class="scene-thumb" role="tab" aria-selected="false"
+                  title="ScanNet++ · study" aria-label="ScanNet++ study room"
+                  data-src="FoundSurface/static/videos/teaser_scannetpp_bedroom.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_scannetpp_bedroom.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_bedroom.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+          <button class="scene-thumb" role="tab" aria-selected="false"
+                  title="ScanNet++ · lounge" aria-label="ScanNet++ lounge"
+                  data-src="FoundSurface/static/videos/teaser_scannetpp_sofa.mp4?v=20261125x"
+                  data-poster="FoundSurface/static/images/teaser_scannetpp_sofa.jpg?v=20261125x">
+                  <img src="FoundSurface/static/images/thumb_sofa.jpg?v=20261125x" alt="" loading="lazy">
+                    </button>
+        </div>
+        <div class="scene-fade l" aria-hidden="true"></div>
+        <div class="scene-fade r" aria-hidden="true"></div>
+        <button class="scene-nav l" type="button" aria-label="Previous scene">&#8249;</button>
+        <button class="scene-nav r" type="button" aria-label="Next scene">&#8250;</button>
+      </div>
+      <figcaption>From <b>unposed images</b> to a <b>ray-distance field</b></figcaption>
+    </figure>
+
+    <div class="text-box tldr">
+      <p><strong class="gradient-text">TL;DR</strong>
+        FoundSurface reconstructs <b>3D scene surfaces from unposed images</b> in a single feed-forward pass.
+        Rays are cast at a novel view and the network predicts <b>how far each one travels</b>, giving a compact
+        ray-distance field from which the surface follows directly &mdash; no camera poses, no per-scene
+        optimisation, no meshing.</p>
+    </div>
+  </section>
+
+  <!-- ======================= contributions ======================= -->
+  <section id="overview" class="wrap contributions">
+    <article>
+      <span class="num">01 &mdash; INPUT</span>
+      <h3>Truly unposed</h3>
+      <p>Raw images straight from a phone or a scan. No camera poses, no calibration, no SfM preprocessing.</p>
+    </article>
+    <article>
+      <span class="num">02 &mdash; REPRESENTATION</span>
+      <h3>Rays, not depth</h3>
+      <p>Every pixel is a ray: its predicted distance gives the surface point, and <b>normals follow in closed form</b>
+        &mdash; one analytic derivative, no normal head, no depth back-projection.</p>
+    </article>
+    <article>
+      <span class="num">03 &mdash; OUTPUT</span>
+      <h3>One pass, full resolution</h3>
+      <p>Consistent surfaces at full image resolution from a single forward pass &mdash; no per-scene optimisation, no meshing.</p>
+    </article>
+  </section>
+
+  <!-- ======================= method ======================= -->
+  <section id="method" class="section wrap">
+    <div class="section-heading">
+      <h2>How it works</h2>
+      <p>One ray per pixel. Cast it, find where it stops, and the travelled length <i>is</i> the pixel value.</p>
+    </div>
+
+    <figure class="media-card">
+      <video src="FoundSurface/static/videos/explainer.mp4?v=20261125x" poster="FoundSurface/static/images/method.jpg?v=20261125x"
+             autoplay muted loop playsinline preload="metadata"></video>
+      <figcaption>From unposed views to a refined ray-distance field &mdash; the strip at the bottom tracks the pipeline.</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div>
+        <span>STEP 01</span>
+        <h3>Unposed images in</h3>
+        <p>Raw photos go in. The network recovers the scene and the cameras in the same pass &mdash;
+          nothing to calibrate, nothing to pre-process.</p>
+      </div>
+      <div>
+        <span>STEP 02</span>
+        <h3>Cast the rays</h3>
+        <p>For the view we want, every pixel defines a ray. The network predicts where each ray meets
+          the surface, giving a first, coarse estimate.</p>
+      </div>
+      <div>
+        <span>STEP 03</span>
+        <h3>Raylet refinement</h3>
+        <p>A light second stage sharpens that estimate, so edges and thin structures stay crisp.</p>
+      </div>
+    </div>
+
+    <p class="note"><b>Beyond depth.</b> A depth map only records distance along the camera axis; FoundSurface
+      stores the full length of every ray, so the surface follows directly &mdash; no back-projection step.</p>
+  </section>
+
+  <!-- ======================= results ======================= -->
+  <section id="results" class="section wrap">
+    <div class="section-heading">
+      <h2>Results <span class="results-note">on ScanNet++, ScanNet, Replica, Hypersim, ARKitScenes, BlendedMVS, TNT</span></h2>
+    </div>
+
+    <div class="scene-grid">
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet++</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Scannetpp_25f3b7a318.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Scannetpp_25f3b7a318.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet++</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_45b0dac5e3.mp4?v=20261125x" poster="FoundSurface/static/images/scene_45b0dac5e3.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet++</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_f9f95681fd.mp4?v=20261125x" poster="FoundSurface/static/images/scene_f9f95681fd.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">TNT</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_TNT_Barn.mp4?v=20261125x" poster="FoundSurface/static/images/extra_TNT_Barn.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Hypersim</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Hypersim_ai_001_008_cam_00.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Hypersim_ai_001_008_cam_00.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Hypersim</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Hypersim_ai_003_009_cam_00.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Hypersim_ai_003_009_cam_00.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Replica</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office0.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office0.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Replica</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office1.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office1.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Replica</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office2.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office2.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Replica</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office4.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office4.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Replica</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_room1.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_room1.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">Replica</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_room2.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_room2.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0726_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0726_00.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0735_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0735_00.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0740_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0740_00.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ScanNet</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0741_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0741_00.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">BlendedMVS</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_BMVS_statue.mp4?v=20261125x" poster="FoundSurface/static/images/extra_BMVS_statue.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">BlendedMVS</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_BMVS_twin.mp4?v=20261125x" poster="FoundSurface/static/images/extra_BMVS_twin.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ARKitScenes</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_ARKit_40753679.mp4?v=20261125x" poster="FoundSurface/static/images/extra_ARKit_40753679.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+      <article class="scene-card">
+              <span class="ds-tag">ARKitScenes</span>
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_ARKit_40776203.mp4?v=20261125x" poster="FoundSurface/static/images/extra_ARKit_40776203.jpg?v=20261125x"
+                     muted loop playsinline preload="none"></video>
+            </article>
+    </div>
+  </section>
+
+
+
+
+  <!-- ======================= abstract ======================= -->
+  <section id="abstract" class="section wrap abstract-box text-box">
+    <h2>Abstract</h2>
+    <p>Reconstructing 3D scene surfaces from unposed images is challenging because it couples geometry, camera
+      estimation and rendering. We present <b>FoundSurface</b>, a feed-forward approach that represents a scene by
+      <b>ray distance</b>: for every pixel of a target view, the distance that its ray travels before reaching the
+      surface. Starting from unposed images, a feed-forward transformer reconstructs scene tokens and cameras; a ray
+      map for the target view is then fused with these tokens to predict a coarse distance field, which a second stage
+      refines with sparse surface points. The ray-based formulation avoids depth
+      back-projection and per-scene optimisation while keeping the representation compact, and yields full-resolution
+      ray-distance maps from which consistent surfaces can be recovered.</p>
+  </section>
+
+  <!-- ======================= bibtex ======================= -->
+  <section id="bibtex" class="section wrap">
+    <div class="section-heading"><h2>BibTeX</h2></div>
+    <div class="bibtex-box">
+      <button class="copy-bibtex">Copy BibTeX</button>
+      <pre><code id="bibtex-code">@inproceedings{wei2026foundsurface,
+  title     = {FoundSurface: Feedforward Ray-Based 3D Scene Surface Reconstruction from Unposed Images},
+  author    = {Shenxing Wei and Jinxi Li and Zihui Zhang and Ajay Kumar and Wei Wang and Bo Yang},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- ======================= related work ======================= -->
+  <section id="related" class="section wrap">
+    <div class="section-heading">
+      <h2>Related Work</h2>
+    </div>
+
+    <div class="related-grid">
+      <article class="related-card">
+        <div class="related-head">
+          <h3>RayDF</h3>
+          <span class="related-venue">NeurIPS 2023</span>
+        </div>
+        <p class="related-sub">Neural Ray-surface Distance Fields with Multi-view Consistency</p>
+        <p class="related-desc">
+          Learns a continuous ray-surface distance field from posed multi-view images with
+          multi-view consistency, turning rays directly into high-fidelity surfaces.
+        </p>
+        <div class="related-links">
+          <a class="related-link" href="https://arxiv.org/abs/2310.19629" target="_blank" rel="noopener">Paper</a>
+          <a class="related-link ghost" href="https://github.com/vLAR-group/RayDF" target="_blank" rel="noopener">Code</a>
+          <button class="related-link cite-btn" type="button" aria-expanded="false">Cite</button>
+        </div>
+        <pre class="related-bib" hidden><code>@inproceedings{liu2023raydf,
+  title     = {RayDF: Neural Ray-surface Distance Fields with Multi-view Consistency},
+  author    = {Zhuoman Liu and Bo Yang and Yan Luximon and Ajay Kumar and Jinxi Li},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023}
+}</code></pre>
+      </article>
+
+      <article class="related-card">
+        <div class="related-head">
+          <h3>RayletDF</h3>
+          <span class="related-venue">ICCV 2025 &middot; Highlight</span>
+        </div>
+        <p class="related-sub">Raylet Distance Fields for Generalizable 3D Surface Reconstruction from Point Clouds or Gaussians</p>
+        <p class="related-desc">
+          Local raylet-based distance fields that generalize across scenes and turn point clouds
+          or Gaussians into detailed surfaces in a feed-forward manner.
+        </p>
+        <div class="related-links">
+          <a class="related-link" href="https://arxiv.org/abs/2508.09830" target="_blank" rel="noopener">Paper</a>
+          <a class="related-link ghost" href="https://github.com/vLAR-group/RayletDF" target="_blank" rel="noopener">Code</a>
+          <button class="related-link cite-btn" type="button" aria-expanded="false">Cite</button>
+        </div>
+        <pre class="related-bib" hidden><code>@inproceedings{wei2025rayletdf,
+  title     = {RayletDF: Raylet Distance Fields for Generalizable 3D Surface Reconstruction from Point Clouds or Gaussians},
+  author    = {Shenxing Wei and Jinxi Li and Yafei Yang and Siyuan Zhou and Bo Yang},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year      = {2025}
+}</code></pre>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a class="wordmark gradient-text" href="#top">FoundSurface</a>
+    <p>Feedforward Ray-Based 3D Scene Surface Reconstruction from Unposed Images</p>
+  </div>
+</footer>
+</body>
+</html>
