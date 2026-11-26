@@ -107,6 +107,9 @@ img,video{display:block;max-width:100%}
 .text-box{border:1px solid #d7e4e1;border-radius:14px;background:linear-gradient(115deg,#f0f5fc,#eef8f3);padding:24px 28px}
 .tldr{max-width:none;margin:30px auto 0;text-align:left;font-size:18px;line-height:1.85;color:#3f584e}
 .tldr strong{font-weight:700;font-size:19px;margin-right:8px;display:inline-block}
+.tldr .tldr-highlight{font-size:inherit;margin-right:0;display:inline;font-weight:750;
+  background:linear-gradient(110deg,#2865db 8%,#13a989 91%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* sections */
 .section{padding-block:78px}
