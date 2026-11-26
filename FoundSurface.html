@@ -6,12 +6,12 @@
   <meta name="description" content="FoundSurface: feedforward ray-based 3D scene surface reconstruction from unposed images. Project page with method overview and comparison videos on Scannet++ and ScanNet.">
   <meta name="theme-color" content="#f8faf9">
   <title>FoundSurface: Feedforward Ray-Based 3D Scene Surface Reconstruction from Unposed Images</title>
-  <link rel="icon" type="image/svg+xml" href="FoundSurface/static/icons/favicon.svg?v=20261125x">
-  <link rel="icon" type="image/png" sizes="32x32" href="FoundSurface/static/icons/favicon-32.png?v=20261125x">
-  <link rel="icon" type="image/png" sizes="192x192" href="FoundSurface/static/icons/favicon-192.png?v=20261125x">
-  <link rel="apple-touch-icon" href="FoundSurface/static/icons/apple-touch-icon.png?v=20261125x">
-  <link rel="stylesheet" href="FoundSurface/static/css/style.css?v=20261125x">
-  <script src="FoundSurface/static/js/app.js?v=20261125x" defer></script>
+  <link rel="icon" type="image/svg+xml" href="FoundSurface/static/icons/favicon.svg?v=20261126a">
+  <link rel="icon" type="image/png" sizes="32x32" href="FoundSurface/static/icons/favicon-32.png?v=20261126a">
+  <link rel="icon" type="image/png" sizes="192x192" href="FoundSurface/static/icons/favicon-192.png?v=20261126a">
+  <link rel="apple-touch-icon" href="FoundSurface/static/icons/apple-touch-icon.png?v=20261126a">
+  <link rel="stylesheet" href="FoundSurface/static/css/style.css?v=20261126a">
+  <script src="FoundSurface/static/js/app.js?v=20261126a" defer></script>
 </head>
 <body>
 <header class="navigation">
@@ -23,7 +23,6 @@
     <a href="#abstract">Abstract</a>
     <a href="#bibtex">BibTeX</a>
     <a href="#related">Related</a>
-    <a href="https://vlar-group.github.io/" target="_blank" rel="noopener">vLAR &#8599;</a>
   </nav>
 </header>
 
@@ -77,9 +76,9 @@
     <figure class="media-card bleed">
       <div class="hero-stage" id="hero-stage">
         <video class="hero-clip is-active" id="hero-video"
-               data-src-key="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261125x"
-               src="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261125x"
-               poster="FoundSurface/static/images/teaser_replica_office.jpg?v=20261125x"
+               data-src-key="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261126a"
+               src="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261126a"
+               poster="FoundSurface/static/images/teaser_replica_office.jpg?v=20261126a"
                autoplay muted loop playsinline preload="metadata"></video>
         <video class="hero-clip" id="hero-video-b" muted loop playsinline preload="auto"></video>
         <span class="scan-edge" aria-hidden="true"></span>
@@ -88,45 +87,45 @@
         <div class="scene-strip" id="scene-strip" role="tablist" aria-label="Teaser scenes">
           <button class="scene-thumb is-active" role="tab" aria-selected="true"
                   title="Replica · office" aria-label="Replica office"
-                  data-src="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_replica_office.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_office.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_replica_office.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_replica_office.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_office.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
           <button class="scene-thumb" role="tab" aria-selected="false"
                   title="Replica · room" aria-label="Replica room"
-                  data-src="FoundSurface/static/videos/teaser_replica_room.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_replica_room.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_room.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_replica_room.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_replica_room.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_room.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
           <button class="scene-thumb" role="tab" aria-selected="false"
                   title="ScanNet · bedroom" aria-label="ScanNet bedroom"
-                  data-src="FoundSurface/static/videos/teaser_scannet_bed.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_scannet_bed.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_sn_bed.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_scannet_bed.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_scannet_bed.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_sn_bed.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
           <button class="scene-thumb" role="tab" aria-selected="false"
                   title="ScanNet · bathroom" aria-label="ScanNet bathroom"
-                  data-src="FoundSurface/static/videos/teaser_scannet_bath.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_scannet_bath.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_sn_bath.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_scannet_bath.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_scannet_bath.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_sn_bath.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
           <button class="scene-thumb" role="tab" aria-selected="false"
                   title="ScanNet++ · bathroom" aria-label="ScanNet++ bathroom"
-                  data-src="FoundSurface/static/videos/teaser_wide.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_wide.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_bathroom.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_wide.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_wide.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_bathroom.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
           <button class="scene-thumb" role="tab" aria-selected="false"
                   title="ScanNet++ · study" aria-label="ScanNet++ study room"
-                  data-src="FoundSurface/static/videos/teaser_scannetpp_bedroom.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_scannetpp_bedroom.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_bedroom.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_scannetpp_bedroom.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_scannetpp_bedroom.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_bedroom.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
           <button class="scene-thumb" role="tab" aria-selected="false"
                   title="ScanNet++ · lounge" aria-label="ScanNet++ lounge"
-                  data-src="FoundSurface/static/videos/teaser_scannetpp_sofa.mp4?v=20261125x"
-                  data-poster="FoundSurface/static/images/teaser_scannetpp_sofa.jpg?v=20261125x">
-                  <img src="FoundSurface/static/images/thumb_sofa.jpg?v=20261125x" alt="" loading="lazy">
+                  data-src="FoundSurface/static/videos/teaser_scannetpp_sofa.mp4?v=20261126a"
+                  data-poster="FoundSurface/static/images/teaser_scannetpp_sofa.jpg?v=20261126a">
+                  <img src="FoundSurface/static/images/thumb_sofa.jpg?v=20261126a" alt="" loading="lazy">
                     </button>
         </div>
         <div class="scene-fade l" aria-hidden="true"></div>
@@ -174,7 +173,7 @@
     </div>
 
     <figure class="media-card">
-      <video src="FoundSurface/static/videos/explainer.mp4?v=20261125x" poster="FoundSurface/static/images/method.jpg?v=20261125x"
+      <video src="FoundSurface/static/videos/explainer.mp4?v=20261126a" poster="FoundSurface/static/images/method.jpg?v=20261126a"
              autoplay muted loop playsinline preload="metadata"></video>
       <figcaption>From unposed views to a refined ray-distance field &mdash; the strip at the bottom tracks the pipeline.</figcaption>
     </figure>
@@ -212,102 +211,102 @@
     <div class="scene-grid">
       <article class="scene-card">
               <span class="ds-tag">ScanNet++</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Scannetpp_25f3b7a318.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Scannetpp_25f3b7a318.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Scannetpp_25f3b7a318.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Scannetpp_25f3b7a318.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ScanNet++</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/scene_45b0dac5e3.mp4?v=20261125x" poster="FoundSurface/static/images/scene_45b0dac5e3.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_45b0dac5e3.mp4?v=20261126a" poster="FoundSurface/static/images/scene_45b0dac5e3.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ScanNet++</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/scene_f9f95681fd.mp4?v=20261125x" poster="FoundSurface/static/images/scene_f9f95681fd.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_f9f95681fd.mp4?v=20261126a" poster="FoundSurface/static/images/scene_f9f95681fd.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">TNT</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_TNT_Barn.mp4?v=20261125x" poster="FoundSurface/static/images/extra_TNT_Barn.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_TNT_Barn.mp4?v=20261126a" poster="FoundSurface/static/images/extra_TNT_Barn.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Hypersim</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Hypersim_ai_001_008_cam_00.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Hypersim_ai_001_008_cam_00.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Hypersim_ai_001_008_cam_00.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Hypersim_ai_001_008_cam_00.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Hypersim</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Hypersim_ai_003_009_cam_00.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Hypersim_ai_003_009_cam_00.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Hypersim_ai_003_009_cam_00.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Hypersim_ai_003_009_cam_00.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Replica</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office0.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office0.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office0.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Replica_office0.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Replica</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office1.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office1.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office1.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Replica_office1.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Replica</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office2.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office2.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office2.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Replica_office2.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Replica</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office4.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_office4.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_office4.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Replica_office4.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Replica</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_room1.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_room1.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_room1.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Replica_room1.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">Replica</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_room2.mp4?v=20261125x" poster="FoundSurface/static/images/extra_Replica_room2.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_Replica_room2.mp4?v=20261126a" poster="FoundSurface/static/images/extra_Replica_room2.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ScanNet</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0726_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0726_00.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0726_00.mp4?v=20261126a" poster="FoundSurface/static/images/scene_scene0726_00.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ScanNet</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0735_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0735_00.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0735_00.mp4?v=20261126a" poster="FoundSurface/static/images/scene_scene0735_00.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ScanNet</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0740_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0740_00.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0740_00.mp4?v=20261126a" poster="FoundSurface/static/images/scene_scene0740_00.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ScanNet</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0741_00.mp4?v=20261125x" poster="FoundSurface/static/images/scene_scene0741_00.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/scene_scene0741_00.mp4?v=20261126a" poster="FoundSurface/static/images/scene_scene0741_00.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">BlendedMVS</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_BMVS_statue.mp4?v=20261125x" poster="FoundSurface/static/images/extra_BMVS_statue.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_BMVS_statue.mp4?v=20261126a" poster="FoundSurface/static/images/extra_BMVS_statue.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">BlendedMVS</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_BMVS_twin.mp4?v=20261125x" poster="FoundSurface/static/images/extra_BMVS_twin.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_BMVS_twin.mp4?v=20261126a" poster="FoundSurface/static/images/extra_BMVS_twin.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ARKitScenes</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_ARKit_40753679.mp4?v=20261125x" poster="FoundSurface/static/images/extra_ARKit_40753679.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_ARKit_40753679.mp4?v=20261126a" poster="FoundSurface/static/images/extra_ARKit_40753679.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
       <article class="scene-card">
               <span class="ds-tag">ARKitScenes</span>
-              <video class="lazy-loop" src="FoundSurface/static/videos/extra_ARKit_40776203.mp4?v=20261125x" poster="FoundSurface/static/images/extra_ARKit_40776203.jpg?v=20261125x"
+              <video class="lazy-loop" src="FoundSurface/static/videos/extra_ARKit_40776203.mp4?v=20261126a" poster="FoundSurface/static/images/extra_ARKit_40776203.jpg?v=20261126a"
                      muted loop playsinline preload="none"></video>
             </article>
     </div>
